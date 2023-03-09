@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Examples :: Antora Docs</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Antora Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="boost-1.82.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Boost.Mp11</span>
+    <span class="version">boost-1.82.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../../index.html">Boost.Mp11</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+        <li class="version">
+          <a href="../../develop/index.html">develop</a>
+        </li>
+        <li class="version is-current">
+          <a href="../index.html">boost-1.82.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../../unordered/develop/index.html">Boost.Unordered</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../../unordered/develop/index.html">develop</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="examples.html">Examples</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">boost-1.82.0</button>
+  <div class="version-menu">
+    <a class="version" href="../../mp11/examples.html">master</a>
+    <a class="version" href="../../develop/mp11/examples.html">develop</a>
+    <a class="version is-current" href="examples.html">boost-1.82.0</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/boost-1.82.0/antora/modules/ROOT/pages/mp11/examples.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Examples</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#generating_test_cases">Generating Test Cases</a></li>
+<li><a href="#writing_common_type_specializations">Writing common_type Specializations</a></li>
+<li><a href="#fixing_tuple_cat">Fixing tuple_cat</a></li>
+<li><a href="#computing_return_types">Computing Return Types</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="generating_test_cases"><a class="anchor" href="#generating_test_cases"></a>Generating Test Cases</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s suppose that we have written a metafunction <code>result&lt;T, U&gt;</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T&gt; using promote = typename std::common_type&lt;T, int&gt;::type;
+
+template&lt;class T, class U&gt; using result =
+    typename std::common_type&lt;promote&lt;T&gt;, promote&lt;U&gt;&gt;::type;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>that ought to represent the result of an arithmetic operation on the integer types <code>T</code> and <code>U</code>,
+for example <code>t + u</code>. We want to test whether <code>result&lt;T, U&gt;</code> gives correct results for various combinations
+of <code>T</code> and <code>U</code>, so we write the function</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T1, class T2&gt; void test_result()
+{
+    using T3 = decltype( T1() + T2() );
+    using T4 = result&lt;T1, T2&gt;;
+
+    std::cout &lt;&lt; ( std::is_same&lt;T3, T4&gt;::value? "[PASS]": "[FAIL]" ) &lt;&lt; std::endl;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then need to call it a substantial number of times:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>int main()
+{
+    test_result&lt;char, char&gt;();
+    test_result&lt;char, short&gt;();
+    test_result&lt;char, int&gt;();
+    test_result&lt;char, unsigned&gt;();
+    // ...
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Writing all those type combinations by hand is unwieldy, error prone, and worst of all, boring. This is
+how we can leverage Mp11 to automate the task:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">#include &lt;boost/mp11.hpp&gt;
+#include &lt;boost/core/demangle.hpp&gt;
+#include &lt;type_traits&gt;
+#include &lt;iostream&gt;
+#include &lt;typeinfo&gt;
+
+using namespace boost::mp11;
+
+template&lt;class T&gt; std::string name()
+{
+    return boost::core::demangle( typeid(T).name() );
+}
+
+template&lt;class T&gt; using promote = typename std::common_type&lt;T, int&gt;::type;
+
+template&lt;class T, class U&gt; using result =
+    typename std::common_type&lt;promote&lt;T&gt;, promote&lt;U&gt;&gt;::type;
+
+template&lt;class T1, class T2&gt; void test_result( mp_list&lt;T1, T2&gt; const&amp; )
+{
+    using T3 = decltype( T1() + T2() );
+    using T4 = result&lt;T1, T2&gt;;
+
+    std::cout &lt;&lt; ( std::is_same&lt;T3, T4&gt;::value? "[PASS] ": "[FAIL] " )
+        &lt;&lt; name&lt;T1&gt;() &lt;&lt; " + " &lt;&lt; name&lt;T2&gt;() &lt;&lt; " -&gt; " &lt;&lt; name&lt;T3&gt;()
+        &lt;&lt; ", result: " &lt;&lt; name&lt;T4&gt;() &lt;&lt; std::endl;
+}
+
+int main()
+{
+    using L = std::tuple&lt;char, short, int, unsigned, long, unsigned long&gt;;
+    tuple_for_each( mp_product&lt;mp_list, L, L&gt;(), [](auto&amp;&amp; x){ test_result(x); } );
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>How does it work?</p>
+</div>
+<div class="paragraph">
+<p><code>mp_product&lt;F, L1, L2&gt;</code> calls <code>F&lt;T1, T2&gt;</code> where <code>T1</code> varies over the elements of <code>L1</code> and <code>T2</code> varies over
+the elements of <code>L2</code>, as if by executing two nested loops. It then returns a list of these results, of the same
+type as <code>L1</code>.</p>
+</div>
+<div class="paragraph">
+<p>In our case, both lists are the same <code>std::tuple</code>, and <code>F</code> is <code>mp_list</code>, so <code>mp_product&lt;mp_list, L, L&gt;</code> will get us
+<code>std::tuple&lt;mp_list&lt;char, char&gt;, mp_list&lt;char, short&gt;, mp_list&lt;char, int&gt;, &#8230;&#8203;, mp_list&lt;unsigned long, long&gt;, mp_list&lt;unsigned long, unsigned long&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>We then default-construct this tuple and pass it to <code>tuple_for_each</code>. <code>tuple_for_each(tp, f)</code> calls <code>f</code> for every
+tuple element; we use a (C++14) lambda that calls <code>test_result</code>.</p>
+</div>
+<div class="paragraph">
+<p>In pure C++11, we can&#8217;t use a lambda with an <code>auto&amp;&amp;</code> parameter, so we&#8217;ll have to make <code>test_result</code> a function object with
+a templated <code>operator()</code> and pass that to <code>tuple_for_each</code> directly:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">struct test_result
+{
+    template&lt;class T1, class T2&gt; void operator()( mp_list&lt;T1, T2&gt; const&amp; ) const
+    {
+        using T3 = decltype( T1() + T2() );
+        using T4 = result&lt;T1, T2&gt;;
+
+        std::cout &lt;&lt; ( std::is_same&lt;T3, T4&gt;::value? "[PASS] ": "[FAIL] " )
+            &lt;&lt; name&lt;T1&gt;() &lt;&lt; " + " &lt;&lt; name&lt;T2&gt;() &lt;&lt; " -&gt; " &lt;&lt; name&lt;T3&gt;()
+            &lt;&lt; ", result: " &lt;&lt; name&lt;T4&gt;() &lt;&lt; std::endl;
+    }
+};
+
+int main()
+{
+    using L = std::tuple&lt;char, short, int, unsigned, long, unsigned long&gt;;
+    tuple_for_each( mp_product&lt;mp_list, L, L&gt;(), test_result() );
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing_common_type_specializations"><a class="anchor" href="#writing_common_type_specializations"></a>Writing common_type Specializations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The standard trait <code>std::common_type</code>, used to obtain a type to which all of its arguments can convert without
+unnecessary loss of precision, can be user-specialized when its default implementation (based on the ternary <code>?:</code>
+operator) is unsuitable.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s write a <code>common_type</code> specialization for two <code>std::tuple</code> arguments. For that, we need a metafunction that
+applies <code>std::common_type</code> to each pair of elements and gathers the results into a tuple:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... T&gt; using common_type_t =
+    typename std::common_type&lt;T...&gt;::type; // standard in C++14
+
+template&lt;class Tp1, class Tp2&gt; using common_tuple =
+    mp_transform&lt;common_type_t, Tp1, Tp2&gt;;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then specialize <code>common_type</code> to use it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">namespace std
+{
+
+    template&lt;class... T1, class... T2&gt;
+    struct common_type&lt;std::tuple&lt;T1...&gt;, std::tuple&lt;T2...&gt;&gt;:
+        mp_defer&lt;common_tuple, std::tuple&lt;T1...&gt;, std::tuple&lt;T2...&gt;&gt;
+    {
+    };
+
+} // std</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(There is no need to specialize <code>std::common_type</code> for more than two arguments - it takes care of synthesizing the appropriate semantics from
+the binary case.)</p>
+</div>
+<div class="paragraph">
+<p>The subtlety here is the use of <code>mp_defer</code>. We could have defined a nested <code>type</code> to <code>common_tuple&lt;std::tuple&lt;T1&#8230;&#8203;&gt;, std::tuple&lt;T2&#8230;&#8203;&gt;&gt;</code>,
+and it would still have worked in all valid cases. By letting <code>mp_defer</code> define <code>type</code>, though, we make our specialization <em>SFINAE-friendly</em>.</p>
+</div>
+<div class="paragraph">
+<p>That is, when our <code>common_tuple</code> causes a substitution failure instead of a hard error, <code>mp_defer</code> will not define a nested <code>type</code>,
+and <code>common_type_t</code>, which is defined as <code>typename common_type&lt;&#8230;&#8203;&gt;::type</code>, will also cause a substitution failure.</p>
+</div>
+<div class="paragraph">
+<p>As another example, consider the hypothetical type <code>expected&lt;T, E&#8230;&#8203;&gt;</code> that represents either a successful return with a value of <code>T</code>,
+or an unsuccessful return with an error code of some type in the list <code>E&#8230;&#8203;</code>. The common type of <code>expected&lt;T1, E1, E2, E3&gt;</code> and
+<code>expected&lt;T2, E1, E4, E5&gt;</code> is <code>expected&lt;common_type_t&lt;T1, T2&gt;, E1, E2, E3, E4, E5&gt;</code>. That is, the possible return values are
+combined into their common type, and we take the union of the set of error types.</p>
+</div>
+<div class="paragraph">
+<p>Therefore,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T1, class E1, class T2, class E2&gt; using common_expected =
+    mp_rename&lt;mp_push_front&lt;mp_unique&lt;mp_append&lt;E1, E2&gt;&gt;, common_type_t&lt;T1, T2&gt;&gt;,
+        expected&gt;;
+
+namespace std
+{
+
+    template&lt;class T1, class... E1, class T2, class... E2&gt;
+    struct common_type&lt;expected&lt;T1, E1...&gt;, expected&lt;T2, E2...&gt;&gt;:
+        mp_defer&lt;common_expected, T1, mp_list&lt;E1...&gt;, T2, mp_list&lt;E2...&gt;&gt;
+    {
+    };
+
+} // std</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we&#8217;ve taken a different tack; instead of passing the <code>expected</code> types to <code>common_expected</code>, we&#8217;re passing the <code>T</code> types and lists of
+the <code>E</code> types. This makes our job easier. <code>mp_unique&lt;mp_append&lt;E1, E2&gt;&gt;</code> gives us the concatenation of <code>E1</code> and <code>E2</code> with the duplicates
+removed; we then add <code>common_type_t&lt;T1, T2&gt;</code> to the front via <code>mp_push_front</code>; and finally, we <code>mp_rename</code> the resultant <code>mp_list</code>
+to <code>expected</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="fixing_tuple_cat"><a class="anchor" href="#fixing_tuple_cat"></a>Fixing tuple_cat</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The article <a href="http://pdimov.com/cpp2/simple_cxx11_metaprogramming.html#">Simple C++11 metaprogramming</a> builds an
+implementation of the standard function <code>tuple_cat</code>, with the end result given below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L&gt; using F = mp_iota&lt;mp_size&lt;L&gt;&gt;;
+
+template&lt;class R, class...Is, class... Ks, class Tp&gt;
+R tuple_cat_( mp_list&lt;Is...&gt;, mp_list&lt;Ks...&gt;, Tp tp )
+{
+    return R{ std::get&lt;Ks::value&gt;(std::get&lt;Is::value&gt;(tp))... };
+}
+
+template&lt;class... Tp,
+    class R = mp_append&lt;std::tuple&lt;&gt;, typename std::remove_reference&lt;Tp&gt;::type...&gt;&gt;
+    R tuple_cat( Tp &amp;&amp;... tp )
+{
+    std::size_t const N = sizeof...(Tp);
+
+    // inner
+
+    using list1 = mp_list&lt;
+        mp_rename&lt;typename std::remove_reference&lt;Tp&gt;::type, mp_list&gt;...&gt;;
+
+    using list2 = mp_iota_c&lt;N&gt;;
+
+    using list3 = mp_transform&lt;mp_fill, list1, list2&gt;;
+
+    using inner = mp_apply&lt;mp_append, list3&gt;;
+
+    // outer
+
+    using list4 = mp_transform&lt;F, list1&gt;;
+
+    using outer = mp_apply&lt;mp_append, list4&gt;;
+
+    //
+
+    return tuple_cat_&lt;R&gt;( inner(), outer(),
+        std::forward_as_tuple( std::forward&lt;Tp&gt;(tp)... ) );
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This function, however, is not entirely correct, in that it doesn&#8217;t handle some cases properly. For example,
+trying to concatenate tuples containing move-only elements such as <code>unique_ptr</code> fails:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">std::tuple&lt;std::unique_ptr&lt;int&gt;&gt; t1;
+std::tuple&lt;std::unique_ptr&lt;float&gt;&gt; t2;
+
+auto result = ::tuple_cat( std::move( t1 ), std::move( t2 ) );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Trying to concatenate <code>const</code> tuples fails:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">std::tuple&lt;int&gt; const t1;
+std::tuple&lt;float&gt; const t2;
+
+auto result = ::tuple_cat( t1, t2 );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And finally, the standard <code>tuple_cat</code> is specified to work on arbitrary tuple-like types (that is, all types
+that support <code>tuple_size</code>, <code>tuple_element</code>, and <code>get</code>), while our implementation only works with <code>tuple</code> and
+<code>pair</code>. <code>std::array</code>, for example, fails:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">std::array&lt;int, 2&gt; t1{ 1, 2 };
+std::array&lt;float, 3&gt; t2{ 3.0f, 4.0f, 5.0f };
+
+auto result = ::tuple_cat( t1, t2 );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s fix these one by one. Support for move-only types is easy, if one knows where to look. The problem is
+that <code>Tp</code> that we&#8217;re passing to the helper <code>tuple_cat_</code> is (correctly) <code>tuple&lt;unique_ptr&lt;int&gt;&amp;&amp;, unique_ptr&lt;float&gt;&amp;&amp;&gt;</code>,
+but <code>std::get&lt;0&gt;(tp)</code> still returns <code>unique_ptr&lt;int&gt;&amp;</code>, because <code>tp</code> is an lvalue. This behavior is a bit
+surprising, but is intended to prevent inadvertent double moves.</p>
+</div>
+<div class="paragraph">
+<p>Long story short, we need <code>std::move(tp)</code> in <code>tuple_cat_</code> to make <code>tp</code> an rvalue:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class R, class...Is, class... Ks, class Tp&gt;
+R tuple_cat_( mp_list&lt;Is...&gt;, mp_list&lt;Ks...&gt;, Tp tp )
+{
+    return R{ std::get&lt;Ks::value&gt;(std::get&lt;Is::value&gt;(std::move(tp)))... };
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, <code>const</code>-qualified tuples. The issue here is that we&#8217;re stripping references from the input tuples, but not
+<code>const</code>. As a result, we&#8217;re trying to manipulate types such as <code>tuple&lt;int&gt; const</code> with Mp11 algorithms, and these
+types do not fit the list concept. We just need to strip qualifiers as well, by defining the useful <code>remove_cv_ref</code>
+primitive that is inexplicably missing from the standard library:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T&gt; using remove_cv_ref = typename std::remove_cv&lt;
+    typename std::remove_reference&lt;T&gt;::type&gt;::type;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then by using <code>remove_cv_ref&lt;Tp&gt;</code> in place of <code>typename std::remove_reference&lt;Tp&gt;::type</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... Tp,
+    class R = mp_append&lt;std::tuple&lt;&gt;, remove_cv_ref&lt;Tp&gt;...&gt;&gt;
+    R tuple_cat( Tp &amp;&amp;... tp )
+{
+    std::size_t const N = sizeof...(Tp);
+
+    // inner
+
+    using list1 = mp_list&lt;mp_rename&lt;remove_cv_ref&lt;Tp&gt;, mp_list&gt;...&gt;;
+
+    // ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, tuple-like types. We&#8217;ve so far exploited the fact that <code>std::pair</code> and <code>std::tuple</code> are valid Mp11 lists,
+but in general, arbitrary tuple-like types aren&#8217;t, so we need to convert them into such. For that, we&#8217;ll need to
+define a metafunction <code>from_tuple_like</code> that will take an arbitrary tuple-like type and will return, in our case,
+the corresponding <code>mp_list</code>.</p>
+</div>
+<div class="paragraph">
+<p>Technically, a more principled approach would&#8217;ve been to return <code>std::tuple</code>, but here <code>mp_list</code> will prove more
+convenient.</p>
+</div>
+<div class="paragraph">
+<p>What we need is, given a tuple-like type <code>Tp</code>, to obtain <code>mp_list&lt;std::tuple_element&lt;0, Tp&gt;::type, std::tuple_element&lt;1, Tp&gt;::type,
+&#8230;&#8203;, std::tuple_element&lt;N-1, Tp&gt;::type&gt;</code>, where <code>N</code> is <code>tuple_size&lt;Tp&gt;::value</code>. Here&#8217;s one way to do it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T, class I&gt; using tuple_element =
+    typename std::tuple_element&lt;I::value, T&gt;::type;
+
+template&lt;class T&gt; using from_tuple_like =
+    mp_product&lt;tuple_element, mp_list&lt;T&gt;, mp_iota&lt;std::tuple_size&lt;T&gt;&gt;&gt;;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(<code>mp_iota&lt;N&gt;</code> is an algorithm that returns an <code>mp_list</code> with elements <code>mp_size_t&lt;0&gt;</code>, <code>mp_size_t&lt;1&gt;</code>, &#8230;&#8203;, <code>mp_size_t&lt;N-1&gt;</code>.)</p>
+</div>
+<div class="paragraph">
+<p>Remember that <code>mp_product&lt;F, L1, L2&gt;</code> performs the equivalent of two nested loops over the elements of <code>L1</code> and <code>L2</code>,
+applying <code>F</code> to the two variables and gathering the result. In our case <code>L1</code> consists of the single element <code>T</code>, so
+only the second loop (over <code>mp_iota&lt;N&gt;</code>, where <code>N</code> is <code>tuple_size&lt;T&gt;</code>), remains, and we get a list of the same type
+as <code>L1</code> (an <code>mp_list</code>) with contents <code>tuple_element&lt;T, mp_size_t&lt;0&gt;&gt;</code>, <code>tuple_element&lt;T, mp_size_t&lt;1&gt;&gt;</code>, &#8230;&#8203;,
+<code>tuple_element&lt;T, mp_size_t&lt;N-1&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>For completeness&#8217;s sake, here&#8217;s another, more traditional way to achieve the same result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T&gt; using from_tuple_like =
+    mp_transform_q&lt;mp_bind_front&lt;tuple_element, T&gt;, mp_iota&lt;std::tuple_size&lt;T&gt;&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With all these fixes applied, our fully operational <code>tuple_cat</code> now looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L&gt; using F = mp_iota&lt;mp_size&lt;L&gt;&gt;;
+
+template&lt;class R, class...Is, class... Ks, class Tp&gt;
+R tuple_cat_( mp_list&lt;Is...&gt;, mp_list&lt;Ks...&gt;, Tp tp )
+{
+    return R{ std::get&lt;Ks::value&gt;(std::get&lt;Is::value&gt;(std::move(tp)))... };
+}
+
+template&lt;class T&gt; using remove_cv_ref = typename std::remove_cv&lt;
+    typename std::remove_reference&lt;T&gt;::type&gt;::type;
+
+template&lt;class T, class I&gt; using tuple_element =
+    typename std::tuple_element&lt;I::value, T&gt;::type;
+
+template&lt;class T&gt; using from_tuple_like =
+    mp_product&lt;tuple_element, mp_list&lt;T&gt;, mp_iota&lt;std::tuple_size&lt;T&gt;&gt;&gt;;
+
+template&lt;class... Tp,
+    class R = mp_append&lt;std::tuple&lt;&gt;, from_tuple_like&lt;remove_cv_ref&lt;Tp&gt;&gt;...&gt;&gt;
+    R tuple_cat( Tp &amp;&amp;... tp )
+{
+    std::size_t const N = sizeof...(Tp);
+
+    // inner
+
+    using list1 = mp_list&lt;from_tuple_like&lt;remove_cv_ref&lt;Tp&gt;&gt;...&gt;;
+    using list2 = mp_iota_c&lt;N&gt;;
+
+    using list3 = mp_transform&lt;mp_fill, list1, list2&gt;;
+
+    using inner = mp_apply&lt;mp_append, list3&gt;;
+
+    // outer
+
+    using list4 = mp_transform&lt;F, list1&gt;;
+
+    using outer = mp_apply&lt;mp_append, list4&gt;;
+
+    //
+
+    return tuple_cat_&lt;R&gt;( inner(), outer(),
+        std::forward_as_tuple( std::forward&lt;Tp&gt;(tp)... ) );
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="computing_return_types"><a class="anchor" href="#computing_return_types"></a>Computing Return Types</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>C&#43;&#43;17 has a standard variant type, called <code>std::variant</code>. It also defines a function template
+<code>std::visit</code> that can be used to apply a function to the contained value of one or more variants.
+So for instance, if the variant <code>v1</code> contains <code>1</code>, and the variant <code>v2</code> contains <code>2.0f</code>,
+<code>std::visit(f, v1, v2)</code> will call <code>f(1, 2.0f)</code>.</p>
+</div>
+<div class="paragraph">
+<p>However, <code>std::visit</code> has one limitation: it cannot return a result unless all
+possible applications of the function have the same return type. If, for instance, <code>v1</code> and <code>v2</code>
+are both of type <code>std::variant&lt;short, int, float&gt;</code>,</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>std::visit( []( auto const&amp; x, auto const&amp; y ){ return x + y; }, v1, v2 );</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will fail to compile because the result of <code>x + y</code> can be either <code>int</code> or <code>float</code> depending on
+what <code>v1</code> and <code>v2</code> hold.</p>
+</div>
+<div class="paragraph">
+<p>A type that can hold either <code>int</code> or <code>float</code> already exists, called, surprisingly enough, <code>std::variant&lt;int, float&gt;</code>.
+Let&#8217;s write our own function template <code>rvisit</code> that is the same as <code>visit</code> but returns a <code>variant</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class F, class... V&gt; auto rvisit( F&amp;&amp; f, V&amp;&amp;... v )
+{
+    using R = /*...*/;
+
+    return std::visit( [&amp;]( auto&amp;&amp;... x )
+        { return R( std::forward&lt;F&gt;(f)( std::forward&lt;decltype(x)&gt;(x)... ) ); },
+        std::forward&lt;V&gt;( v )... );
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What this does is basically calls <code>std::visit</code> to do the work, but instead of passing it <code>f</code>, we pass a lambda that does the same as <code>f</code> except
+it converts the result to a common type <code>R</code>. <code>R</code> is supposed to be <code>std::variant&lt;&#8230;&#8203;&gt;</code> where the ellipsis denotes the return types of
+calling <code>f</code> with all possible combinations of variant values.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll first define a helper quoted metafunction <code>Qret&lt;F&gt;</code> that returns the result of the application of <code>F</code> to arguments of type <code>T&#8230;&#8203;</code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class F&gt; struct Qret
+{
+    template&lt;class... T&gt; using fn =
+        decltype( std::declval&lt;F&gt;()( std::declval&lt;T&gt;()... ) );
+};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It turns out that C&#43;&#43;17 already contains a metafunction that returns the result of the application of a function <code>F</code> to arguments
+of type <code>T&#8230;&#8203;</code>: <code>std::invoke_result_t&lt;F, T&#8230;&#8203;&gt;</code>. We can make use of it to simplify our <code>Qret</code> to</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class F&gt; struct Qret
+{
+    template&lt;class... T&gt; using fn = std::invoke_result_t&lt;F, T...&gt;;
+};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which in Mp11 can be expressed more concisely as</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>using Qret = mp_bind_front&lt;std::invoke_result_t, F&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With <code>Qret</code> in hand, a <code>variant</code> of the possible return types is just a matter of applying it over the possible combinations of the variant values:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>using R = mp_product_q&lt;Qret, remove_cv_ref&lt;V&gt;...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Why does this work? <code>mp_product&lt;F, L1&lt;T1&#8230;&#8203;&gt;, L2&lt;T2&#8230;&#8203;&gt;, &#8230;&#8203;, Ln&lt;Tn&#8230;&#8203;&gt;&gt;</code> returns <code>L1&lt;F&lt;U1, U2, &#8230;&#8203;, Un&gt;, &#8230;&#8203;&gt;</code>, where <code>Ui</code> traverse all
+possible combinations of list values. Since in our case all <code>Li</code> are <code>std::variant</code>, the result will also be <code>std::variant</code>. (<code>mp_product_q</code> is
+the same as <code>mp_product</code>, but for quoted metafunctions such as our <code>Qret</code>.)</p>
+</div>
+<div class="paragraph">
+<p>One more step remains. Suppose that, as above, we&#8217;re passing two variants of type <code>std::variant&lt;short, int, float&gt;</code> and <code>F</code> is
+<code>[]( auto const&amp; x, auto const&amp; y ){ return x + y; }</code>. This will generate <code>R</code> of length 9, one per each combination, but many of those
+elements will be the same, either <code>int</code> or <code>float</code>, and we need to filter out the duplicates. So, we pass the result to <code>mp_unique</code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>using R = mp_unique&lt;mp_product_q&lt;Qret, remove_cv_ref&lt;V&gt;...&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and we&#8217;re done:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">#include &lt;boost/mp11.hpp&gt;
+#include &lt;boost/core/demangle.hpp&gt;
+#include &lt;variant&gt;
+#include &lt;type_traits&gt;
+#include &lt;typeinfo&gt;
+#include &lt;iostream&gt;
+
+using namespace boost::mp11;
+
+template&lt;class T&gt; using remove_cv_ref = typename std::remove_cv&lt;
+    typename std::remove_reference&lt;T&gt;::type&gt;::type;
+
+template&lt;class F, class... V&gt; auto rvisit( F&amp;&amp; f, V&amp;&amp;... v )
+{
+    using Qret = mp_bind_front&lt;std::invoke_result_t, F&gt;;
+
+    using R = mp_unique&lt;mp_product_q&lt;Qret, remove_cv_ref&lt;V&gt;...&gt;&gt;;
+
+    return std::visit( [&amp;]( auto&amp;&amp;... x )
+        { return R( std::forward&lt;F&gt;(f)( std::forward&lt;decltype(x)&gt;(x)... ) ); },
+        std::forward&lt;V&gt;( v )... );
+}
+
+template&lt;class T&gt; std::string name()
+{
+    return boost::core::demangle( typeid(T).name() );
+}
+
+template&lt;class V&gt; void print_variant( char const * n, V const&amp; v )
+{
+    std::cout &lt;&lt; "(" &lt;&lt; name&lt;decltype(v)&gt;() &lt;&lt; ")" &lt;&lt; n &lt;&lt; ": ";
+
+    std::visit( []( auto const&amp; x )
+        { std::cout &lt;&lt; "(" &lt;&lt; name&lt;decltype(x)&gt;() &lt;&lt; ")" &lt;&lt; x &lt;&lt; std::endl; }, v );
+}
+
+int main()
+{
+    std::variant&lt;char, int, float&gt; v1( 1 );
+
+    print_variant( "v1", v1 );
+
+    std::variant&lt;short, int, double&gt; const v2( 3.14 );
+
+    print_variant( "v2", v2 );
+
+    auto v3 = rvisit( []( auto const&amp; x, auto const&amp; y ){ return x + y; }, v1, v2 );
+
+    print_variant( "v3", v3 );
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

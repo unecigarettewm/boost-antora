@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Integral Constants, &lt;boost/mp11/integral.hpp&gt; :: Antora Docs</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Antora Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Boost.Mp11</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Boost.Mp11</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+        <li class="version">
+          <a href="../develop/index.html">develop</a>
+        </li>
+        <li class="version">
+          <a href="../boost-1.82.0/index.html">boost-1.82.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../unordered/develop/index.html">Boost.Unordered</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../unordered/develop/index.html">develop</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="integral.html">Integral Constants</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">master</button>
+  <div class="version-menu">
+    <a class="version is-current" href="integral.html">master</a>
+    <a class="version" href="../develop/mp11/integral.html">develop</a>
+    <a class="version" href="../boost-1.82.0/mp11/integral.html">boost-1.82.0</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/master/antora/modules/ROOT/pages/mp11/integral.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Integral Constants, &lt;boost/mp11/integral.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#mp_boolb">mp_bool&lt;B&gt;</a></li>
+<li><a href="#mp_true">mp_true</a></li>
+<li><a href="#mp_false">mp_false</a></li>
+<li><a href="#mp_to_boolt">mp_to_bool&lt;T&gt;</a></li>
+<li><a href="#mp_nott">mp_not&lt;T&gt;</a></li>
+<li><a href="#mp_inti">mp_int&lt;I&gt;</a></li>
+<li><a href="#mp_size_tn">mp_size_t&lt;N&gt;</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>For an Mp11 integral constant type <code>T</code>, <code>T::value</code> is an integral constant in the C++ sense.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_boolb"><a class="anchor" href="#mp_boolb"></a>mp_bool&lt;B&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;bool B&gt; using mp_bool = std::integral_constant&lt;bool, B&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>std::bool_constant</code> in C++17.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_true"><a class="anchor" href="#mp_true"></a>mp_true</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>using mp_true = mp_bool&lt;true&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>std::true_type</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_false"><a class="anchor" href="#mp_false"></a>mp_false</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>using mp_false = mp_bool&lt;false&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>std::false_type</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_to_boolt"><a class="anchor" href="#mp_to_boolt"></a>mp_to_bool&lt;T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T&gt; using mp_to_bool = mp_bool&lt;static_cast&lt;bool&gt;(T::value)&gt;;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_nott"><a class="anchor" href="#mp_nott"></a>mp_not&lt;T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T&gt; using mp_not = mp_bool&lt; !T::value &gt;;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_inti"><a class="anchor" href="#mp_inti"></a>mp_int&lt;I&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;int I&gt; using mp_int = std::integral_constant&lt;int, I&gt;;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_size_tn"><a class="anchor" href="#mp_size_tn"></a>mp_size_t&lt;N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;std::size_t N&gt; using mp_size_t = std::integral_constant&lt;std::size_t, N&gt;;</pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

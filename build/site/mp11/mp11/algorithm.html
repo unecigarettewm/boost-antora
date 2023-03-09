@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Algorithms, &lt;boost/mp11/algorithm.hpp&gt; :: Antora Docs</title>
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../..">Antora Docs</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Boost.Mp11</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Boost.Mp11</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">master</a>
+        </li>
+        <li class="version">
+          <a href="../develop/index.html">develop</a>
+        </li>
+        <li class="version">
+          <a href="../boost-1.82.0/index.html">boost-1.82.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../unordered/develop/index.html">Boost.Unordered</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../unordered/develop/index.html">develop</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="algorithm.html">Algorithms</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">master</button>
+  <div class="version-menu">
+    <a class="version is-current" href="algorithm.html">master</a>
+    <a class="version" href="../develop/mp11/algorithm.html">develop</a>
+    <a class="version" href="../boost-1.82.0/mp11/algorithm.html">boost-1.82.0</a>
+  </div>
+</div>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/master/antora/modules/ROOT/pages/mp11/algorithm.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Algorithms, &lt;boost/mp11/algorithm.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#mp_transformf_l">mp_transform&lt;F, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_transform_qq_l">mp_transform_q&lt;Q, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_transform_ifp_f_l">mp_transform_if&lt;P, F, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_transform_if_qqp_qf_l">mp_transform_if_q&lt;Qp, Qf, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_filterp_l">mp_filter&lt;P, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_filter_qqp_l">mp_filter_q&lt;Qp, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_filll_v">mp_fill&lt;L, V&gt;</a></li>
+<li><a href="#mp_countl_v">mp_count&lt;L, V&gt;</a></li>
+<li><a href="#mp_count_ifl_p">mp_count_if&lt;L, P&gt;</a></li>
+<li><a href="#mp_count_if_ql_q">mp_count_if_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_containsl_v">mp_contains&lt;L, V&gt;</a></li>
+<li><a href="#mp_starts_withl1_l2">mp_starts_with&lt;L1, L2&gt;</a></li>
+<li><a href="#mp_repeat_cl_n">mp_repeat_c&lt;L, N&gt;</a></li>
+<li><a href="#mp_repeatl_n">mp_repeat&lt;L, N&gt;</a></li>
+<li><a href="#mp_productf_l">mp_product&lt;F, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_product_qq_l">mp_product_q&lt;Q, L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_power_setl">mp_power_set&lt;L&gt;</a></li>
+<li><a href="#mp_drop_cl_n">mp_drop_c&lt;L, N&gt;</a></li>
+<li><a href="#mp_dropl_n">mp_drop&lt;L, N&gt;</a></li>
+<li><a href="#mp_from_sequences">mp_from_sequence&lt;S&gt;</a></li>
+<li><a href="#mp_iota_cn">mp_iota_c&lt;N&gt;</a></li>
+<li><a href="#mp_iotan">mp_iota&lt;N&gt;</a></li>
+<li><a href="#mp_at_cl_i">mp_at_c&lt;L, I&gt;</a></li>
+<li><a href="#mp_atl_i">mp_at&lt;L, I&gt;</a></li>
+<li><a href="#mp_take_cl_n">mp_take_c&lt;L, N&gt;</a></li>
+<li><a href="#mp_takel_n">mp_take&lt;L, N&gt;</a></li>
+<li><a href="#mp_backl">mp_back&lt;L&gt;</a></li>
+<li><a href="#mp_pop_backl">mp_pop_back&lt;L&gt;</a></li>
+<li><a href="#mp_insert_cl_i_t">mp_insert_c&lt;L, I, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_insertl_i_t">mp_insert&lt;L, I, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_erase_cl_i_j">mp_erase_c&lt;L, I, J&gt;</a></li>
+<li><a href="#mp_erasel_i_j">mp_erase&lt;L, I, J&gt;</a></li>
+<li><a href="#mp_replacel_v_w">mp_replace&lt;L, V, W&gt;</a></li>
+<li><a href="#mp_replace_ifl_p_w">mp_replace_if&lt;L, P, W&gt;</a></li>
+<li><a href="#mp_replace_if_ql_q_w">mp_replace_if_q&lt;L, Q, W&gt;</a></li>
+<li><a href="#mp_replace_at_cl_i_w">mp_replace_at_c&lt;L, I, W&gt;</a></li>
+<li><a href="#mp_replace_atl_i_w">mp_replace_at&lt;L, I, W&gt;</a></li>
+<li><a href="#mp_rotate_left_cl_n">mp_rotate_left_c&lt;L, N&gt;</a></li>
+<li><a href="#mp_rotate_leftl_n">mp_rotate_left&lt;L, N&gt;</a></li>
+<li><a href="#mp_rotate_right_cl_n">mp_rotate_right_c&lt;L, N&gt;</a></li>
+<li><a href="#mp_rotate_rightl_n">mp_rotate_right&lt;L, N&gt;</a></li>
+<li><a href="#mp_copy_ifl_p">mp_copy_if&lt;L, P&gt;</a></li>
+<li><a href="#mp_copy_if_ql_q">mp_copy_if_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_removel_v">mp_remove&lt;L, V&gt;</a></li>
+<li><a href="#mp_remove_ifl_p">mp_remove_if&lt;L, P&gt;</a></li>
+<li><a href="#mp_remove_if_ql_q">mp_remove_if_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_flattenl">mp_flatten&lt;L&gt;</a></li>
+<li><a href="#mp_interspersel_s">mp_intersperse&lt;L, S&gt;</a></li>
+<li><a href="#mp_splitl_s">mp_split&lt;L, S&gt;</a></li>
+<li><a href="#mp_joinl_s">mp_join&lt;L, S&gt;</a></li>
+<li><a href="#mp_partitionl_p">mp_partition&lt;L, P&gt;</a></li>
+<li><a href="#mp_partition_ql_q">mp_partition_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_sortl_p">mp_sort&lt;L, P&gt;</a></li>
+<li><a href="#mp_sort_ql_q">mp_sort_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_nth_element_cl_i_p">mp_nth_element_c&lt;L, I, P&gt;</a></li>
+<li><a href="#mp_nth_elementl_i_p">mp_nth_element&lt;L, I, P&gt;</a></li>
+<li><a href="#mp_nth_element_ql_i_q">mp_nth_element_q&lt;L, I, Q&gt;</a></li>
+<li><a href="#mp_min_elementl_p">mp_min_element&lt;L, P&gt;</a></li>
+<li><a href="#mp_min_element_ql_q">mp_min_element_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_max_elementl_p">mp_max_element&lt;L, P&gt;</a></li>
+<li><a href="#mp_max_element_ql_q">mp_max_element_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_findl_v">mp_find&lt;L, V&gt;</a></li>
+<li><a href="#mp_find_ifl_p">mp_find_if&lt;L, P&gt;</a></li>
+<li><a href="#mp_find_if_ql_q">mp_find_if_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_reversel">mp_reverse&lt;L&gt;</a></li>
+<li><a href="#mp_foldl_v_f">mp_fold&lt;L, V, F&gt;</a></li>
+<li><a href="#mp_fold_ql_v_q">mp_fold_q&lt;L, V, Q&gt;</a></li>
+<li><a href="#mp_reverse_foldl_v_f">mp_reverse_fold&lt;L, V, F&gt;</a></li>
+<li><a href="#mp_reverse_fold_ql_v_q">mp_reverse_fold_q&lt;L, V, Q&gt;</a></li>
+<li><a href="#mp_partial_suml_v_f">mp_partial_sum&lt;L, V, F&gt;</a></li>
+<li><a href="#mp_partial_sum_ql_v_q">mp_partial_sum_q&lt;L, V, Q&gt;</a></li>
+<li><a href="#mp_pairwise_foldl_f">mp_pairwise_fold&lt;L, F&gt;</a></li>
+<li><a href="#mp_pairwise_fold_ql_q">mp_pairwise_fold_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_iteratev_f_r">mp_iterate&lt;V, F, R&gt;</a></li>
+<li><a href="#mp_iterate_qv_qf_qr">mp_iterate_q&lt;V, Qf, Qr&gt;</a></li>
+<li><a href="#mp_uniquel">mp_unique&lt;L&gt;</a></li>
+<li><a href="#mp_unique_ifl_p">mp_unique_if&lt;L, P&gt;</a></li>
+<li><a href="#mp_unique_if_ql_q">mp_unique_if_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_all_ofl_p">mp_all_of&lt;L, P&gt;</a></li>
+<li><a href="#mp_all_of_ql_q">mp_all_of_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_none_ofl_p">mp_none_of&lt;L, P&gt;</a></li>
+<li><a href="#mp_none_of_ql_q">mp_none_of_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_any_ofl_p">mp_any_of&lt;L, P&gt;</a></li>
+<li><a href="#mp_any_of_ql_q">mp_any_of_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_for_eachlf">mp_for_each&lt;L&gt;(f)</a></li>
+<li><a href="#mp_with_indexni_f">mp_with_index&lt;N&gt;(i, f)</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="mp_transformf_l"><a class="anchor" href="#mp_transformf_l"></a>mp_transform&lt;F, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class F, class... L&gt; using mp_transform = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_transform&lt;F, L1&lt;T1&#8230;&#8203;&gt;, L2&lt;T2&#8230;&#8203;&gt;, &#8230;&#8203;, Ln&lt;Tn&#8230;&#8203;&gt;&gt;</code> applies <code>F</code> to each successive tuple of elements and returns <code>L1&lt;F&lt;T1, T2, &#8230;&#8203;, Tn&gt;&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_transform to produce a list of pointers from a list of pointees</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T&gt; using add_pointer_t =
+    typename std::add_pointer&lt;T&gt;::type;  // std::add_pointer_t in C++14
+
+using L1 = std::tuple&lt;void, int, float&gt;;
+using R1 = mp_transform&lt;add_pointer_t, L1&gt;; // std::tuple&lt;void*, int*, float*&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_transform to compare the contents of two lists of types</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;void, int, float&gt;;
+using L2 = mp_list&lt;void, int, float&gt;;
+
+using R1 = mp_apply&lt;mp_all, mp_transform&lt;std::is_same, L1, L2&gt;&gt;; // mp_true</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_transform to compare the contents of two lists of integral constants</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T1, class T2&gt; using eq = mp_bool&lt;T1::value == T2::value&gt;;
+
+using L1 = std::tuple&lt;mp_int&lt;1&gt;, mp_int&lt;2&gt;, mp_int&lt;3&gt;&gt;;
+using L2 = mp_list&lt;mp_size_t&lt;1&gt;, mp_size_t&lt;2&gt;, mp_size_t&lt;3&gt;&gt;;
+
+using R1 = mp_apply&lt;mp_all, mp_transform&lt;eq, L1, L2&gt;&gt;; // mp_true</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 1. mp_transform on one list</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_transform&lt;F, L1&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>1</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>n</sub>&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 2. mp_transform on two lists</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L2</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_transform&lt;F, L1, L2&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>1</sub>,B<sub>1</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>2</sub>,B<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>n</sub>,B<sub>n</sub>&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_qq_l"><a class="anchor" href="#mp_transform_qq_l"></a>mp_transform_q&lt;Q, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Q, class... L&gt; using mp_transform_q =
+    mp_transform&lt;Q::template fn, L...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_transform</code>, but takes a quoted metafunction.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_transform_q to count the occurrences of <code>void</code> in a list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;void, int, float, void, int&gt;;
+
+using R1 = mp_apply&lt;mp_plus,
+    mp_transform_q&lt;mp_bind_front&lt;std::is_same, void&gt;, L1&gt;&gt;; // mp_int&lt;2&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 3. mp_transform_q on two lists</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L2</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_transform_q&lt;Q, L1, L2&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>Q::fn&lt;A<sub>1</sub>,B<sub>1</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>Q::fn&lt;A<sub>2</sub>,B<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>Q::fn&lt;A<sub>n</sub>,B<sub>n</sub>&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_ifp_f_l"><a class="anchor" href="#mp_transform_ifp_f_l"></a>mp_transform_if&lt;P, F, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class P, template&lt;class...&gt; class F, class... L&gt;
+    using mp_transform_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_transform_if&lt;P, F, L1, L2, &#8230;&#8203;, Ln&gt;</code> replaces the elements of the list <code>L1</code> for which <code>mp_to_bool&lt;P&lt;T1, T2, &#8230;&#8203;, Tn&gt;&gt;</code> is <code>mp_true</code> with
+<code>F&lt;T1, T2, &#8230;&#8203;, Tn&gt;</code>, and returns the result, where <code>Ti</code> are the corresponding elements of <code>Li</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_transform_if to replace the occurrences of 'void' in a list with the corresponding elements of a second list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;void, int, float, void, int&gt;;
+using L2 = std::tuple&lt;char[1], char[2], char[3], char[4], char[5]&gt;;
+
+template&lt;class T1, class T2&gt; using first_is_void = std::is_same&lt;T1, void&gt;;
+template&lt;class T1, class T2&gt; using second = T2;
+
+using R1 = mp_transform_if&lt;first_is_void, second, L1, L2&gt;;
+  // std::tuple&lt;char[1], int, float, char[4], int&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 4. mp_transform_if</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L2</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>P&lt;A<sub>i</sub>, B<sub>i</sub>&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_false</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_true</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_transform_if&lt;P, F, L1, L2&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>2</sub>,B<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_if_qqp_qf_l"><a class="anchor" href="#mp_transform_if_qqp_qf_l"></a>mp_transform_if_q&lt;Qp, Qf, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Qp, class Qf, class... L&gt; using mp_transform_if_q =
+    mp_transform_if&lt;Qp::template fn, Qf::template fn, L...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_transform_if</code>, but takes quoted metafunctions.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_transform_if_q to replace the occurrences of 'void' in a list with the corresponding elements of a second list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;void, int, float, void, int&gt;;
+using L2 = std::tuple&lt;char[1], char[2], char[3], char[4], char[5]&gt;;
+
+using R1 = mp_transform_if_q&lt;mp_bind&lt;std::is_same, _1, void&gt;, _2, L1, L2&gt;;
+  // std::tuple&lt;char[1], int, float, char[4], int&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 5. mp_transform_if_q</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L2</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>Qp::fn&lt;A<sub>i</sub>, B<sub>i</sub>&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_false</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_true</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_transform_if_q&lt;Qp, _2, L1, L2&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_filterp_l"><a class="anchor" href="#mp_filterp_l"></a>mp_filter&lt;P, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class P, class... L&gt; using mp_filter = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_filter&lt;P, L1, L2, &#8230;&#8203;, Ln&gt;</code> removes the elements of the list <code>L1</code> for which <code>mp_to_bool&lt;P&lt;T1, T2, &#8230;&#8203;, Tn&gt;&gt;</code>
+is <code>mp_false</code> and returns the result, where <code>Ti</code> are the corresponding elements of <code>Li</code>.</p>
+</div>
+<div class="paragraph">
+<p>See also <code>mp_copy_if</code> and <code>mp_remove_if</code>, less general variants of <code>mp_filter</code> that only take a single list.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_filter_qqp_l"><a class="anchor" href="#mp_filter_qqp_l"></a>mp_filter_q&lt;Qp, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Qp, class... L&gt; using mp_filter_q =
+    mp_filter&lt;Qp::template fn, L...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_filter</code>, but takes a quoted metafunction.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_filter_q to pick elements of a list based on a mask in another list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;void, int, float&gt;;
+using L2 = mp_list&lt;mp_true, mp_false, mp_true&gt;;
+using R1 = mp_filter_q&lt;_2, L1, L2&gt;; // std::tuple&lt;void, float&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_filll_v"><a class="anchor" href="#mp_filll_v"></a>mp_fill&lt;L, V&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V&gt; using mp_fill = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_fill&lt;L&lt;T&#8230;&#8203;&gt;, V&gt;</code> returns <code>L&lt;V, V, &#8230;&#8203;, V&gt;</code>, with the result having the same size as the input.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_fill with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;void, int, float&gt;;
+using R1 = mp_fill&lt;L1, double&gt;; // std::tuple&lt;double, double, double&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_fill with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;int, float&gt;;
+using R1 = mp_fill&lt;L1, void&gt;; // std::pair&lt;void, void&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 6. mp_fill</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_fill&lt;L1, V&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>V</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>V</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>V</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_countl_v"><a class="anchor" href="#mp_countl_v"></a>mp_count&lt;L, V&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V&gt; using mp_count = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_count&lt;L, V&gt;</code> returns <code>mp_size_t&lt;N&gt;</code>, where <code>N</code> is the number of elements of <code>L</code> same as <code>V</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_count_ifl_p"><a class="anchor" href="#mp_count_ifl_p"></a>mp_count_if&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_count_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_count_if&lt;L, P&gt;</code> returns <code>mp_size_t&lt;N&gt;</code>, where <code>N</code> is the number of elements <code>T</code> of <code>L</code> for which <code>mp_to_bool&lt;P&lt;T&gt;&gt;</code> is <code>mp_true</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_count_if_ql_q"><a class="anchor" href="#mp_count_if_ql_q"></a>mp_count_if_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_count_if_q = mp_count_if&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_count_if</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_containsl_v"><a class="anchor" href="#mp_containsl_v"></a>mp_contains&lt;L, V&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V&gt; using mp_contains = mp_to_bool&lt;mp_count&lt;L, V&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_contains&lt;L, V&gt;</code> is <code>mp_true</code> when <code>L</code> contains an element <code>V</code>, <code>mp_false</code> otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_starts_withl1_l2"><a class="anchor" href="#mp_starts_withl1_l2"></a>mp_starts_with&lt;L1, L2&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L1, class L2&gt; using mp_starts_with = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_starts_with&lt;L1, L2&gt;</code> is <code>mp_true</code> when <code>L1</code> starts with <code>L2</code>, <code>mp_false</code>
+otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_repeat_cl_n"><a class="anchor" href="#mp_repeat_cl_n"></a>mp_repeat_c&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t N&gt; using mp_repeat_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_repeat_c&lt;L, N&gt;</code> returns a list of the same form as <code>L</code> that consists of <code>N</code> concatenated copies of <code>L</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_repeat_c</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = tuple&lt;int&gt;;
+using R1 = mp_repeat_c&lt;L1, 3&gt;; // tuple&lt;int, int, int&gt;
+
+using L2 = pair&lt;int, float&gt;;
+using R2 = mp_repeat_c&lt;L2, 1&gt;; // pair&lt;int, float&gt;
+
+using L3 = mp_list&lt;int, float&gt;;
+using R3 = mp_repeat_c&lt;L3, 2&gt;; // mp_list&lt;int, float, int, float&gt;
+
+using L4 = mp_list&lt;int, float, double&gt;;
+using R4 = mp_repeat_c&lt;L4, 0&gt;; // mp_list&lt;&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_repeatl_n"><a class="anchor" href="#mp_repeatl_n"></a>mp_repeat&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class N&gt; using mp_repeat = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_repeat_c</code> but with a type argument <code>N</code>. The number of copies is <code>N::value</code> and must be nonnegative.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_productf_l"><a class="anchor" href="#mp_productf_l"></a>mp_product&lt;F, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class F, class... L&gt; using mp_product = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_product&lt;F, L1&lt;T1&#8230;&#8203;&gt;, L2&lt;T2&#8230;&#8203;&gt;, &#8230;&#8203;, Ln&lt;Tn&#8230;&#8203;&gt;&gt;</code> evaluates <code>F&lt;U1, U2, &#8230;&#8203;, Un&gt;</code> for values <code>Ui</code> taken from
+the Cartesian product of the lists, as if the elements <code>Ui</code> are formed by <code>n</code> nested loops, each traversing <code>Li</code>.
+It returns a list of the form <code>L1&lt;V&#8230;&#8203;&gt;</code> containing the results of the application of <code>F</code>. The degenerate case
+of zero lists, <code>mp_product&lt;F&gt;</code>, returns <code>mp_list&lt;F&lt;&gt;&gt;</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 7. mp_product on two lists</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L2</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>m</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_product&lt;F, L1, L2&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>1</sub>,B<sub>1</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>1</sub>,B<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>1</sub>,B<sub>m</sub>&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>2</sub>,B<sub>1</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>2</sub>,B<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>2</sub>,B<sub>m</sub>&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle" colspan="4"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>n</sub>,B<sub>1</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>n</sub>,B<sub>2</sub>&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>F&lt;A<sub>n</sub>,B<sub>m</sub>&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_product_qq_l"><a class="anchor" href="#mp_product_qq_l"></a>mp_product_q&lt;Q, L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Q, class... L&gt; using mp_product_q = mp_product&lt;Q::template fn, L...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_product</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_power_setl"><a class="anchor" href="#mp_power_setl"></a>mp_power_set&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_power_set = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_power_set&lt;L&gt;</code> returns a list (of the same form as <code>L</code>) of all possible 2<sup>n</sup> subsets of <code>L</code> (where <code>n</code> is the length of <code>L</code>.)</p>
+</div>
+<div class="paragraph">
+<p><code>mp_power_set&lt;L&lt;&gt;&gt;</code> returns <code>L&lt;L&lt;&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_power_set&lt;L&lt;T1&gt;&gt;</code> returns <code>L&lt;L&lt;&gt;, L&lt;T1&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_power_set&lt;L&lt;T1, T2&gt;&gt;</code> returns <code>L&lt;L&lt;&gt;, L&lt;T2&gt;, L&lt;T1&gt;, L&lt;T1, T2&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_power_set&lt;L&lt;T1, T&#8230;&#8203;&gt;&gt;</code> returns the concatenation of <code>mp_power_set&lt;L&lt;T&#8230;&#8203;&gt;&gt;</code> and that same list with <code>T1</code> prepended to each element.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_drop_cl_n"><a class="anchor" href="#mp_drop_cl_n"></a>mp_drop_c&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t N&gt; using mp_drop_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_drop_c&lt;L, N&gt;</code> removes the first <code>N</code> elements of <code>L</code> and returns the result.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 8. mp_drop_c</caption>
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m+1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="7"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_drop_c&lt;L1, M&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m+1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+<td class="tableblock halign-center valign-middle" colspan="3"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_dropl_n"><a class="anchor" href="#mp_dropl_n"></a>mp_drop&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class N&gt; using mp_drop = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_drop_c</code>, but with a type argument <code>N</code>. <code>N::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_from_sequences"><a class="anchor" href="#mp_from_sequences"></a>mp_from_sequence&lt;S&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class S&gt; using mp_from_sequence = /*...*/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_from_sequence</code> transforms an integer sequence produced by <code>make_integer_sequence</code> into an <code>mp_list</code>
+of the corresponding <code>std::integral_constant</code> types. Given</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T, T... I&gt; struct S;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_from_sequence&lt;S&lt;T, I&#8230;&#8203;&gt;&gt;</code> is an alias for <code>mp_list&lt;std::integral_constant&lt;T, I&gt;&#8230;&#8203;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_iota_cn"><a class="anchor" href="#mp_iota_cn"></a>mp_iota_c&lt;N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;std::size_t N&gt; using mp_iota_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_iota_c&lt;N&gt;</code> is an alias for <code>mp_list&lt;mp_size_t&lt;0&gt;, mp_size_t&lt;1&gt;, &#8230;&#8203;, mp_size_t&lt;N-1&gt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_iotan"><a class="anchor" href="#mp_iotan"></a>mp_iota&lt;N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class N&gt; using mp_iota = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_iota_c</code>, but with a type argument <code>N</code>. <code>N::value</code> must be a nonnegative number. Returns
+<code>mp_list&lt;std::integral_constant&lt;T, 0&gt;, std::integral_constant&lt;T, 1&gt;, &#8230;&#8203;, std::integral_constant&lt;T, N::value-1&gt;&gt;</code>
+where <code>T</code> is the type of <code>N::value</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 9. mp_iota</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_iota&lt;mp_int&lt;4&gt;&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_int&lt;0&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_int&lt;1&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_int&lt;2&gt;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_int&lt;3&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_at_cl_i"><a class="anchor" href="#mp_at_cl_i"></a>mp_at_c&lt;L, I&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t I&gt; using mp_at_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_at_c&lt;L, I&gt;</code> returns the <code>I</code>-th element of <code>L</code>, zero-based.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_atl_i"><a class="anchor" href="#mp_atl_i"></a>mp_at&lt;L, I&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class I&gt; using mp_at = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_at_c</code>, but with a type argument <code>I</code>. <code>I::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_take_cl_n"><a class="anchor" href="#mp_take_cl_n"></a>mp_take_c&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t N&gt; using mp_take_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_take_c&lt;L, N&gt;</code> returns a list of the same form as <code>L</code> containing the first <code>N</code> elements of <code>L</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 10. mp_take_c</caption>
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m+1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="7"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_take_c&lt;L1, M&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m</sub></code></p></td>
+<td class="tableblock halign-center valign-middle" colspan="3"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_takel_n"><a class="anchor" href="#mp_takel_n"></a>mp_take&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class N&gt; using mp_take = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_take_c</code>, but with a type argument <code>N</code>. <code>N::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_backl"><a class="anchor" href="#mp_backl"></a>mp_back&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_back = mp_at_c&lt;L, mp_size&lt;L&gt;::value - 1&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_back&lt;L&gt;</code> returns the last element of the list <code>L</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_pop_backl"><a class="anchor" href="#mp_pop_backl"></a>mp_pop_back&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_pop_back = mp_take_c&lt;L, mp_size&lt;L&gt;::value - 1&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_pop_back&lt;L&gt;</code> removes the last element of the list <code>L</code> and returns the result.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_insert_cl_i_t"><a class="anchor" href="#mp_insert_cl_i_t"></a>mp_insert_c&lt;L, I, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t I, class... T&gt; using mp_insert_c =
+    mp_append&lt;mp_take_c&lt;L, I&gt;, mp_push_front&lt;mp_drop_c&lt;L, I&gt;, T...&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inserts the elements <code>T&#8230;&#8203;</code> into the list <code>L</code> at position <code>I</code> (a zero-based index).</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 11. mp_insert_c with two elements</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3336%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m+1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+<td class="tableblock halign-center valign-middle" colspan="2"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="9"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_insert_c&lt;L1, M, B<sub>1</sub>, B<sub>2</sub>&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>B<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>m+1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_insertl_i_t"><a class="anchor" href="#mp_insertl_i_t"></a>mp_insert&lt;L, I, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class I, class... T&gt; using mp_insert =
+    mp_append&lt;mp_take&lt;L, I&gt;, mp_push_front&lt;mp_drop&lt;L, I&gt;, T...&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_insert_c</code>, but with a type argument <code>I</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_erase_cl_i_j"><a class="anchor" href="#mp_erase_cl_i_j"></a>mp_erase_c&lt;L, I, J&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t I, std::size_t J&gt; using mp_erase_c =
+    mp_append&lt;mp_take_c&lt;L, I&gt;, mp_drop_c&lt;L, J&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Removes from the list <code>L</code> the elements with indices from <code>I</code> (inclusive) to <code>J</code> (exclusive).</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 12. mp_erase_c</caption>
+<colgroup>
+<col style="width: 30.7692%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6923%;">
+<col style="width: 7.6924%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>0</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>i-1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>i</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>j-1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>j</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n-1</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="10"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_erase_c&lt;L1, I, J&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>0</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>i-1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>j</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n-1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle" colspan="3"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_erasel_i_j"><a class="anchor" href="#mp_erasel_i_j"></a>mp_erase&lt;L, I, J&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class I, class J&gt; using mp_erase =
+    mp_append&lt;mp_take&lt;L, I&gt;, mp_drop&lt;L, J&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_erase_c</code>, but with a type arguments <code>I</code> and <code>J</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replacel_v_w"><a class="anchor" href="#mp_replacel_v_w"></a>mp_replace&lt;L, V, W&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, class W&gt; using mp_replace = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replaces all <code>V</code> elements of <code>L</code> with <code>W</code> and returns the result.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 13. mp_replace</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>V</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_replace&lt;L1, V, W&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>W</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_ifl_p_w"><a class="anchor" href="#mp_replace_ifl_p_w"></a>mp_replace_if&lt;L, P, W&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P, class W&gt; using mp_replace_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replaces all <code>T</code> elements of <code>L</code> for which <code>mp_to_bool&lt;P&lt;T&gt;&gt;</code> is <code>mp_true</code> with <code>W</code> and returns the result.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 14. mp_replace_if</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>P&lt;A<sub>i</sub>&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_false</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_true</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>mp_false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_replace_if&lt;L1, P, W&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>W</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_if_ql_q_w"><a class="anchor" href="#mp_replace_if_ql_q_w"></a>mp_replace_if_q&lt;L, Q, W&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q, class W&gt; using mp_replace_if_q =
+    mp_replace_if&lt;L, Q::template fn, W&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_replace_if</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_at_cl_i_w"><a class="anchor" href="#mp_replace_at_cl_i_w"></a>mp_replace_at_c&lt;L, I, W&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t I, class W&gt; using mp_replace_at_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replaces the element of <code>L</code> at zero-based index <code>I</code> with <code>W</code> and returns the result.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_atl_i_w"><a class="anchor" href="#mp_replace_atl_i_w"></a>mp_replace_at&lt;L, I, W&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class I, class W&gt; using mp_replace_at = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_replace_at_c</code>, but with a type argument <code>I</code>. <code>I::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_rotate_left_cl_n"><a class="anchor" href="#mp_rotate_left_cl_n"></a>mp_rotate_left_c&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t N&gt; using mp_rotate_left_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Moves the <code>N % M</code> initial elements of the list <code>L</code> to the back, where <code>M</code> is the size of <code>L</code>. Empty
+lists are unchanged.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_rotate_leftl_n"><a class="anchor" href="#mp_rotate_leftl_n"></a>mp_rotate_left&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class N&gt; using mp_rotate_left = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_rotate_left_c</code>, but with a type argument <code>N</code>. <code>N::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_rotate_right_cl_n"><a class="anchor" href="#mp_rotate_right_cl_n"></a>mp_rotate_right_c&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t N&gt; using mp_rotate_right_c = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Moves the <code>N % M</code> trailing elements of the list <code>L</code> to the front, where <code>M</code> is the size of <code>L</code>. Empty
+lists are unchanged.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_rotate_rightl_n"><a class="anchor" href="#mp_rotate_rightl_n"></a>mp_rotate_right&lt;L, N&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class N&gt; using mp_rotate_right = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_rotate_right_c</code>, but with a type argument <code>N</code>. <code>N::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_copy_ifl_p"><a class="anchor" href="#mp_copy_ifl_p"></a>mp_copy_if&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_copy_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Copies the elements <code>T</code> of <code>L</code> for which <code>mp_to_bool&lt;P&lt;T&gt;&gt;</code> is <code>mp_true</code> to a new list of the same form and returns it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_copy_if_ql_q"><a class="anchor" href="#mp_copy_if_ql_q"></a>mp_copy_if_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_copy_if_q = mp_copy_if&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_copy_if</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_removel_v"><a class="anchor" href="#mp_removel_v"></a>mp_remove&lt;L, V&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V&gt; using mp_remove = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Removes all <code>V</code> elements of <code>L</code> and returns the result.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_remove_ifl_p"><a class="anchor" href="#mp_remove_ifl_p"></a>mp_remove_if&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_remove_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Removes all elements <code>T</code> of <code>L</code> for which <code>mp_to_bool&lt;P&lt;T&gt;&gt;</code> is <code>mp_true</code> and returns the result.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_remove_if_ql_q"><a class="anchor" href="#mp_remove_if_ql_q"></a>mp_remove_if_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_remove_if_q = mp_remove_if&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_remove_if</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_flattenl"><a class="anchor" href="#mp_flattenl"></a>mp_flatten&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class L2 = mp_clear&lt;L&gt;&gt; using mp_flatten = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replaces all elements <code>T</code> of <code>L</code> that are lists of the same form as <code>L2</code> (that is, those for which
+<code>mp_similar&lt;T, L2&gt;</code> is <code>mp_true</code>) with their elements and returns the result.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_flatten</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = tuple&lt;int, tuple&lt;&gt;, void, tuple&lt;float, double&gt;&gt;;
+using R1 = mp_flatten&lt;L1&gt;; // tuple&lt;int, void, float, double&gt;
+
+using L2 = mp_list&lt;int, mp_list&lt;float&gt;, tuple&lt;void&gt;&gt;;
+using R2a = mp_flatten&lt;L2&gt;; // mp_list&lt;int, float, tuple&lt;void&gt;&gt;
+using R2b = mp_flatten&lt;L2, tuple&lt;&gt;&gt;; // mp_list&lt;int, mp_list&lt;float&gt;, void&gt;
+
+using L3 = mp_list&lt;mp_list&lt;float&gt;, mp_list&lt;mp_list&lt;void&gt;&gt;&gt;;
+using R3 = mp_flatten&lt;L3&gt;; // mp_list&lt;float, mp_list&lt;void&gt;&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_interspersel_s"><a class="anchor" href="#mp_interspersel_s"></a>mp_intersperse&lt;L, S&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class S&gt; using mp_intersperse = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inserts the separator <code>S</code> between the elements of the list <code>L</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_intersperse&lt;L&lt;&gt;, S&gt;</code> is <code>L&lt;&gt;</code>. <code>mp_intersperse&lt;L&lt;T1&gt;, S&gt;</code> is <code>L&lt;T1&gt;</code>.
+<code>mp_intersperse&lt;L&lt;T1, T2, T3, &#8230;&#8203;, Tn-1, Tn&gt;, S&gt;</code> is <code>L&lt;T1, S, T2, S, T3, S, &#8230;&#8203;, Tn-1, S, Tn&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_splitl_s"><a class="anchor" href="#mp_splitl_s"></a>mp_split&lt;L, S&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class S&gt; using mp_split = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Splits the list <code>L</code> into segments at each separator <code>S</code> and returns a list of
+the segments.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_split&lt;L&lt;&gt;, S&gt;</code> is <code>L&lt;L&lt;&gt;&gt;</code>. <code>mp_split&lt;L&lt;T&#8230;&#8203;&gt;, S&gt;</code>, where <code>S</code> does not occur in <code>T&#8230;&#8203;</code>,
+is <code>L&lt;L&lt;T&#8230;&#8203;&gt;&gt;</code>. <code>mp_split&lt;L&lt;T1&#8230;&#8203;, S, T2&#8230;&#8203;, S, T3&#8230;&#8203;&gt;, S&gt;</code> is <code>L&lt;L&lt;T1&#8230;&#8203;&gt;, L&lt;T2&#8230;&#8203;&gt;, L&lt;T3&#8230;&#8203;&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>The segments may be empty; <code>mp_split&lt;L&lt;S, X, Y, S, S&gt;, S&gt;</code> is <code>L&lt;L&lt;&gt;, L&lt;X, Y&gt;, L&lt;&gt;, L&lt;&gt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_joinl_s"><a class="anchor" href="#mp_joinl_s"></a>mp_join&lt;L, S&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class S&gt; using mp_join = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_join</code> is the reverse operation of <code>mp_split</code>; it takes a list of segments <code>L</code> and joins
+them into a single list, inserting the separator <code>S</code> between them.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_join&lt;mp_split&lt;L, S&gt;, S&gt;</code> yields back the original list <code>L</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>mp_split&lt;L&lt;X1, X2, S, X3&gt;, S&gt;</code> gives <code>L&lt;L&lt;X1, X2&gt;, L&lt;X3&gt;&gt;</code>, and
+<code>mp_join&lt;L&lt;L&lt;X1, X2&gt;, L&lt;X3&gt;&gt;, S&gt;</code> results in <code>L&lt;X1, X2, S, X3&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_join&lt;L, S&gt;</code> is equivalent to (and is implemented as) <code>mp_apply&lt;mp_append, mp_intersperse&lt;L, mp_list&lt;S&gt;&gt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_partitionl_p"><a class="anchor" href="#mp_partitionl_p"></a>mp_partition&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_partition = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_partition&lt;L&lt;T&#8230;&#8203;&gt;, P&gt;</code> partitions <code>L</code> into two lists <code>L&lt;U1&#8230;&#8203;&gt;</code> and <code>L&lt;U2&#8230;&#8203;&gt;</code> such that <code>mp_to_bool&lt;P&lt;T&gt;&gt;</code> is <code>mp_true</code>
+for the elements of <code>L&lt;U1&#8230;&#8203;&gt;</code> and <code>mp_false</code> for the elements of <code>L&lt;U2&#8230;&#8203;&gt;</code>. Returns <code>L&lt;L&lt;U1&#8230;&#8203;&gt;, L&lt;U2&#8230;&#8203;&gt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_partition_ql_q"><a class="anchor" href="#mp_partition_ql_q"></a>mp_partition_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_partition_q = mp_partition&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_partition</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_sortl_p"><a class="anchor" href="#mp_sortl_p"></a>mp_sort&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_sort = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_sort&lt;L, P&gt;</code> sorts the list <code>L</code> according to the strict weak ordering <code>mp_to_bool&lt;P&lt;T, U&gt;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_sort to sort a list of std::ratio values</div>
+<div class="content">
+<pre>#include &lt;ratio&gt;
+
+using L1 = mp_list&lt;std::ratio&lt;1,2&gt;, std::ratio&lt;1,4&gt;&gt;;
+using R1 = mp_sort&lt;L1, std::ratio_less&gt;; // mp_list&lt;ratio&lt;1,4&gt;, ratio&lt;1,2&gt;&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_sort_ql_q"><a class="anchor" href="#mp_sort_ql_q"></a>mp_sort_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_sort_q = mp_sort&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_sort</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_nth_element_cl_i_p"><a class="anchor" href="#mp_nth_element_cl_i_p"></a>mp_nth_element_c&lt;L, I, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, std::size_t I, template&lt;class...&gt; class P&gt; using mp_nth_element_c =
+    /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns the element at position <code>I</code> in <code>mp_sort&lt;L, P&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_nth_elementl_i_p"><a class="anchor" href="#mp_nth_elementl_i_p"></a>mp_nth_element&lt;L, I, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class I, template&lt;class...&gt; class P&gt; using mp_nth_element = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like <code>mp_nth_element_c</code>, but with a type argument <code>I</code>. <code>I::value</code> must be a nonnegative number.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_nth_element_ql_i_q"><a class="anchor" href="#mp_nth_element_ql_i_q"></a>mp_nth_element_q&lt;L, I, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class I, class Q&gt; using mp_nth_element_q =
+    mp_nth_element&lt;L, I, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like <code>mp_nth_element</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_min_elementl_p"><a class="anchor" href="#mp_min_elementl_p"></a>mp_min_element&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_min_element = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_min_element&lt;L, P&gt;</code> returns the minimal element of the list <code>L</code> according to the ordering <code>mp_to_bool&lt;P&lt;T, U&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s equivalent to <code>mp_fold&lt;mp_rest&lt;L&gt;, mp_first&lt;L&gt;, F&gt;</code>, where <code>F&lt;T, U&gt;</code> returns <code>mp_if&lt;P&lt;T, U&gt;, T, U&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_min_element_ql_q"><a class="anchor" href="#mp_min_element_ql_q"></a>mp_min_element_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_min_element_q = mp_min_element&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_min_element</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_max_elementl_p"><a class="anchor" href="#mp_max_elementl_p"></a>mp_max_element&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_max_element = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_max_element&lt;L, P&gt;</code> returns the maximal element of the list <code>L</code> according to the ordering <code>mp_to_bool&lt;P&lt;T, U&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s equivalent to <code>mp_fold&lt;mp_rest&lt;L&gt;, mp_first&lt;L&gt;, F&gt;</code>, where <code>F&lt;T, U&gt;</code> returns <code>mp_if&lt;P&lt;U, T&gt;, T, U&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_max_element_ql_q"><a class="anchor" href="#mp_max_element_ql_q"></a>mp_max_element_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_max_element_q = mp_max_element&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_max_element</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_findl_v"><a class="anchor" href="#mp_findl_v"></a>mp_find&lt;L, V&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V&gt; using mp_find = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_find&lt;L, V&gt;</code> returns the index at which the type <code>V</code> is located in the list <code>L</code>. It&#8217;s an alias for <code>mp_size_t&lt;I&gt;</code>,
+where <code>I</code> is the zero-based index of the first occurrence of <code>V</code> in <code>L</code>. If <code>L</code> does not contain <code>V</code>, <code>mp_find&lt;L, V&gt;</code>
+is <code>mp_size&lt;L&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_find_ifl_p"><a class="anchor" href="#mp_find_ifl_p"></a>mp_find_if&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_find_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_find_f&lt;L, P&gt;</code> is an alias for <code>mp_size_t&lt;I&gt;</code>, where <code>I</code> is the zero-based index of the first element <code>T</code> in <code>L</code> for which
+<code>mp_to_bool&lt;P&lt;T&gt;&gt;</code> is <code>mp_true</code>. If there is no such element, <code>mp_find_if&lt;L, P&gt;</code> is <code>mp_size&lt;L&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_find_if_ql_q"><a class="anchor" href="#mp_find_if_ql_q"></a>mp_find_if_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_find_if_q = mp_find_if&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_find_if</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_reversel"><a class="anchor" href="#mp_reversel"></a>mp_reverse&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_reverse = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_reverse&lt;L&lt;T1, T2, &#8230;&#8203;, Tn&gt;&gt;</code> is <code>L&lt;Tn, &#8230;&#8203;, T2, T1&gt;</code>.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 85%;">
+<caption class="title">Table 15. mp_reverse</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>L1</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>2</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="5"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code><strong>mp_reverse&lt;L1&gt;</strong></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>n-1</sub></code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><code>A<sub>1</sub></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_foldl_v_f"><a class="anchor" href="#mp_foldl_v_f"></a>mp_fold&lt;L, V, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, template&lt;class...&gt; class F&gt; using mp_fold = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_fold&lt;L&lt;T1, T2, &#8230;&#8203;, Tn&gt;, V, F&gt;</code> is <code>F&lt; F&lt; F&lt; F&lt;V, T1&gt;, T2&gt;, &#8230;&#8203;&gt;, Tn&gt;</code>, or <code>V</code>, if <code>L</code> is empty.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_fold to add the contents of a list of std::ratio values</div>
+<div class="content">
+<pre>#include &lt;ratio&gt;
+
+using L1 = mp_list&lt;std::ratio&lt;1,8&gt;, std::ratio&lt;1,4&gt;, std::ratio&lt;1,2&gt;&gt;;
+using R1 = mp_fold&lt;L1, std::ratio&lt;0,1&gt;, std::ratio_add&gt;; // std::ratio&lt;7,8&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_fold_ql_v_q"><a class="anchor" href="#mp_fold_ql_v_q"></a>mp_fold_q&lt;L, V, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, class Q&gt; using mp_fold_q =
+    mp_fold&lt;L, V, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_fold</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_reverse_foldl_v_f"><a class="anchor" href="#mp_reverse_foldl_v_f"></a>mp_reverse_fold&lt;L, V, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, template&lt;class...&gt; class F&gt; using mp_reverse_fold =
+    /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_reverse_fold&lt;L&lt;T1, T2, &#8230;&#8203;, Tn&gt;, V, F&gt;</code> is <code>F&lt;T1, F&lt;T2, F&lt;&#8230;&#8203;, F&lt;Tn, V&gt;&gt;&gt;&gt;</code>, or <code>V</code>, if <code>L</code> is empty.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_reverse_fold_ql_v_q"><a class="anchor" href="#mp_reverse_fold_ql_v_q"></a>mp_reverse_fold_q&lt;L, V, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, class Q&gt; using mp_reverse_fold_q =
+    mp_reverse_fold&lt;L, V, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_reverse_fold</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_partial_suml_v_f"><a class="anchor" href="#mp_partial_suml_v_f"></a>mp_partial_sum&lt;L, V, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, template&lt;class...&gt; class F&gt; using mp_partial_sum = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_partial_sum&lt;L, V, F&gt;</code> is similar to <code>mp_fold&lt;L, V, F&gt;</code>, but instead of its final result, it returns
+a list (of the same form as <code>L</code>) holding the intermediate results of the fold. The last element of the
+result of <code>mp_partial_sum</code> is the same as the result of <code>mp_fold</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>mp_fold&lt;mp_list&lt;X1, X2, X3&gt;, V, F&gt;</code> is <code>F&lt;F&lt;F&lt;V, X1&gt;, X2&gt;, X3&gt;</code>, but
+<code>mp_partial_sum&lt;mp_list&lt;X1, X2, X3&gt;, V, F&gt;</code> is <code>mp_list&lt;F&lt;V, X1&gt;, F&lt;F&lt;V, X1&gt;, X2&gt;, F&lt;F&lt;F&lt;V, X1&gt;, X2&gt;, X3&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s common for <code>F</code> to be <code>mp_plus</code>, in which case the result contains the partial sums of <code>L</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_partial_sum</div>
+<div class="content">
+<pre>using L1 = mp_list_c&lt;int, 1, 2, 3, 4&gt;;
+using R1 = mp_partial_sum&lt;L1, mp_int&lt;0&gt;, mp_plus&gt;; // mp_list_c&lt;int, 1, 3, 6, 10&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_partial_sum_ql_v_q"><a class="anchor" href="#mp_partial_sum_ql_v_q"></a>mp_partial_sum_q&lt;L, V, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class V, class Q&gt; using mp_partial_sum_q =
+    mp_partial_sum&lt;L, V, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_partial_sum</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_pairwise_foldl_f"><a class="anchor" href="#mp_pairwise_foldl_f"></a>mp_pairwise_fold&lt;L, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class F&gt; using mp_pairwise_fold = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_pairwise_fold&lt;L, F&gt;</code> returns a list of the same form as <code>L</code> whose elements are
+the result of the application of the binary metafunction <code>F</code> to each pair of adjacent
+elements of <code>L</code>. That is, <code>mp_pairwise_fold&lt;L&lt;T1, T2, T3&gt;, F&gt;</code> is
+<code>L&lt;F&lt;T1, T2&gt;, F&lt;T2, T3&gt;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p>The result has one fewer element than the original. If <code>L</code> has only one element, the
+result is an empty list. If <code>L</code> is an empty list, the result is also an empty list.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_pairwise_fold</div>
+<div class="content">
+<pre>template&lt;class L&gt; using is_increasing = mp_all_of&lt;
+    mp_pairwise_fold&lt;L, mp_less&gt;, mp_to_bool&gt;;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_pairwise_fold_ql_q"><a class="anchor" href="#mp_pairwise_fold_ql_q"></a>mp_pairwise_fold_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_pairwise_fold_q =
+    mp_pairwise_fold&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_pairwise_fold</code>, but takes a quoted metafunction.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_pairwise_fold_q</div>
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using is_sorted =
+    mp_none_of&lt;mp_pairwise_fold_q&lt;L, mp_bind&lt;P, _2, _1&gt;&gt;, mp_to_bool&gt;;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_iteratev_f_r"><a class="anchor" href="#mp_iteratev_f_r"></a>mp_iterate&lt;V, F, R&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class V, template&lt;class...&gt; class F, template&lt;class...&gt; class R&gt;
+    using mp_iterate = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_iterate&lt;V, F, R&gt;</code> applies <code>R</code> to <code>V</code> successively until that&#8217;s no longer possible,
+yielding the sequence <code>V</code>, <code>R&lt;V&gt;</code>, <code>R&lt;R&lt;V&gt;&gt;</code>, <code>R&lt;R&lt;R&lt;V&gt;&gt;&gt;</code>&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>It then returns an <code>mp_list</code> whose elements are formed by applying <code>F</code> to the above
+sequence of values. That is, it returns <code>mp_list&lt;F&lt;V&gt;, F&lt;R&lt;V&gt;&gt;, F&lt;R&lt;R&lt;V&gt;&gt;&gt;, &#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>mp_iterate</code> is in a way the reverse operation of <code>mp_reverse_fold</code>. Given</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T, class U&gt; struct cons {};
+struct nil {};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_reverse_fold&lt;mp_list&lt;X1, X2, X3&gt;, nil, cons&gt;</code> produces <code>cons&lt;X1, cons&lt;X2, cons&lt;X3, nil&gt;&gt;&gt;</code>,
+which when passed as <code>V</code> to <code>mp_iterate&lt;V, mp_first, mp_second&gt;</code> recovers the original
+<code>mp_list&lt;X1, X2, X3&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_iterate</div>
+<div class="content">
+<pre>struct X1 {};
+struct X2 {};
+struct X3 {};
+
+using L1 = mp_list&lt;X1, X2, X3&gt;;
+using R1 = mp_iterate&lt;L1, mp_first, mp_rest&gt;; // L1
+
+template&lt;class T, class U&gt; struct cons {};
+struct nil {};
+
+using V2 = mp_reverse_fold&lt;L1, nil, cons&gt;; // cons&lt;X1, cons&lt;X2, cons&lt;X3, nil&gt;&gt;&gt;
+using R2 = mp_iterate&lt;V2, mp_first, mp_second&gt;; // L1
+
+struct Y1 {};
+struct Y2 { using value_type = double; using next_type = Y1; };
+struct Y3 { using value_type = float; using next_type = Y2; };
+struct Y4 { using value_type = int; using next_type = Y3; };
+
+template&lt;class T&gt; using value_type = typename T::value_type;
+template&lt;class T&gt; using next_type = typename T::next_type;
+
+using R3 = mp_iterate&lt;Y4, mp_identity_t, next_type&gt;; // mp_list&lt;Y4, Y3, Y2, Y1&gt;
+using R4 = mp_iterate&lt;Y4, value_type, next_type&gt;; // mp_list&lt;int, float, double&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_iterate_qv_qf_qr"><a class="anchor" href="#mp_iterate_qv_qf_qr"></a>mp_iterate_q&lt;V, Qf, Qr&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class V, class Qf, class Qr&gt; using mp_iterate_q =
+    mp_iterate&lt;V, Qf::template fn, Qr::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_iterate</code>, but takes quoted metafunctions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_uniquel"><a class="anchor" href="#mp_uniquel"></a>mp_unique&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_unique = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_unique&lt;L&gt;</code> returns a list of the same form as <code>L</code> with the duplicate elements removed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_unique_ifl_p"><a class="anchor" href="#mp_unique_ifl_p"></a>mp_unique_if&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_unique_if = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_unique</code>, but two elements <code>T</code> and <code>U</code> are considered duplicates when <code>mp_to_bool&lt;P&lt;T, U&gt;&gt;</code> is <code>mp_true</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_unique_if_ql_q"><a class="anchor" href="#mp_unique_if_ql_q"></a>mp_unique_if_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_unique_if_q =
+    mp_unique_if&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_unique_if</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_all_ofl_p"><a class="anchor" href="#mp_all_ofl_p"></a>mp_all_of&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_all_of =
+    mp_bool&lt; mp_count_if&lt;L, P&gt;::value == mp_size&lt;L&gt;::value &gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_all_of&lt;L, P&gt;</code> is <code>mp_true</code> when <code>P</code> holds for all elements of <code>L</code>, <code>mp_false</code> otherwise. When <code>L</code> is empty, the result is <code>mp_true</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_all_of_ql_q"><a class="anchor" href="#mp_all_of_ql_q"></a>mp_all_of_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_all_of_q = mp_all_of&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_all_of</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_none_ofl_p"><a class="anchor" href="#mp_none_ofl_p"></a>mp_none_of&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_none_of =
+    mp_bool&lt; mp_count_if&lt;L, P&gt;::value == 0 &gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_none_of&lt;L, P&gt;</code> is <code>mp_true</code> when <code>P</code> holds for no element of <code>L</code>, <code>mp_false</code> otherwise. When <code>L</code> is empty, the result is <code>mp_true</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_none_of_ql_q"><a class="anchor" href="#mp_none_of_ql_q"></a>mp_none_of_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_none_of_q = mp_none_of&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_none_of</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_any_ofl_p"><a class="anchor" href="#mp_any_ofl_p"></a>mp_any_of&lt;L, P&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class P&gt; using mp_any_of =
+    mp_bool&lt; mp_count_if&lt;L, P&gt;::value != 0 &gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_any_of&lt;L, P&gt;</code> is <code>mp_true</code> when <code>P</code> holds for at least one element of <code>L</code>, <code>mp_false</code> otherwise. When <code>L</code> is empty, the result is <code>mp_false</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_any_of_ql_q"><a class="anchor" href="#mp_any_of_ql_q"></a>mp_any_of_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_any_of_q = mp_any_of&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_any_of</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_for_eachlf"><a class="anchor" href="#mp_for_eachlf"></a>mp_for_each&lt;L&gt;(f)</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class F&gt; constexpr F mp_for_each(F&amp;&amp; f);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_for_each&lt;L&gt;(f)</code> calls <code>f</code> with <code>T()</code> for each element <code>T</code> of the list <code>L</code>, in order.</p>
+</div>
+<div class="paragraph">
+<p>Returns <code>std::forward&lt;F&gt;(f)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_for_each and a C++14 lambda to print a tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... T&gt; void print( std::tuple&lt;T...&gt; const &amp; tp )
+{
+    std::size_t const N = sizeof...(T);
+
+    mp_for_each&lt;mp_iota_c&lt;N&gt;&gt;( [&amp;]( auto I ){
+
+        // I is mp_size_t&lt;0&gt;, mp_size_t&lt;1&gt;, ..., mp_size_t&lt;N-1&gt;
+
+        std::cout &lt;&lt; std::get&lt;I&gt;(tp) &lt;&lt; std::endl;
+
+    });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case the elements of the list <code>L</code> are not default-constructible, you can use
+<code>mp_for_each&lt;mp_transform&lt;mp_identity, L&gt;&gt;</code>, which would call <code>f</code> with <code>mp_identity&lt;T&gt;()</code>
+instead of <code>T()</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_with_indexni_f"><a class="anchor" href="#mp_with_indexni_f"></a>mp_with_index&lt;N&gt;(i, f)</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;std::size_t N, class F&gt;
+  constexpr auto mp_with_index( std::size_t i, F &amp;&amp; f )
+    -&gt; decltype(std::declval&lt;F&gt;()(std::declval&lt;mp_size_t&lt;0&gt;&gt;()));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_with_index&lt;N&gt;(i, f)</code> calls <code>f</code> with <code>mp_size_t&lt;i&gt;()</code> and returns the result. <code>i</code> must be less than <code>N</code>.
+Only <code>constexpr</code> on C++14 and higher.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class N, class F&gt;
+  constexpr auto mp_with_index( std::size_t i, F &amp;&amp; f )
+    -&gt; decltype(std::declval&lt;F&gt;()(std::declval&lt;mp_size_t&lt;0&gt;&gt;()));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns <code>mp_with_index&lt;N::value&gt;(i, f)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_with_index and a C++14 lambda to print the active element of a variant</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... T&gt; void print( std::variant&lt;T...&gt; const&amp; v )
+{
+    mp_with_index&lt;sizeof...(T)&gt;( v.index(), [&amp;]( auto I ) {
+
+        // I is mp_size_t&lt;v.index()&gt;{} here
+
+        std::cout &lt;&lt; std::get&lt;I&gt;( v ) &lt;&lt; std::endl;
+
+    });
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
