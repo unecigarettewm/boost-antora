@@ -15,5 +15,5 @@ content:
     start_path: antora
 ui:
   bundle:
-    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    url: https://github.com/CPPAlliance/antora-ui/releases/download/first/ui-bundle.zip
     snapshot: true
