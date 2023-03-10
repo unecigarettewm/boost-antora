@@ -5,6 +5,9 @@ content:
   - url: https://github.com/vinniefalco/mp11
     branches: master, develop, boost-1.82.0
     start_path: antora
+  - url: https://github.com/vinniefalco/predef
+    branches: develop
+    start_path: antora
   - url: https://github.com/vinniefalco/unordered
     branches: develop
     start_path: antora
