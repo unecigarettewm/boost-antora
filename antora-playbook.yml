@@ -1,5 +1,7 @@
 site:
-  title: Antora Docs
+  title: Boost Libraries Documentation
+  url: https://antora.cppalliance.org
+  start_page: mp11::index.adoc
 content:
   sources:
   - url: https://github.com/vinniefalco/mp11
