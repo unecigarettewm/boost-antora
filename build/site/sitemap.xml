@@ -7,6 +7,9 @@
 <loc>https://antora.cppalliance.org/sitemap-predef.xml</loc>
 </sitemap>
 <sitemap>
+<loc>https://antora.cppalliance.org/sitemap-QVM.xml</loc>
+</sitemap>
+<sitemap>
 <loc>https://antora.cppalliance.org/sitemap-unordered.xml</loc>
 </sitemap>
 </sitemapindex>
