@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Overview :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/mp11/mp11/overview.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="overview.html">Overview</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/develop/antora/modules/ROOT/pages/mp11/overview.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Overview</h1>
+<div class="paragraph">
+<p>Mp11 is a C++11 metaprogramming library for compile-time manipulation of data structures
+that contain types. It&#8217;s based on template aliases and variadic templates and implements the
+approach outlined in the article
+<a href="../simple_cxx11_metaprogramming.html" class="xref page">"Simple C&#43;&#43; metaprogramming"</a>
+and <a href="../simple_cxx11_metaprogramming_2.html" class="xref page">its sequel</a>. Reading these
+articles before proceeding with this documentation is <em>highly</em> recommended.</p>
+</div>
+<div class="paragraph">
+<p>The general principles upon which Mp11 is built are that algorithms and metafunctions are
+template aliases of the form <code>F&lt;T&#8230;&#8203;&gt;</code> and data structures are lists of the form <code>L&lt;T&#8230;&#8203;&gt;</code>,
+with the library placing no requirements on <code>L</code>. <code>mp_list&lt;T&#8230;&#8203;&gt;</code> is the built-in list type,
+but <code>std::tuple&lt;T&#8230;&#8203;&gt;</code>, <code>std::pair&lt;T1, T2&gt;</code> and <code>std::variant&lt;T&#8230;&#8203;&gt;</code> are also perfectly
+legitimate list types, although of course <code>std::pair&lt;T1, T2&gt;</code>, due to having exactly two elements,
+is not resizeable and will consequently not work with algorithms that need to add or remove
+elements.</p>
+</div>
+<div class="paragraph">
+<p>Another distinguishing feature of this approach is that lists (<code>L&lt;T&#8230;&#8203;&gt;</code>) have the same form as
+metafunctions (<code>F&lt;T&#8230;&#8203;&gt;</code>) and can therefore be used as such. For example, applying <code>std::add_pointer_t</code>
+to the list <code>std::tuple&lt;int, float&gt;</code> by way of <code>mp_transform&lt;std::add_pointer_t, std::tuple&lt;int, float&gt;&gt;</code>
+gives us <code>std::tuple&lt;int*, float*&gt;</code>, but we can also apply <code>mp_list</code> to the same tuple:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>using R = mp_transform&lt;mp_list, std::tuple&lt;int, float&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and get <code>std::tuple&lt;mp_list&lt;int&gt;, mp_list&lt;float&gt;&gt;</code>.</p>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

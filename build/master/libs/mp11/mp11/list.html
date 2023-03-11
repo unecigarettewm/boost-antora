@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>List Operations, &lt;boost/mp11/list.hpp&gt; :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/mp11/mp11/list.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="list.html">List Operations</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/master/antora/modules/ROOT/pages/mp11/list.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">List Operations, &lt;boost/mp11/list.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#mp_listt">mp_list&lt;T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_list_ct_i">mp_list_c&lt;T, I&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_is_listl">mp_is_list&lt;L&gt;</a></li>
+<li><a href="#mp_sizel">mp_size&lt;L&gt;</a></li>
+<li><a href="#mp_emptyl">mp_empty&lt;L&gt;</a></li>
+<li><a href="#mp_assignl1_l2">mp_assign&lt;L1, L2&gt;</a></li>
+<li><a href="#mp_clearl">mp_clear&lt;L&gt;</a></li>
+<li><a href="#mp_frontl">mp_front&lt;L&gt;</a></li>
+<li><a href="#mp_pop_frontl">mp_pop_front&lt;L&gt;</a></li>
+<li><a href="#mp_firstl">mp_first&lt;L&gt;</a></li>
+<li><a href="#mp_restl">mp_rest&lt;L&gt;</a></li>
+<li><a href="#mp_secondl">mp_second&lt;L&gt;</a></li>
+<li><a href="#mp_thirdl">mp_third&lt;L&gt;</a></li>
+<li><a href="#mp_push_frontl_t">mp_push_front&lt;L, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_push_backl_t">mp_push_back&lt;L, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_renamel_y">mp_rename&lt;L, Y&gt;</a></li>
+<li><a href="#mp_applyf_l">mp_apply&lt;F, L&gt;</a></li>
+<li><a href="#mp_apply_qq_l">mp_apply_q&lt;Q, L&gt;</a></li>
+<li><a href="#mp_appendl">mp_append&lt;L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_replace_frontl_t">mp_replace_front&lt;L, T&gt;</a></li>
+<li><a href="#mp_replace_firstl_t">mp_replace_first&lt;L, T&gt;</a></li>
+<li><a href="#mp_replace_secondl_t">mp_replace_second&lt;L, T&gt;</a></li>
+<li><a href="#mp_replace_thirdl_t">mp_replace_third&lt;L, T&gt;</a></li>
+<li><a href="#mp_transform_frontl_f">mp_transform_front&lt;L, F&gt;</a></li>
+<li><a href="#mp_transform_front_ql_q">mp_transform_front_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_transform_firstl_f">mp_transform_first&lt;L, F&gt;</a></li>
+<li><a href="#mp_transform_first_ql_q">mp_transform_first_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_transform_secondl_f">mp_transform_second&lt;L, F&gt;</a></li>
+<li><a href="#mp_transform_second_ql_q">mp_transform_second_q&lt;L, Q&gt;</a></li>
+<li><a href="#mp_transform_thirdl_f">mp_transform_third&lt;L, F&gt;</a></li>
+<li><a href="#mp_transform_third_ql_q">mp_transform_third_q&lt;L, Q&gt;</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="mp_listt"><a class="anchor" href="#mp_listt"></a>mp_list&lt;T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class... T&gt; struct mp_list {};</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_list</code> is the standard list type of Mp11, although the library is not restricted to it and can operate on arbitrary class templates
+such as <code>std::tuple</code> or <code>std::variant</code>. Even <code>std::pair</code> can be used if the transformation does not alter the number of the elements in
+the list.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_list_ct_i"><a class="anchor" href="#mp_list_ct_i"></a>mp_list_c&lt;T, I&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T, T... I&gt; using mp_list_c =
+    mp_list&lt;std::integral_constant&lt;T, I&gt;...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_list_c</code> produces an <code>mp_list</code> of the <code>std::integral_constant</code> types corresponding to its integer template arguments.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_list_c</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = mp_list_c&lt;int, 2, 3&gt;; // mp_list&lt;mp_int&lt;2&gt;, mp_int&lt;3&gt;&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_is_listl"><a class="anchor" href="#mp_is_listl"></a>mp_is_list&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_is_list = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_is_list&lt;L&gt;</code> is <code>mp_true</code> if <code>L</code> is a list (an instantiation of a class template whose template parameters are types), <code>mp_false</code> otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_sizel"><a class="anchor" href="#mp_sizel"></a>mp_size&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_size = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_size&lt;L&gt;</code> returns the number of elements in the list <code>L</code>, as a <code>mp_size_t</code>. In other words, <code>mp_size&lt;L&lt;T&#8230;&#8203;&gt;&gt;</code> is an alias for
+<code>mp_size_t&lt;sizeof&#8230;&#8203;(T)&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_size with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = mp_list&lt;&gt;;
+using R1 = mp_size&lt;L1&gt;; // mp_size_t&lt;0&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_size with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = std::pair&lt;int, int&gt;;
+using R2 = mp_size&lt;L2&gt;; // mp_size_t&lt;2&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_size with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L3 = std::tuple&lt;float&gt;;
+using R3 = mp_size&lt;L3&gt;; // mp_size_t&lt;1&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_emptyl"><a class="anchor" href="#mp_emptyl"></a>mp_empty&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_empty = mp_bool&lt;mp_size&lt;L&gt;::value == 0&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_empty&lt;L&gt;</code> is an alias for <code>mp_true</code> if the list <code>L</code> is empty, for <code>mp_false</code> otherwise.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_empty with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;float&gt;;
+using R1 = mp_empty&lt;L1&gt;; // mp_false
+
+using L2 = std::tuple&lt;&gt;;
+using R2 = mp_empty&lt;L2&gt;; // mp_true</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_assignl1_l2"><a class="anchor" href="#mp_assignl1_l2"></a>mp_assign&lt;L1, L2&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L1, class L2&gt; using mp_assign = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_assign&lt;L1&lt;T1&#8230;&#8203;&gt;, L2&lt;T2&#8230;&#8203;&gt;&gt;</code> is an alias for <code>L1&lt;T2&#8230;&#8203;&gt;</code>. That is, it replaces the elements of <code>L1</code> with those of <code>L2</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_assign with mp_list and std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;long&gt;;
+using L2 = mp_list&lt;int, float&gt;;
+
+using R1 = mp_assign&lt;L1, L2&gt;; // std::tuple&lt;int, float&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_assign with mp_list and std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;long, char&gt;;
+using L2 = mp_list&lt;int, float&gt;;
+
+using R1 = mp_assign&lt;L1, L2&gt;; // std::pair&lt;int, float&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_clearl"><a class="anchor" href="#mp_clearl"></a>mp_clear&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_clear = mp_assign&lt;L, mp_list&lt;&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_clear&lt;L&lt;T&#8230;&#8203;&gt;&gt;</code> is an alias for <code>L&lt;&gt;</code>, that is, it removes the elements of <code>L</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_clear with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;int, float&gt;;
+using R1 = mp_clear&lt;L1&gt;; // std::tuple&lt;&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_frontl"><a class="anchor" href="#mp_frontl"></a>mp_front&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_front = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_front&lt;L&gt;</code> is the first element of the list <code>L</code>. That is, <code>mp_front&lt;L&lt;T1, T&#8230;&#8203;&gt;&gt;</code> is an alias for <code>T1</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_front with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;int, float&gt;;
+using R1 = mp_front&lt;L1&gt;; // int</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_front with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = std::tuple&lt;float, double, long double&gt;;
+using R2 = mp_front&lt;L2&gt;; // float</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_front with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L3 = mp_list&lt;char[1], char[2], char[3], char[4]&gt;;
+using R3 = mp_front&lt;L3&gt;; // char[1]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_pop_frontl"><a class="anchor" href="#mp_pop_frontl"></a>mp_pop_front&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_pop_front = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_pop_front&lt;L&gt;</code> removes the first element of the list <code>L</code>. That is, <code>mp_pop_front&lt;L&lt;T1, T&#8230;&#8203;&gt;&gt;</code> is an alias for <code>L&lt;T&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_pop_front with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;float, double, long double&gt;;
+using R1 = mp_pop_front&lt;L1&gt;; // std::tuple&lt;double, long double&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_pop_front with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = mp_list&lt;void&gt;;
+using R2 = mp_pop_front&lt;L2&gt;; // mp_list&lt;&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_firstl"><a class="anchor" href="#mp_firstl"></a>mp_first&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_first = mp_front&lt;L&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_first</code> is another name for <code>mp_front</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_restl"><a class="anchor" href="#mp_restl"></a>mp_rest&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_rest = mp_pop_front&lt;L&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_rest</code> is another name for <code>mp_pop_front</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_secondl"><a class="anchor" href="#mp_secondl"></a>mp_second&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_second = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_second&lt;L&gt;</code> is the second element of the list <code>L</code>. That is, <code>mp_second&lt;L&lt;T1, T2, T&#8230;&#8203;&gt;&gt;</code> is an alias for <code>T2</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_second with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;int, float&gt;;
+using R1 = mp_second&lt;L1&gt;; // float</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_second with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = std::tuple&lt;float, double, long double&gt;;
+using R2 = mp_second&lt;L2&gt;; // double</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_second with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L3 = mp_list&lt;char[1], char[2], char[3], char[4]&gt;;
+using R3 = mp_second&lt;L3&gt;; // char[2]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_thirdl"><a class="anchor" href="#mp_thirdl"></a>mp_third&lt;L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L&gt; using mp_third = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_third&lt;L&gt;</code> is the third element of the list <code>L</code>. That is, <code>mp_third&lt;L&lt;T1, T2, T3, T&#8230;&#8203;&gt;&gt;</code> is an alias for <code>T3</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_third with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;float, double, long double&gt;;
+using R1 = mp_third&lt;L1&gt;; // long double</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_third with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = mp_list&lt;char[1], char[2], char[3], char[4]&gt;;
+using R2 = mp_third&lt;L2&gt;; // char[3]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_push_frontl_t"><a class="anchor" href="#mp_push_frontl_t"></a>mp_push_front&lt;L, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class... T&gt; using mp_push_front = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_push_front&lt;L, T&#8230;&#8203;&gt;</code> inserts the elements <code>T&#8230;&#8203;</code> at the front of the list <code>L</code>. That is, <code>mp_push_front&lt;L&lt;U&#8230;&#8203;&gt;, T&#8230;&#8203;&gt;</code>
+is an alias for <code>L&lt;T&#8230;&#8203;, U&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_push_front with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;double, long double&gt;;
+using R1 = mp_push_front&lt;L1, float&gt;; // std::tuple&lt;float, double, long double&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_push_front with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = mp_list&lt;void&gt;;
+using R2 = mp_push_front&lt;L2, char[1], char[2]&gt;; // mp_list&lt;char[1], char[2], void&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_push_backl_t"><a class="anchor" href="#mp_push_backl_t"></a>mp_push_back&lt;L, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class... T&gt; using mp_push_back = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_push_back&lt;L, T&#8230;&#8203;&gt;</code> inserts the elements <code>T&#8230;&#8203;</code> at the back of the list <code>L</code>. That is, <code>mp_push_back&lt;L&lt;U&#8230;&#8203;&gt;, T&#8230;&#8203;&gt;</code>
+is an alias for <code>L&lt;U&#8230;&#8203;, T&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_push_back with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;double, long double&gt;;
+using R1 = mp_push_back&lt;L1, float&gt;; // std::tuple&lt;double, long double, float&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_push_back with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = mp_list&lt;void&gt;;
+using R2 = mp_push_back&lt;L2, char[1], char[2]&gt;; // mp_list&lt;void, char[1], char[2]&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_renamel_y"><a class="anchor" href="#mp_renamel_y"></a>mp_rename&lt;L, Y&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class Y&gt; using mp_rename = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_rename&lt;L, Y&gt;</code> changes the type of the list <code>L</code> to <code>Y</code>. That is, <code>mp_rename&lt;L&lt;T&#8230;&#8203;&gt;, Y&gt;</code> is an alias for <code>Y&lt;T&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_rename to rename std::pair to std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;double, long double&gt;;
+using R1 = mp_rename&lt;L1, std::tuple&gt;; // std::tuple&lt;double, long double&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_rename to rename std::tuple to mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = std::tuple&lt;void&gt;;
+using R2 = mp_rename&lt;L2, mp_list&gt;; // mp_list&lt;void&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_applyf_l"><a class="anchor" href="#mp_applyf_l"></a>mp_apply&lt;F, L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class F, class L&gt; using mp_apply = mp_rename&lt;L, F&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_apply&lt;F, L&gt;</code> applies the metafunction <code>F</code> to the contents of the list <code>L</code>, that is, <code>mp_apply&lt;F, L&lt;T&#8230;&#8203;&gt;&gt;</code> is an alias for <code>F&lt;T&#8230;&#8203;&gt;</code>.
+(<code>mp_apply</code> is the same as <code>mp_rename</code> with the arguments reversed.)</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_apply with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;double, long double&gt;;
+using R1 = mp_apply&lt;std::is_same, L1&gt;; // std::is_same&lt;double, long double&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_apply_qq_l"><a class="anchor" href="#mp_apply_qq_l"></a>mp_apply_q&lt;Q, L&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Q, class L&gt; using mp_apply_q = mp_apply&lt;Q::template fn, L&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Same as <code>mp_apply</code>, but takes a quoted metafunction.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_apply_q with mp_bind_front</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;double, long double&gt;;
+using L2 = mp_list&lt;int, long&gt;;
+
+using R1 = mp_apply_q&lt;mp_bind_front&lt;mp_push_back, L1&gt;, L2&gt;;
+  // R1 is std::tuple&lt;double, long double, int, long&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_appendl"><a class="anchor" href="#mp_appendl"></a>mp_append&lt;L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class... L&gt; using mp_append = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_append&lt;L&#8230;&#8203;&gt;</code> concatenates the lists in <code>L&#8230;&#8203;</code> into a single list that has the same type as the first list. <code>mp_append&lt;&gt;</code>
+is an alias for <code>mp_list&lt;&gt;</code>. <code>mp_append&lt;L1&lt;T1&#8230;&#8203;&gt;, L2&lt;T2&#8230;&#8203;&gt;, &#8230;&#8203;, Ln&lt;Tn&#8230;&#8203;&gt;&gt;</code> is an alias for <code>L1&lt;T1&#8230;&#8203;, T2&#8230;&#8203;, &#8230;&#8203;, Tn&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_append with lists of various types</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;double, long double&gt;;
+using L2 = mp_list&lt;int&gt;;
+using L3 = std::pair&lt;short, long&gt;;
+using L4 = mp_list&lt;&gt;;
+
+using R1 = mp_append&lt;L1, L2, L3, L4&gt;;
+  // std::tuple&lt;double, long double, int, short, long&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_frontl_t"><a class="anchor" href="#mp_replace_frontl_t"></a>mp_replace_front&lt;L, T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class T&gt; using mp_replace_front = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_replace_front&lt;L, T&gt;</code> replaces the first element of the list <code>L</code> with <code>T</code>. That is, <code>mp_replace_front&lt;L&lt;U1, U&#8230;&#8203;&gt;, T&gt;</code> is
+an alias for <code>L&lt;T, U&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_front with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;int, float&gt;;
+using R1 = mp_replace_front&lt;L1, void&gt;; // std::pair&lt;void, float&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_front with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = std::tuple&lt;float, double, long double&gt;;
+using R2 = mp_replace_front&lt;L2, void&gt;; // std::tuple&lt;void, double, long double&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_front with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L3 = mp_list&lt;char[1], char[2], char[3], char[4]&gt;;
+using R3 = mp_replace_front&lt;L3, void&gt;; // mp_list&lt;void, char[2], char[3], char[4]&gt;;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_firstl_t"><a class="anchor" href="#mp_replace_firstl_t"></a>mp_replace_first&lt;L, T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class T&gt; using mp_replace_first = mp_replace_front&lt;L, T&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_replace_first</code> is another name for <code>mp_replace_front</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_secondl_t"><a class="anchor" href="#mp_replace_secondl_t"></a>mp_replace_second&lt;L, T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class T&gt; using mp_replace_second = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_replace_second&lt;L, T&gt;</code> replaces the second element of the list <code>L</code> with <code>T</code>. That is, <code>mp_replace_second&lt;L&lt;U1, U2, U&#8230;&#8203;&gt;, T&gt;</code>
+is an alias for <code>L&lt;U1, T, U&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_second with std::pair</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::pair&lt;int, float&gt;;
+using R1 = mp_replace_second&lt;L1, void&gt;; // std::pair&lt;int, void&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_second with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = std::tuple&lt;float, double, long double&gt;;
+using R2 = mp_replace_second&lt;L2, void&gt;; // std::tuple&lt;float, void, long double&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_front with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L3 = mp_list&lt;char[1], char[2], char[3], char[4]&gt;;
+using R3 = mp_replace_second&lt;L3, void&gt;; // mp_list&lt;char[1], void, char[3], char[4]&gt;;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_replace_thirdl_t"><a class="anchor" href="#mp_replace_thirdl_t"></a>mp_replace_third&lt;L, T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class T&gt; using mp_replace_third = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_replace_third&lt;L, T&gt;</code> replaces the third element of the list <code>L</code> with <code>T</code>. That is, <code>mp_replace_third&lt;L&lt;U1, U2, U3, U&#8230;&#8203;&gt;, T&gt;</code>
+is an alias for <code>L&lt;U1, U2, T, U&#8230;&#8203;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_third with std::tuple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L1 = std::tuple&lt;float, double, long double&gt;;
+using R1 = mp_replace_third&lt;L1, void&gt;; // std::tuple&lt;float, double, void&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_replace_third with mp_list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using L2 = mp_list&lt;char[1], char[2], char[3], char[4]&gt;;
+using R2 = mp_replace_third&lt;L2, void&gt;; // mp_list&lt;char[1], char[2], void, char[4]&gt;;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_frontl_f"><a class="anchor" href="#mp_transform_frontl_f"></a>mp_transform_front&lt;L, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class F&gt; using mp_transform_front =
+    /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_transform_front&lt;L, F&gt;</code> replaces the first element <code>T1</code> of the list <code>L</code> with <code>F&lt;T1&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_front_ql_q"><a class="anchor" href="#mp_transform_front_ql_q"></a>mp_transform_front_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_transform_front_q =
+    mp_transform_front&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_transform_front</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_firstl_f"><a class="anchor" href="#mp_transform_firstl_f"></a>mp_transform_first&lt;L, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class F&gt; using mp_transform_first =
+    mp_transform_front&lt;L, F&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_transform_first</code> is another name for <code>mp_transform_front</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_first_ql_q"><a class="anchor" href="#mp_transform_first_ql_q"></a>mp_transform_first_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_transform_first_q =
+    mp_transform_first&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_transform_first</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_secondl_f"><a class="anchor" href="#mp_transform_secondl_f"></a>mp_transform_second&lt;L, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class F&gt; using mp_transform_second =
+    /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_transform_second&lt;L, F&gt;</code> replaces the second element <code>T2</code> of the list <code>L</code> with <code>F&lt;T2&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_second_ql_q"><a class="anchor" href="#mp_transform_second_ql_q"></a>mp_transform_second_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_transform_second_q =
+    mp_transform_second&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_transform_second</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_thirdl_f"><a class="anchor" href="#mp_transform_thirdl_f"></a>mp_transform_third&lt;L, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, template&lt;class...&gt; class F&gt; using mp_transform_third =
+    /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_transform_third&lt;L, F&gt;</code> replaces the third element <code>T3</code> of the list <code>L</code> with <code>F&lt;T3&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_transform_third_ql_q"><a class="anchor" href="#mp_transform_third_ql_q"></a>mp_transform_third_q&lt;L, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class Q&gt; using mp_transform_third_q =
+    mp_transform_third&lt;L, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_transform_third</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

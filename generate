@@ -1,0 +1,12 @@
+#!/bin/bash
+
+opts=""
+
+rm -rf ./build
+npx antora --fetch ${opts} site.yml
+if [ "$#" -ge 1 ]; then
+    npx antora --fetch --attribute branch=${1} libs.yml
+fi
+if [ "$#" -ge 2 ]; then
+    npx antora --fetch --attribute branch=${2} libs.yml
+fi
