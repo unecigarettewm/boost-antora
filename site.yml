@@ -17,7 +17,7 @@ content:
 ui:
   bundle:
     #url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
-    url: https://github.com/cppalliance/antora-ui/releases/download/first/ui-bundle.zip
+    url: https://github.com/cppalliance/antora-ui/releases/download/first/ui-${branch}.zip
     snapshot: true
 output:
   dir: ./build/doc

@@ -29,6 +29,7 @@ class Ext {
         }
         if(playbook.output.dir == "./build") // VFALCO MASSIVE HACK
             playbook.output.dir += "/" + version + "/libs"
+        playbook.ui.bundle.url = playbook.ui.bundle.url.replace("${branch}", version)
     }
 }
 
