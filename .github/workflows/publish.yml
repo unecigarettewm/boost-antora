@@ -1,29 +1,25 @@
 name: Publish Antora
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - develop
 
 concurrency:
   group: ${{format('{0}:{1}', github.repository, github.ref)}}
   cancel-in-progress: true
-
 
 jobs:
   build:
     name: Publish Antora Docs
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Publish Libs
+      - name: Build
         uses: ./.github/actions/antora_publish
         with:
-          playbook: libs.yml
-          artifact: libs
-          options: --fetch --attribute ${{ (startsWith(github.ref, 'refs/heads/develop') && 'develop') || 'master' }}
-
-      - name: Publish Site
-        uses: ./.github/actions/antora_publish
-        with:
-          playbook: site.yml
-          artifact: site
-          options: --fetch --attribute ${{ (startsWith(github.ref, 'refs/heads/develop') && 'develop') || 'master' }}
+          playbook: playbook.yml
+          artifact: antora
+          options: --fetch --attribute "branch=${{ (startsWith(github.ref, 'refs/heads/develop') && 'develop') || 'master' }}"

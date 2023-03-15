@@ -4,7 +4,7 @@ inputs:
   playbook:
     description: 'The playbook file.'
     required: false
-    default: 'site.yml'
+    default: 'playbook.yml'
   artifact:
     description: 'Name of the artifact with the Antora website'
     required: false

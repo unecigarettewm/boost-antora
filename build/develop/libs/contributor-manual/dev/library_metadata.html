@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Library Metadata :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/develop/libs/contributor-manual/dev/library_metadata.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/develop/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="contributor-manual" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Contributor Manual</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Boost Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="website_updating.html">Boost C++ Libraries - Updating Website</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Contributor Manual</a></li>
+    <li>Development</li>
+    <li><a href="library_metadata.html">Library Metadata</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/cppalliance/contributor-manual/edit/develop/antora/modules/ROOT/pages/dev/library_metadata.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Library Metadata</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A module can contain an optional file which describes the
+ libraries that it contains. This is located at
+ <code>meta/libraries.json</code>. It either contains a single
+ json object for a single library, or a list or json objects for
+ any number of libraries.</p>
+</div>
+<div class="paragraph">
+<p>For example, for a single library:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">{
+    "key": "unordered",
+    "name": "Unordered",
+    "authors": [ "Daniel James" ],
+    "maintainers": [ "Daniel James &lt;dnljms -at- gmail.com&gt;" ],
+    "description": "Unordered associative containers.",
+    "category": [
+        "Containers"
+    ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example for multiple libraries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[
+    {
+        "key": "functional",
+        "name": "Functional",
+        "authors": [ "Mark Rodgers" ],
+        "description": "The Boost.Function library contains a family of class templates that are function object wrappers.",
+        "category": [
+            "Function-objects"
+        ]
+    },
+    {
+        "key": "functional/factory",
+        "name": "Functional/Factory",
+        "authors": [ "Tobias Schwinger" ],
+        "maintainers": [ "Tobias Schwinger &lt;tschwinger -at- isonews2.com&gt;" ],
+        "description": "Function object templates for dynamic and static object creation",
+        "documentation": "factory/",
+        "category": [
+            "Function-objects"
+        ]
+    },
+]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="json-fields"><a class="anchor" href="#json-fields"></a>Json fields</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="key"><a class="anchor" href="#key"></a>key</h3>
+<div class="paragraph">
+<p>This is a unique identifier for the library, typically the
+ path to it from the <code>libs</code> directory.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="name"><a class="anchor" href="#name"></a>name</h3>
+<div class="paragraph">
+<p>Human readable name of the library</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="status"><a class="anchor" href="#status"></a>status</h3>
+<div class="paragraph">
+<p>Used for libraries with special statuses, currently can have
+ value <code>deprecated</code> for deprecated libraries, and
+ <code>hidden</code> for libraries which shouldn&#8217;t be displayed to
+ the user.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="authors"><a class="anchor" href="#authors"></a>authors</h3>
+<div class="paragraph">
+<p>Either a string, or a list of strings, containing the names
+ of the authors</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="description"><a class="anchor" href="#description"></a>description</h3>
+<div class="paragraph">
+<p>A brief description of what the library does</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="category"><a class="anchor" href="#category"></a>category</h3>
+<div class="paragraph">
+<p>A list of categories that the library belongs to, the full
+ list is below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="documentation"><a class="anchor" href="#documentation"></a>documentation</h3>
+<div class="paragraph">
+<p>Path to the documentation, defaults to the root of the
+ module.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cxxstd"><a class="anchor" href="#cxxstd"></a>cxxstd</h3>
+<div class="paragraph">
+<p>The minimum C++ standard compilation level at which
+ all, or the large majority, of the functionality in
+ the library is usable. The possible values are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>98 = C++98</p>
+</li>
+<li>
+<p>03 = C98/C03</p>
+</li>
+<li>
+<p>11 = C++11</p>
+</li>
+<li>
+<p>14 = C++14</p>
+</li>
+<li>
+<p>17 = C++17</p>
+</li>
+<li>
+<p>20 = C++20</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The level only indicates the minimum level, which
+ means that the functionality of the library can be
+ used when compiling at that level or at a higher
+ level. There may be some functionality in the library
+ which will need a higher C standard compilation
+ level than is indicated by this value, but the
+ information about that specific functionality will be
+ provided for the end-user within the documentation for
+ that library. If a library does not have this field it
+ indicates that the end-user will have to read the
+ library documentation to understand what C standard
+ compilation level is needed to use the library.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="available-categories"><a class="anchor" href="#available-categories"></a>Available categories</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>String
+String and text processing
+Containers
+Containers
+Iterators
+Iterators
+Algorithms
+Algorithms
+Function-objects
+Function objects and higher-order programming
+Generic
+Generic Programming
+Metaprogramming
+Template Metaprogramming
+Preprocessor
+Preprocessor Metaprogramming
+Concurrent
+Concurrent Programming
+Math
+Math and numerics
+Correctness
+Correctness and testing
+Error-handling
+Error handling and recovery
+Data
+Data structures
+Domain
+Domain Specific
+Image-processing
+Image processing
+IO
+Input/Output
+Inter-language
+Inter-language support
+Emulation
+Language Features Emulation
+Memory
+Memory
+Parsing
+Parsing
+Patterns
+Patterns and Idioms
+Programming
+Programming Interfaces
+State
+State Machines
+System
+System
+Miscellaneous
+Miscellaneous
+workarounds
+Broken compiler workarounds</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

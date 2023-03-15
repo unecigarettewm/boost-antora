@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap>
-<loc>https://antora.cppalliance.org/sitemap-mp11.xml</loc>
+<loc>https://antora.cppalliance.org/develop/libs/sitemap-contributor-manual.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://antora.cppalliance.org/sitemap-predef.xml</loc>
+<loc>https://antora.cppalliance.org/develop/libs/sitemap-mp11.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://antora.cppalliance.org/sitemap-QVM.xml</loc>
+<loc>https://antora.cppalliance.org/develop/libs/sitemap-predef.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://antora.cppalliance.org/sitemap-unordered.xml</loc>
+<loc>https://antora.cppalliance.org/develop/libs/sitemap-QVM.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://antora.cppalliance.org/sitemap-user-manual.xml</loc>
+<loc>https://antora.cppalliance.org/develop/libs/sitemap-unordered.xml</loc>
+</sitemap>
+<sitemap>
+<loc>https://antora.cppalliance.org/develop/libs/sitemap-user-manual.xml</loc>
 </sitemap>
 </sitemapindex>
