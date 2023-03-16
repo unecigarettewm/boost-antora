@@ -12,38 +12,44 @@
 # {old-version} uses underscores: 1_82_0
 #
 
-site:
-  url: https://antora.cppalliance.org/${branch}/libs
-  title: Boost Libraries Documentation
-  start_page: contributor-manual::index.adoc
-antora:
-  extensions:
-    - require: ./playbook.js
-#urls:
-#  redirect_facility: static
-#  latest_version_segment: tw
-#  latest_version_segment_strategy: redirect:to
 asciidoc:
   attributes:
-    branch: master
+    boost_version: master
+    boost_ui_branch: master
+    boost_doc_prefix: https://github.com/cppalliance
+    boost_lib_prefix: https://github.com/vinniefalco
+    boost_ui_prefix: https://github.com/cppalliance
+
+    boost_dir_prefix: master
+
+site:
+  url: https://antora.cppalliance.org/${boost_version}/libs
+  title: Boost Libraries Documentation
+#  start_page: contributor-manual::index.adoc
+
+antora:
+  extensions:
+    - require: ./boost.js
+
 content:
   sources:
-  - url: https://github.com/cppalliance/user-manual
+  - url: ${boost_doc_prefix}/user-manual
     start_path: antora
-  - url: https://github.com/cppalliance/contributor-manual
+  - url: ${boost_doc_prefix}/contributor-manual
     start_path: antora
-  - url: https://github.com/vinniefalco/mp11
+  - url: ${boost_lib_prefix}/mp11
     start_path: antora
-  - url: https://github.com/vinniefalco/predef
+  - url: ${boost_lib_prefix}/predef
     start_path: antora
-  - url: https://github.com/vinniefalco/unordered
+  - url: ${boost_lib_prefix}/unordered
     start_path: antora
-  - url: https://github.com/vinniefalco/qvm
+  - url: ${boost_lib_prefix}/qvm
     start_path: antora
+
 ui:
   bundle:
-    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${branch}/ui-bundle.zip
+    url: ${boost_ui_prefix}/antora-ui/releases/download/ui-${boost_ui_branch}/ui-bundle.zip
     snapshot: true
+
 output:
-  dir: ./build/${branch}/libs
-  clean: true
+  dir: ./build/${boost_dir_prefix}

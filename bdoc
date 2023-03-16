@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# This script is used to build the Antora-based
+# documentation for Boost libraries and for the
+# unversioned site documentation such as the
+# contributors manual.
+#
+# These asciidoc attributes are used as variables
+# to control what is built and where it goes:
+#
+#   boost_doc_prefix
+#
+#   boost_lib_prefix
+#
+#
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 { branch | version | 'all' }..."
+    echo
+    echo "    branch : 'develop' | 'master' | 'release'"
+    echo "    version: [0-9]+ '.' [0-9]+ '.' [0-9]+"
+    echo
+    echo "    'all' rebuilds develop, master, and every version"
+    echo
+    echo "Examples:"
+    echo
+    echo "    $0 develop master      # build develop and master"
+    echo "    $0 1.83.0              # build tagged version boost-1.83.0"
+    exit 2
+fi
+
+while test $# -gt 0
+do
+    if [ "$1" = "develop" ] || [ "$1" = "master" ]; then
+        npx antora --fetch \
+            --attribute boost_version=$1 \
+            --attribute boost_ui_branch=$1 \
+            --attribute boost_dir_prefix=$1/libs \
+            --attribute boost_url=https://antora.cppalliance.org/$1/libs \
+            playbook.yml
+
+    elif [ "$1" = "release" ]; then
+        npx antora --fetch \
+            --attribute boost_version=master \
+            --attribute boost_ui_branch=master \
+            --attribute boost_dir_prefix=doc/html \
+            --attribute boost_url= \
+            playbook.yml
+
+    elif [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        npx antora --fetch \
+            --attribute boost_version=$1 \
+            --attribute boost_url=https://antora.cppalliance.org/$1/libs \
+            playbook.yml
+
+    elif [ "$1" = "all" ]; then
+        echo "build all";
+    else
+        echo "invalid argument: '$1'"
+    fi
+    shift
+done
