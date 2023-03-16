@@ -13,7 +13,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 /*
-    This extension allows  every asciidoc attribute
+    This extension allows every asciidoc attribute
     specified in the playbook or the command line
     to become a variable in the playbook using the
     syntax ${var}.
@@ -61,7 +61,7 @@ class Ext {
         if(! version )
             throw new Error("Missing required attribute: asciidoc.attributes.boost_version");
 
-        if( version == "master" || version == "develop") {
+        if( version === "master" || version === "develop") {
             playbook.content.tags = ""
             playbook.content.branches = version
         } else {
