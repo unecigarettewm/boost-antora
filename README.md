@@ -31,6 +31,24 @@ $ node --version
 v18.15.0
 ```
 
+To work locally, i.e. in "author mode" using the local filesystem:
+* Make a copy of playbook.yml named local.playbook.yml
+* Change the URL for one or more content sources to point to the boost superproject
+```
+- url: C:/Users/vinnie/src/boost
+```
+* Change the start path to point to the submodule's antora directory:
+```
+  start_path: libs/mp11/antora
+```
+
+Alternatively if the library is not a submodule but a repo root, point to that
+instead:
+```
+- url: C:/Users/vinnie/src/boost/libs/proposed-lib
+  start_path: antora
+```
+
 ## Instructions  
 
 The workflow may change in the future.
