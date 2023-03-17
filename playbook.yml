@@ -14,9 +14,9 @@
 
 asciidoc:
   attributes:
-    boost_version: master
-    boost_ui_branch: master
-    boost_dir_prefix: master
+    boost_version: develop
+    boost_ui_branch: develop
+    boost_dir_prefix: develop/libs
 
 site:
   url: https://antora.cppalliance.org/${boost_version}/libs
@@ -31,8 +31,14 @@ content:
   sources:
   - url: https://github.com/cppalliance/user-manual
     start_path: antora
+
+  #---
   - url: https://github.com/cppalliance/contributor-manual
     start_path: antora
+  - url: https://github.com/cppalliance/antora
+    start_path: antora
+  #---
+
   - url: https://github.com/vinniefalco/mp11
     start_path: antora
   - url: https://github.com/vinniefalco/predef

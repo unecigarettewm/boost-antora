@@ -1,3 +1,9 @@
+= Documentation
+:idprefix:
+:idseparator: -
+:leveloffset: +0
+
+This explains how the docs work.
 
 ## Antora demo  
 

@@ -76,84 +76,213 @@ window.addEventListener('load', function() {
     <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
-    <a class="nav-link" href="intro.html">Introduction</a>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="docs.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Legacy Toolchain</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Antora Toolchain</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Enabling a Repo</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">The Playbook</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using <code>bdoc</code></span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">UI Bundles</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Doc Versioning</span>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">Development</span>
+    <span class="nav-text">Possible Topics</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/borland_cpp.html">Borland C++</a>
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Source Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using Git</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using GitHub</span>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/bugs.html">Bugs</a>
+    <span class="nav-text">Proposing a New Library</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/design_faq.html">Boost Website Design FAQ</a>
+    <span class="nav-text">Writing a Review</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/exemplar.html">Website Exemplars</a>
+    <span class="nav-text">Managing a Review</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/header.html">Boost Header policy</a>
+    <span class="nav-text">Maintaining a Library</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/index.html">Boost Development</a>
+    <span class="nav-text">Compiler Workarounds</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+    <span class="nav-text">Writing Unit Tests</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/library_metadata.html">Library Metadata</a>
+    <span class="nav-text">Writing Documentation</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+    <span class="nav-text">Continuous Integration</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+    <span class="nav-text">Code Coverage</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+    <span class="nav-text">The Superproject</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+    <span class="nav-text">Master and Develop</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-may-2008.html">Review Wizard Status Report for May 2008</a>
+    <span class="nav-text">Layout of a Repository</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+    <span class="nav-text">Library Metadata</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+    <span class="nav-text">Header-only Libraries</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+    <span class="nav-text">Source Code Conventions</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/requirements.html">Boost Library Requirements and Guidelines</a>
+    <span class="nav-text">Submitting Pull Requests</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/reuse.html">Boost Library Reuse</a>
+    <span class="nav-text">Managing Dependencies</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/running_regression_tests.html">Running Boost Regression Tests</a>
+    <span class="nav-text">Copyright Attribution</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+    <span class="nav-text">Using External Code</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/submissions.html">Boost Library Submission Process</a>
+    <span class="nav-text">Handling Old Compilers</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/test.html">Boost Test Policies and Protocols</a>
+    <span class="nav-text">Deprecating Interfaces</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/testing.html">Testing</a>
+    <span class="nav-text">Abandoned Libraries</span>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="dev/website_updating.html">Boost C++ Libraries - Updating Website</a>
+    <span class="nav-text">Backward Compatibility</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Collective Decision-Making</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Release Process</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Release Notes</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Packaging Boost</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Legacy Content</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/index.html">Boost Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="prev/website_updating.html">Boost C++ Libraries - Updating Website</a>
   </li>
 </ul>
   </li>
@@ -173,6 +302,7 @@ window.addEventListener('load', function() {
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Contributor Manual</a></li>
+    <li>Legacy Content</li>
     <li><a href="intro.html">Introduction</a></li>
   </ul>
 </nav>

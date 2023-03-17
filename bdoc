@@ -51,6 +51,7 @@ do
         npx antora --fetch \
             --attribute boost_version=$1 \
             --attribute boost_url=https://antora.cppalliance.org/$1/libs \
+            --attribute boost_dir_prefix=$1/libs \
             playbook.yml
 
     elif [ "$1" = "all" ]; then
