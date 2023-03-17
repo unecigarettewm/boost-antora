@@ -2,10 +2,10 @@
 #
 # website link structure:
 #
-# boost.org/libs/{name} redirect to versioned docs
-# boost.org/{version}/libs/{name} versioned Antora lib docs
-# boost.org/{version}/doc/user-manual Antora user manual (per-release)
-# boost.org/doc/contributor-manual  Antora contributor manual
+# boost.org/libs/{name}                         redirect to versioned docs
+# boost.org/{version}/libs/{name}               versioned Antora lib docs
+# boost.org/{version}/doc/user-manual           Antora user manual (per-release)
+# boost.org/doc/contributor-manual              Antora contributor manual
 # boost.org/doc/libs/{old-version}/libs/{name}  redirect to versioned legacy lib docs
 #
 # {version} uses dots: 1.82.0
@@ -16,16 +16,12 @@ asciidoc:
   attributes:
     boost_version: master
     boost_ui_branch: master
-    boost_doc_prefix: https://github.com/cppalliance
-    boost_lib_prefix: https://github.com/vinniefalco
-    boost_ui_prefix: https://github.com/cppalliance
-
     boost_dir_prefix: master
 
 site:
   url: https://antora.cppalliance.org/${boost_version}/libs
   title: Boost Libraries Documentation
-#  start_page: contributor-manual::index.adoc
+  start_page: contributor-manual::index.adoc
 
 antora:
   extensions:
@@ -33,22 +29,22 @@ antora:
 
 content:
   sources:
-  - url: ${boost_doc_prefix}/user-manual
+  - url: https://github.com/cppalliance/user-manual
     start_path: antora
-  - url: ${boost_doc_prefix}/contributor-manual
+  - url: https://github.com/cppalliance/contributor-manual
     start_path: antora
-  - url: ${boost_lib_prefix}/mp11
+  - url: https://github.com/vinniefalco/mp11
     start_path: antora
-  - url: ${boost_lib_prefix}/predef
+  - url: https://github.com/vinniefalco/predef
     start_path: antora
-  - url: ${boost_lib_prefix}/unordered
+  - url: https://github.com/vinniefalco/unordered
     start_path: antora
-  - url: ${boost_lib_prefix}/qvm
+  - url: https://github.com/vinniefalco/qvm
     start_path: antora
 
 ui:
   bundle:
-    url: ${boost_ui_prefix}/antora-ui/releases/download/ui-${boost_ui_branch}/ui-bundle.zip
+    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${boost_ui_branch}/ui-bundle.zip
     snapshot: true
 
 output:

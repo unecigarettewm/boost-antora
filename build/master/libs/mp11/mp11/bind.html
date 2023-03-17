@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bind, &lt;boost/mp11/bind.hpp&gt; :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/mp11/mp11/bind.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../contributor-manual/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="bind.html">Bind</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/master/antora/modules/ROOT/pages/mp11/bind.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Bind, &lt;boost/mp11/bind.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#mp_argi">mp_arg&lt;I&gt;</a></li>
+<li><a href="#1_9">_1, &#8230;&#8203;, _9</a></li>
+<li><a href="#mp_bindf_t">mp_bind&lt;F, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_bind_qq_t">mp_bind_q&lt;Q, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_bind_frontf_t">mp_bind_front&lt;F, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_bind_front_qq_t">mp_bind_front_q&lt;Q, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_bind_backf_t">mp_bind_back&lt;F, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_bind_back_qq_t">mp_bind_back_q&lt;Q, T&#8230;&#8203;&gt;</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="mp_argi"><a class="anchor" href="#mp_argi"></a>mp_arg&lt;I&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;std::size_t I&gt; struct mp_arg;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_arg&lt;I&gt;</code> is a quoted metafunction whose nested template <code>fn&lt;T&#8230;&#8203;&gt;</code> returns the <code>I</code>-th zero-based element of <code>T&#8230;&#8203;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="1_9"><a class="anchor" href="#1_9"></a>_1, &#8230;&#8203;, _9</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>using _1 = mp_arg&lt;0&gt;;
+using _2 = mp_arg&lt;1&gt;;
+using _3 = mp_arg&lt;2&gt;;
+using _4 = mp_arg&lt;3&gt;;
+using _5 = mp_arg&lt;4&gt;;
+using _6 = mp_arg&lt;5&gt;;
+using _7 = mp_arg&lt;6&gt;;
+using _8 = mp_arg&lt;7&gt;;
+using _9 = mp_arg&lt;8&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>_1</code> to <code>_9</code> are placeholder types, the equivalent to the placeholders of <code>boost::bind</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_bindf_t"><a class="anchor" href="#mp_bindf_t"></a>mp_bind&lt;F, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class F, class... T&gt; struct mp_bind;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_bind&lt;F, T&#8230;&#8203;&gt;</code> is a quoted metafunction that implements the type-based
+equivalent of <code>boost::bind</code>. Its nested template <code>fn&lt;U&#8230;&#8203;&gt;</code> returns <code>F&lt;V&#8230;&#8203;&gt;</code>,
+where <code>V&#8230;&#8203;</code> is <code>T&#8230;&#8203;</code> with the placeholders replaced by the corresponding
+element of <code>U&#8230;&#8203;</code> and the <code>mp_bind</code>, <code>mp_bind_front</code>, and <code>mp_bind_back</code>
+expressions replaced with their corresponding evaluations against <code>U&#8230;&#8203;</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, <code>mp_bind&lt;F, int, _2, mp_bind&lt;G, _1&gt;&gt;::fn&lt;float, void&gt;</code> is <code>F&lt;int, void, G&lt;float&gt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_bind_qq_t"><a class="anchor" href="#mp_bind_qq_t"></a>mp_bind_q&lt;Q, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Q, class... T&gt; using mp_bind_q = mp_bind&lt;Q::template fn, T...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_bind</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_bind_frontf_t"><a class="anchor" href="#mp_bind_frontf_t"></a>mp_bind_front&lt;F, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class F, class... T&gt; struct mp_bind_front;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_bind_front&lt;F, T&#8230;&#8203;&gt;</code> binds the leftmost arguments of <code>F</code> to <code>T&#8230;&#8203;</code>. Its nested template <code>fn&lt;U&#8230;&#8203;&gt;</code> returns <code>F&lt;T&#8230;&#8203;, U&#8230;&#8203;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_bind_front_qq_t"><a class="anchor" href="#mp_bind_front_qq_t"></a>mp_bind_front_q&lt;Q, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Q, class... T&gt; using mp_bind_front_q =
+    mp_bind_front&lt;Q::template fn, T...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_bind_front</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_bind_backf_t"><a class="anchor" href="#mp_bind_backf_t"></a>mp_bind_back&lt;F, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;template&lt;class...&gt; class F, class... T&gt; struct mp_bind_back;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_bind_back&lt;F, T&#8230;&#8203;&gt;</code> binds the rightmost arguments of <code>F</code> to <code>T&#8230;&#8203;</code>. Its nested template <code>fn&lt;U&#8230;&#8203;&gt;</code> returns <code>F&lt;U&#8230;&#8203;, T&#8230;&#8203;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_bind_back_qq_t"><a class="anchor" href="#mp_bind_back_qq_t"></a>mp_bind_back_q&lt;Q, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Q, class... T&gt; using mp_bind_back_q =
+    mp_bind_back&lt;Q::template fn, T...&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_bind_back</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

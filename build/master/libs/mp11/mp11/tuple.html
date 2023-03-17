@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tuple Operations, &lt;boost/mp11/tuple.hpp&gt; :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/mp11/mp11/tuple.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../contributor-manual/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="tuple.html">Tuple Operations</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/master/antora/modules/ROOT/pages/mp11/tuple.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Tuple Operations, &lt;boost/mp11/tuple.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#tuple_applyf_tp">tuple_apply(f, tp)</a></li>
+<li><a href="#construct_from_tuplettp">construct_from_tuple&lt;T&gt;(tp)</a></li>
+<li><a href="#tuple_for_eachtp_f">tuple_for_each(tp, f)</a></li>
+<li><a href="#tuple_transformf_tp">tuple_transform(f, tp&#8230;&#8203;)</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="tuple_applyf_tp"><a class="anchor" href="#tuple_applyf_tp"></a>tuple_apply(f, tp)</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class F, class Tp&gt; constexpr /*...*/ tuple_apply(F&amp;&amp; f, Tp&amp;&amp; tp);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>tuple_apply(f, tp)</code> returns <code>std::forward&lt;F&gt;(f)(std::get&lt;J&gt;(std::forward&lt;Tp&gt;(tp))&#8230;&#8203;)</code> for <code>J</code> in 0..<code>N-1</code>,
+where <code>N</code> is <code>std::tuple_size&lt;typename std::remove_reference&lt;Tp&gt;::type&gt;::value</code>. Same as <code>std::apply</code> in C++17.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="construct_from_tuplettp"><a class="anchor" href="#construct_from_tuplettp"></a>construct_from_tuple&lt;T&gt;(tp)</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class T, class Tp&gt; T construct_from_tuple(Tp&amp;&amp; tp);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>construct_from_tuple&lt;T&gt;(tp)</code> returns <code>T(std::get&lt;J&gt;(std::forward&lt;Tp&gt;(tp))&#8230;&#8203;)</code> for <code>J</code> in 0..<code>N-1</code>,
+where <code>N</code> is <code>std::tuple_size&lt;typename std::remove_reference&lt;Tp&gt;::type&gt;::value</code>. Same as <code>std::make_from_tuple</code> in C&#43;&#43;17.
+The name of the function doesn&#8217;t match the C&#43;&#43;17 one to avoid ambiguities when both are visible or in unqualified calls.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tuple_for_eachtp_f"><a class="anchor" href="#tuple_for_eachtp_f"></a>tuple_for_each(tp, f)</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class Tp, class F&gt; constexpr F tuple_for_each(Tp&amp;&amp; tp, F&amp;&amp; f);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>tuple_for_each(tp, f)</code> applies the function object <code>f</code> to each element of <code>tp</code> in order by evaluating the
+expression <code>f(std::get&lt;J&gt;(std::forward&lt;Tp&gt;(tp)))</code> for <code>J</code> in 0..<code>N-1</code>, where <code>N</code> is <code>std::tuple_size&lt;typename std::remove_reference&lt;Tp&gt;::type&gt;::value</code>.</p>
+</div>
+<div class="paragraph">
+<p>Returns <code>std::forward&lt;F&gt;(f)</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tuple_transformf_tp"><a class="anchor" href="#tuple_transformf_tp"></a>tuple_transform(f, tp&#8230;&#8203;)</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class F, class... Tp&gt; constexpr /*...*/ tuple_transform(F const&amp; f, Tp&amp;&amp;... tp);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>tuple_transform(f, tp&#8230;&#8203;)</code> accepts a function object <code>f</code> followed by one or more tuples of equal length
+(<code>std::tuple</code>, <code>std::pair</code> and <code>std::array</code> are considered tuples.)</p>
+</div>
+<div class="paragraph">
+<p>The callable <code>f</code> must accept as many arguments as there are tuples. The function object is called with the
+first elements of each tuple, with the second elements of each tuple, and so on, as if by evaluating
+the expression <code>f(std::get&lt;J&gt;(std::forward&lt;Tp&gt;(tp))&#8230;&#8203;)</code> for <code>J</code> in 0..<code>N-1</code>, where <code>N</code> is the length of
+the tuples.</p>
+</div>
+<div class="paragraph">
+<p>The order in which the elements of the tuples are processed is unspecified.</p>
+</div>
+<div class="paragraph">
+<p>The results are returned as a <code>std::tuple&lt;T&#8230;&#8203;&gt;</code> with <code>T&#8230;&#8203;</code> deduced from the return values of <code>f</code> (lvalue
+references are preserved, rvalue references are returned by value.)</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

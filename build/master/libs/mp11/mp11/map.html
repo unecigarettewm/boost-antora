@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Map Operations, &lt;boost/mp11/map.hpp&gt; :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/mp11/mp11/map.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../contributor-manual/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="map.html">Map Operations</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/vinniefalco/mp11/edit/master/antora/modules/ROOT/pages/mp11/map.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Map Operations, &lt;boost/mp11/map.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#mp_is_mapm">mp_is_map&lt;M&gt;</a></li>
+<li><a href="#mp_map_findm_k">mp_map_find&lt;M, K&gt;</a></li>
+<li><a href="#mp_map_containsm_k">mp_map_contains&lt;M, K&gt;</a></li>
+<li><a href="#mp_map_insertm_t">mp_map_insert&lt;M, T&gt;</a></li>
+<li><a href="#mp_map_replacem_t">mp_map_replace&lt;M, T&gt;</a></li>
+<li><a href="#mp_map_updatem_t_f">mp_map_update&lt;M, T, F&gt;</a></li>
+<li><a href="#mp_map_update_qm_t_q">mp_map_update_q&lt;M, T, Q&gt;</a></li>
+<li><a href="#mp_map_erasem_k">mp_map_erase&lt;M, K&gt;</a></li>
+<li><a href="#mp_map_keysm">mp_map_keys&lt;M&gt;</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A map is a list of lists, the inner lists having at least one element (the key.) The keys of the map must be unique.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_is_mapm"><a class="anchor" href="#mp_is_mapm"></a>mp_is_map&lt;M&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M&gt; using mp_is_map = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_is_map&lt;M&gt;</code> is <code>mp_true</code> if <code>M</code> is a map, <code>mp_false</code> otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_findm_k"><a class="anchor" href="#mp_map_findm_k"></a>mp_map_find&lt;M, K&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class K&gt; using mp_map_find = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_map_find&lt;M, K&gt;</code> is an alias for the element of the map <code>M</code> with a key <code>K</code>, or for <code>void</code>, if there is no such element.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_containsm_k"><a class="anchor" href="#mp_map_containsm_k"></a>mp_map_contains&lt;M, K&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class K&gt; using mp_map_contains =
+    mp_not&lt;std::is_same&lt;mp_map_find&lt;M, K&gt;, void&gt;&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_map_contains&lt;M, K&gt;</code> is <code>mp_true</code> if the map <code>M</code> contains an element with a key <code>K</code>, <code>mp_false</code> otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_insertm_t"><a class="anchor" href="#mp_map_insertm_t"></a>mp_map_insert&lt;M, T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class T&gt; using mp_map_insert =
+    mp_if&lt; mp_map_contains&lt;M, mp_first&lt;T&gt;&gt;, M, mp_push_back&lt;M, T&gt; &gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inserts the element <code>T</code> into the map <code>M</code>, if an element with a key <code>mp_first&lt;T&gt;</code> is not already in <code>M</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_replacem_t"><a class="anchor" href="#mp_map_replacem_t"></a>mp_map_replace&lt;M, T&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class T&gt; using mp_map_replace = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the map <code>M</code> does not contain an element with a key <code>mp_first&lt;T&gt;</code>, inserts it (using <code>mp_push_back&lt;M, T&gt;</code>); otherwise,
+replaces the existing element with <code>T</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_updatem_t_f"><a class="anchor" href="#mp_map_updatem_t_f"></a>mp_map_update&lt;M, T, F&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class T, template&lt;class...&gt; class F&gt; using mp_map_update = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the map <code>M</code> does not contain an element with a key <code>mp_first&lt;T&gt;</code>, inserts it (using <code>mp_push_back&lt;M, T&gt;</code>); otherwise,
+replaces the existing element <code>L&lt;X, Y&#8230;&#8203;&gt;</code> with <code>L&lt;X, F&lt;X, Y&#8230;&#8203;&gt;&gt;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Using mp_map_update to count the number of occurrences of types in a list</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T, class U&gt; using inc2nd = mp_int&lt;U::value + 1&gt;;
+
+template&lt;class M, class T&gt; using count_types =
+    mp_map_update&lt;M, std::pair&lt;T, mp_int&lt;1&gt;&gt;, inc2nd&gt;;
+
+using L1 = mp_list&lt;float, char, float, float, float, float, char, float&gt;;
+
+using R1 = mp_fold&lt;L1, std::tuple&lt;&gt;, count_types&gt;;
+// std::tuple&lt;std::pair&lt;float, mp_int&lt;6&gt;&gt;, std::pair&lt;char, mp_int&lt;2&gt;&gt;&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_update_qm_t_q"><a class="anchor" href="#mp_map_update_qm_t_q"></a>mp_map_update_q&lt;M, T, Q&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class T, class Q&gt; using mp_map_update_q =
+    mp_map_update&lt;M, T, Q::template fn&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As <code>mp_map_update</code>, but takes a quoted metafunction.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_erasem_k"><a class="anchor" href="#mp_map_erasem_k"></a>mp_map_erase&lt;M, K&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M, class K&gt; using mp_map_erase = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the map <code>M</code> contains an element with a key <code>K</code>, removes it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_keysm"><a class="anchor" href="#mp_map_keysm"></a>mp_map_keys&lt;M&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class M&gt; using mp_map_keys = mp_transform&lt;mp_first, M&gt;;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_map_keys&lt;M&gt;</code> returns a list of the keys of <code>M</code>. When <code>M</code> is a valid map, the keys are unique, so the result is a set.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
