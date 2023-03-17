@@ -93,3 +93,6 @@ The master/develop branches of the library documentation is
 designed to co-exist alongside the per-release documentation
 and thus the branch name (or release version) does appear
 in its URLs.
+
+When building a release the release layout is used which
+omits the header, Google analytics, and Edit this Page.
