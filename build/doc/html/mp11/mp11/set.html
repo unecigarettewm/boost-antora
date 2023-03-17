@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Set Operations, &lt;boost/mp11/set.hpp&gt; :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/mp11/mp11/set.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../contributor-manual/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Boost.Mp11</a></li>
+    <li><a href="../reference.html">Reference</a></li>
+    <li><a href="set.html">Set Operations</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Set Operations, &lt;boost/mp11/set.hpp&gt;</h1>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel1">
+<li><a href="#mp_is_sets">mp_is_set&lt;S&gt;</a></li>
+<li><a href="#mp_set_containss_v">mp_set_contains&lt;S, V&gt;</a></li>
+<li><a href="#mp_set_push_backs_t">mp_set_push_back&lt;S, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_set_push_fronts_t">mp_set_push_front&lt;S, T&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_set_unionl">mp_set_union&lt;L&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_set_intersections">mp_set_intersection&lt;S&#8230;&#8203;&gt;</a></li>
+<li><a href="#mp_set_differencel_s">mp_set_difference&lt;L, S&#8230;&#8203;&gt;</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A set is a list whose elements are unique.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_is_sets"><a class="anchor" href="#mp_is_sets"></a>mp_is_set&lt;S&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class S&gt; using mp_is_set = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_is_set&lt;S&gt;</code> is <code>mp_true</code> if <code>S</code> is a set, <code>mp_false</code> otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_set_containss_v"><a class="anchor" href="#mp_set_containss_v"></a>mp_set_contains&lt;S, V&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class S, class V&gt; using mp_set_contains = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_set_contains&lt;S, V&gt;</code> is <code>mp_true</code> if the type <code>V</code> is an element of the set <code>S</code>, <code>mp_false</code> otherwise.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_set_push_backs_t"><a class="anchor" href="#mp_set_push_backs_t"></a>mp_set_push_back&lt;S, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class S, class... T&gt; using mp_set_push_back = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For each <code>T1</code> in <code>T&#8230;&#8203;</code>, <code>mp_set_push_back&lt;S, T&#8230;&#8203;&gt;</code> appends <code>T1</code> to the end of the set <code>S</code> if it&#8217;s not already an element of <code>S</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_set_push_fronts_t"><a class="anchor" href="#mp_set_push_fronts_t"></a>mp_set_push_front&lt;S, T&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class S, class... T&gt; using mp_set_push_front = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_set_push_front&lt;S, T&#8230;&#8203;&gt;</code> inserts at the front of the set <code>S</code> those elements of <code>T&#8230;&#8203;</code> for which <code>S</code> does not already contain the same type.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_set_unionl"><a class="anchor" href="#mp_set_unionl"></a>mp_set_union&lt;L&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class... L&gt; using mp_set_union = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_set_union&lt;S, L&#8230;&#8203;&gt;</code> is <code>mp_set_push_back&lt;S, T&#8230;&#8203;&gt;</code>, where <code>T&#8230;&#8203;</code> are the combined elements of the lists <code>L&#8230;&#8203;</code>.
+<code>mp_set_union&lt;&gt;</code> is <code>mp_list&lt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_set_intersections"><a class="anchor" href="#mp_set_intersections"></a>mp_set_intersection&lt;S&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class... S&gt; using mp_set_intersection = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_set_intersection&lt;S&#8230;&#8203;&gt;</code> returns a set that contains the elements that occur in all of the sets <code>S&#8230;&#8203;</code>.
+<code>mp_set_intersection&lt;&gt;</code> is <code>mp_list&lt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_set_differencel_s"><a class="anchor" href="#mp_set_differencel_s"></a>mp_set_difference&lt;L, S&#8230;&#8203;&gt;</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre>template&lt;class L, class... S&gt; using mp_set_difference = /*...*/;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>mp_set_difference&lt;L, S&#8230;&#8203;&gt;</code> removes the elements of the list <code>L</code> that appear in any of the sets <code>S&#8230;&#8203;</code> and
+returns the result.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

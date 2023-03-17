@@ -1,0 +1,2354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Simple C&#43;&#43;11 metaprogramming, part 2 :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/mp11/simple_cxx11_metaprogramming_2.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="mp11" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="index.html">Boost.Mp11</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mp11/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mp11/definitions.html">Definitions</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mp11/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="mp11/changelog.html">Revision History</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="reference.html">Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/integral.html">Integral Constants</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/list.html">List Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/utility.html">Utility Components</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/algorithm.html">Algorithms</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/set.html">Set Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/map.html">Map Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/function.html">Helper Metafunctions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/bind.html">Bind</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/integer_sequence.html">Integer Sequences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/tuple.html">Tuple Operations</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/mp11.html">Convenience Header</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="mp11/mpl.html">MPL Support</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../contributor-manual/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Boost.Mp11</a></li>
+    <li><a href="simple_cxx11_metaprogramming_2.html">Simple C&#43;&#43;11 metaprogramming, part 2</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Simple C&#43;&#43;11 metaprogramming, part 2</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#vectors_sets_and_maps">Vectors, sets, and maps</a></li>
+<li><a href="#mp_contains">mp_contains</a></li>
+<li><a href="#mp_map_find">mp_map_find</a></li>
+<li><a href="#mp_at">mp_at</a></li>
+<li><a href="#mp_drop">mp_drop</a></li>
+<li><a href="#mp_find_index">mp_find_index</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p><em>Efficient algorithms for membership testing, random access, and retrieval by
+key</em></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Being late to the metaprogramming party, I make no claim of having
+invented the techniques in this article. A quick look at the implementations
+of, for example, Louis Dionne&#8217;s <a href="https://github.com/ldionne/mpl11">mpl11</a> and
+Eric Niebler&#8217;s <a href="https://github.com/ericniebler/meta">meta</a>, shows that most of
+these tricks are already known. Dave Abrahams
+<a href="https://github.com/dabrahams/mpl11">has experimented</a> along these lines in 2012.
+The original inventor of the multiple inheritance trick and the <code>void*</code>
+arguments trick is probably Richard Smith, who has posted
+<a href="https://llvm.org/bugs/attachment.cgi?id=8825">two</a>
+<a href="https://llvm.org/bugs/attachment.cgi?id=8838">examples</a> in response to
+<a href="https://llvm.org/bugs/show_bug.cgi?id=13263">a Clang bug report</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vectors_sets_and_maps"><a class="anchor" href="#vectors_sets_and_maps"></a>Vectors, sets, and maps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="simple_cxx11_metaprogramming.html" class="xref page">Last time</a>, I outlined a style of
+metaprogramming that operated on type lists&#8201;&#8212;&#8201;variadic class templates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... T&gt; struct mp_list {};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Classic Lisp uses lists as its only data structure, but operating on a list is
+usually linear in the number of its elements.</p>
+</div>
+<div class="paragraph">
+<p>In addition to <code>list</code>, the STL has <code>vector</code>, <code>set</code>, and <code>map</code>. <code>vector</code>
+supports random access by index; <code>set</code> has efficient test for membership; <code>map</code>
+associates keys with values and has efficient lookup based on key.</p>
+</div>
+<div class="paragraph">
+<p>Instead of introducing separate data structure such as <code>mp_vector</code>, <code>mp_set</code>,
+<code>mp_map</code>, we&#8217;ll keep our data in a list form, and attempt to provide efficient
+algorithms for random access, membership testing, and lookup.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_contains"><a class="anchor" href="#mp_contains"></a>mp_contains</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s starts with sets. A set is just a list with unique elements. To obtain a
+set from an arbitrary list, we&#8217;ll need an algorithm that removes the
+duplicates. Let&#8217;s call it <code>mp_unique&lt;L&gt;</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">// mp_if
+
+template&lt;bool C, class T, class E&gt; struct mp_if_c_impl;
+
+template&lt;class T, class E&gt; struct mp_if_c_impl&lt;true, T, E&gt;
+{
+    using type = T;
+};
+
+template&lt;class T, class E&gt; struct mp_if_c_impl&lt;false, T, E&gt;
+{
+    using type = E;
+};
+
+template&lt;bool C, class T, class E&gt;
+    using mp_if_c = typename mp_if_c_impl&lt;C, T, E&gt;::type;
+
+template&lt;class C, class T, class E&gt;
+    using mp_if = typename mp_if_c_impl&lt;C::value != 0, T, E&gt;::type;
+
+// mp_unique
+
+template&lt;class L&gt; struct mp_unique_impl;
+
+template&lt;class L&gt; using mp_unique = typename mp_unique_impl&lt;L&gt;::type;
+
+template&lt;template&lt;class...&gt; class L&gt; struct mp_unique_impl&lt;L&lt;&gt;&gt;
+{
+    using type = L&lt;&gt;;
+};
+
+template&lt;template&lt;class...&gt; class L, class T1, class... T&gt;
+    struct mp_unique_impl&lt;L&lt;T1, T...&gt;&gt;
+{
+    using _rest = mp_unique&lt;L&lt;T...&gt;&gt;;
+    using type = mp_if&lt;<strong>mp_contains</strong>&lt;_rest, T1&gt;, _rest, mp_push_front&lt;_rest, T1&gt;&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For membership testing, we&#8217;ve introduced an algorithm <code>mp_contains&lt;L, V&gt;</code> that
+returns <code>true</code> when <code>L</code> contains <code>V</code>. The straightforward recursive
+implementation of <code>mp_contains</code> is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, class V&gt; struct mp_contains_impl;
+
+template&lt;class L, class V&gt; using mp_contains = typename mp_contains_impl&lt;L, V&gt;::type;
+
+template&lt;template&lt;class...&gt; class L, class V&gt; struct mp_contains_impl&lt;L&lt;&gt;, V&gt;
+{
+    using type = std::false_type;
+};
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_contains_impl&lt;L&lt;V, T...&gt;, V&gt;
+{
+    using type = std::true_type;
+};
+
+template&lt;template&lt;class...&gt; class L, class T1, class... T, class V&gt;
+    struct mp_contains_impl&lt;L&lt;T1, T...&gt;, V&gt;: mp_contains_impl&lt;L&lt;T...&gt;, V&gt;
+{
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that <code>mp_unique&lt;L&gt;</code> makes <code>N</code> calls to <code>mp_contains</code>, where <code>N</code> is the
+length of the list <code>L</code>. This means that <code>mp_contains</code> needs to be as fast as
+possible, which the above implementation, well, isn&#8217;t.</p>
+</div>
+<div class="paragraph">
+<p>Here are the compile times in seconds for invoking <code>mp_unique</code> on a list with
+<code>N</code> (distinct) elements:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(Tests done under Windows/Cygwin. All compilers are 32 bit. No optimizations.
+DNF stands for "did not finish", which usually means that the compiler ran out
+of heap space or crashed.)</p>
+</div>
+<div class="paragraph">
+<p>We clearly need a better alternative.</p>
+</div>
+<div class="paragraph">
+<p>I ended the previous article with an implementation of <code>mp_contains</code> that
+relied on <code>mp_count</code>, which in turn relied on <code>mp_plus</code>. Let&#8217;s see how it
+fares:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, mp_count/mp_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, mp_count/mp_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, mp_count/mp_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32.3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Not <em>that</em> bad, at least if your compiler happens to be <code>g++</code>. Still, there
+ought to be room for improvement here.</p>
+</div>
+<div class="paragraph">
+<p>To do better, we have to somehow leverage the language features, such as pack
+expansion, to do more of the work for us. For inspiration, let&#8217;s turn to
+section 14.5.3 paragraph 4 of the C&#43;&#43;11 standard, which explains that pack
+expansions can occur in the following contexts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>In a function parameter pack (8.3.5); the pattern is the
+<em>parameter-declaration</em> without the ellipsis.</strong></p>
+</li>
+<li>
+<p>In a template parameter pack that is a pack expansion (14.1):</p>
+</li>
+<li>
+<p><strong>In an <em>initializer-list</em> (8.5); the pattern is an
+<em>initializer-clause</em>.</strong></p>
+</li>
+<li>
+<p><strong>In a <em>base-specifier-list</em> (Clause 10); the pattern is a
+<em>base-specifier</em>.</strong></p>
+</li>
+<li>
+<p>In a <em>mem-initializer-list</em> (12.6.2); the pattern is a
+<em>mem-initializer</em>.</p>
+</li>
+<li>
+<p>In a <em>template-argument-list</em> (14.3); the pattern is a
+<em>template-argument</em>.</p>
+</li>
+<li>
+<p>In a <em>dynamic-exception-specification</em> (15.4); the pattern is a
+<em>type-id</em>.</p>
+</li>
+<li>
+<p>In an <em>attribute-list</em> (7.6.1); the pattern is an <em>attribute</em>.</p>
+</li>
+<li>
+<p>In an <em>alignment-specifier</em> (7.6.2); the pattern is the
+<em>alignment-specifier</em> without the ellipsis.</p>
+</li>
+<li>
+<p>In a <em>capture-list</em> (5.1.2); the pattern is a <em>capture</em>.</p>
+</li>
+<li>
+<p>In a <code>sizeof...</code> expression (5.3.3); the pattern is an <em>identifier</em>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <strong>emphasis</strong> is mine and indicates possible leads.</p>
+</div>
+<div class="paragraph">
+<p>Our first option is to expand the parameter pack into arguments for a function
+call. Since we&#8217;re interested in operations that occur at compile time, calling
+a function may not appear useful; but C&#43;&#43;11 functions can be <code>constexpr</code>, and
+<code>constexpr</code> function "calls" do occur at compile time.</p>
+</div>
+<div class="paragraph">
+<p>Recall our <code>mp_count</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, class V&gt; struct mp_count_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_count_impl&lt;L&lt;T...&gt;, V&gt;
+{
+    using type = mp_plus&lt;std::is_same&lt;T, V&gt;...&gt;;
+};
+
+template&lt;class L, class V&gt; using mp_count = typename mp_count_impl&lt;L, V&gt;::type;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead of using the template alias <code>mp_plus</code> to sum the <code>is_same</code> expressions,
+we can use a <code>constexpr</code> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">constexpr std::size_t cx_plus()
+{
+    return 0;
+}
+
+template&lt;class T1, class... T&gt; constexpr std::size_t cx_plus(T1 t1, T... t)
+{
+    return t1 + cx_plus(t...);
+}
+
+// mp_size_t
+
+template&lt;std::size_t N&gt; using mp_size_t = std::integral_constant&lt;std::size_t, N&gt;;
+
+// mp_count
+
+template&lt;class L, class V&gt; struct mp_count_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_count_impl&lt;L&lt;T...&gt;, V&gt;
+{
+    using type = mp_size_t&lt;cx_plus(std::is_same&lt;T, V&gt;::value...)&gt;;
+};
+
+template&lt;class L, class V&gt; using mp_count = typename mp_count_impl&lt;L, V&gt;::type;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with the following results:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, mp_count/cx_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, mp_count/cx_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.8</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>We&#8217;ve improved the times, but lost VC++ 2013 due to its not implementing
+<code>constexpr</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s try pack expansion into an <em>initializer-list</em>. Instead of passing the
+<code>is_same</code> expressions to a function, we can build a constant array out of them,
+then sum the array with a <code>constexpr</code> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">constexpr std::size_t cx_plus2(bool const * first, bool const * last)
+{
+    return first == last? 0: *first + cx_plus2(first + 1, last);
+}
+
+// mp_count
+
+template&lt;class L, class V&gt; struct mp_count_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_count_impl&lt;L&lt;T...&gt;, V&gt;
+{
+    static constexpr bool _v[] = { std::is_same&lt;T, V&gt;::value... };
+    using type = mp_size_t&lt;cx_plus2(_v, _v + sizeof...(T))&gt;;
+};
+
+template&lt;class L, class V&gt; using mp_count = typename mp_count_impl&lt;L, V&gt;::type;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a neat trick, but is it fast?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, mp_count/cx_plus2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, mp_count/cx_plus2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.7</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>That&#8217;s a bit disappointing. Let&#8217;s see what can we do with expanding a parameter
+pack into a base-specifier-list. We would be able to define a class that
+derives from every element of the pack:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">struct U: T... {};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can then use <code>std::is_base_of&lt;V, U&gt;</code> to test whether a type <code>V</code> is a base of
+<code>U</code>, that is, whether it&#8217;s one of the elements of the parameter pack. Which is
+exactly what we need.</p>
+</div>
+<div class="paragraph">
+<p>Arbitrary types such as <code>void</code>, <code>int</code>, or <code>void(int)</code> can&#8217;t be used as base
+classes, but we&#8217;ll wrap the types in an empty class template, which we&#8217;ll call
+<code>mp_identity</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class T&gt; struct mp_identity
+{
+    using type = T;
+};
+
+template&lt;class L, class V&gt; struct mp_contains_impl;
+
+template&lt;class L, class V&gt; using mp_contains = typename mp_contains_impl&lt;L, V&gt;::type;
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_contains_impl&lt;L&lt;T...&gt;, V&gt;
+{
+    struct U: mp_identity&lt;T&gt;... {};
+    using type = std::is_base_of&lt;mp_identity&lt;V&gt;, U&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Performance?</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, is_base_of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, is_base_of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, is_base_of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This implementation is a clear winner.</p>
+</div>
+<div class="paragraph">
+<p>In fairness, we ought to note that the first four implementations of
+<code>mp_contains</code> do not rely on the list elements being unique. This makes
+<code>mp_contains</code> an algorithm that supports arbitrary lists, not just sets.</p>
+</div>
+<div class="paragraph">
+<p>The <code>is_base_of</code> implementation, however, does not support lists that contain
+duplicates, because it&#8217;s not possible to inherit directly from the same type
+twice. So it does not implement the general <code>mp_contains</code>, but something that
+should probably be named <code>mp_set_contains</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can avoid the "no duplicates" requirement by modifying the implementation to
+inherit from <code>mp_identity&lt;T&gt;</code> indirectly, via an intermediate base class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">// indirect_inherit
+
+template&lt;std::size_t I, class T&gt; struct inherit_second: T {};
+
+template&lt;class L, class S&gt; struct indirect_inherit_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T, std::size_t... J&gt;
+    struct indirect_inherit_impl&lt;L&lt;T...&gt;, <a href="http://en.cppreference.com/w/cpp/utility/integer_sequence">integer_sequence</a>&lt;std::size_t, J...&gt;&gt;:
+        inherit_second&lt;J, mp_identity&lt;T&gt;&gt;... {};
+
+template&lt;class L&gt; using indirect_inherit =
+    indirect_inherit_impl&lt;L, <a href="http://en.cppreference.com/w/cpp/utility/integer_sequence">make_index_sequence</a>&lt;mp_size&lt;L&gt;::value&gt;&gt;;
+
+// mp_contains
+
+template&lt;class L, class V&gt; struct mp_contains_impl
+{
+    using U = indirect_inherit&lt;L&gt;;
+    using type = std::is_base_of&lt;mp_identity&lt;V&gt;, U&gt;;
+};
+
+template&lt;class L, class V&gt; using mp_contains = typename mp_contains_impl&lt;L, V&gt;::type;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This, however, pretty much nullifies the spectacular performance gains we&#8217;ve
+observed with the original <code>is_base_of</code>-based implementation:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, mp_count/mp_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, is_base_of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, is_base_of/indirect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">49.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">153.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, mp_count/mp_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, mp_count/cx_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, mp_count/cx_plus2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, is_base_of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, is_base_of/indirect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, mp_count/mp_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, mp_count/cx_plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, mp_count/cx_plus2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, is_base_of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, is_base_of/indirect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18.2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_map_find"><a class="anchor" href="#mp_map_find"></a>mp_map_find</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A map, in the STL sense, is a data structure that associates keys with values
+and can efficiently retrieve, given a key, its associated value. For our
+purposes, a map will be any list of lists for which the inner lists have at
+least one element, the key; the rest of the elements we&#8217;ll consider to be the
+associated value. For example, the list</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[[A, B], [C, D, E], [F], [G, H]]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is a map with keys <code>A</code>, <code>C</code>, <code>F</code>, and <code>G</code>, with associated values <code>[B]</code>,
+<code>[D, E]</code>, <code>[]</code>, and <code>[H]</code>, respectively. We&#8217;ll require unique keys, for reasons
+that&#8217;ll become evident later.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll show two other examples of maps, this time using real C&#43;&#43; code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using Map = mp_list&lt;mp_list&lt;int, int*&gt;, mp_list&lt;void, void*&gt;, mp_list&lt;char, char*&gt;&gt;;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">using Map2 = std::tuple&lt;std::pair&lt;int, int[2]&gt;, std::pair&lt;char, char[2]&gt;&gt;;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Lisp name of the algorithm that performs retrieval based on key is <code>ASSOC</code>,
+but I&#8217;ll call it <code>mp_map_find</code>. <code>mp_map_find&lt;M, K&gt;</code> returns the element of <code>M</code>
+whose first element is <code>K</code>. For example, <code>mp_map_find&lt;Map2, int&gt;</code> would return
+<code>std::pair&lt;int, int[2]&gt;</code>. If there&#8217;s no such key, it returns <code>void</code>.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s almost no need to implement and benchmark the recursive version of
+<code>mp_map_find</code>&#8201;&#8212;&#8201;we can be pretty sure it will perform horribly. Still,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class M, class K&gt; struct mp_map_find_impl;
+
+template&lt;class M, class K&gt; using mp_map_find = typename mp_map_find_impl&lt;M, K&gt;::type;
+
+template&lt;template&lt;class...&gt; class M, class K&gt; struct mp_map_find_impl&lt;M&lt;&gt;, K&gt;
+{
+    using type = void;
+};
+
+template&lt;template&lt;class...&gt; class M, class T1, class... T, class K&gt;
+    struct mp_map_find_impl&lt;M&lt;T1, T...&gt;, K&gt;
+{
+    using type = mp_if&lt;std::is_same&lt;mp_front&lt;T1&gt;, K&gt;, T1, mp_map_find&lt;M&lt;T...&gt;, K&gt;&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The compile time, in seconds, for <code>N</code> lookups into a map of size <code>N</code>, is as
+follows:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>I told you there was no point.</p>
+</div>
+<div class="paragraph">
+<p>But, I hear some of you say, you&#8217;re evaluating the else branch even if the
+condition is true, and that&#8217;s horribly inefficient!</p>
+</div>
+<div class="paragraph">
+<p>Well, this would only improve the performance by a factor of approximately two
+on average, and only if the element is present, but fine, let&#8217;s try it. The
+element happens to be present in the benchmark, so let&#8217;s see.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">// mp_eval_if
+
+template&lt;bool C, class T, template&lt;class...&gt; class E, class... A&gt;
+    struct mp_eval_if_c_impl;
+
+template&lt;class T, template&lt;class...&gt; class E, class... A&gt;
+    struct mp_eval_if_c_impl&lt;true, T, E, A...&gt;
+{
+    using type = T;
+};
+
+template&lt;class T, template&lt;class...&gt; class E, class... A&gt;
+    struct mp_eval_if_c_impl&lt;false, T, E, A...&gt;
+{
+    using type = E&lt;A...&gt;;
+};
+
+template&lt;bool C, class T, template&lt;class...&gt; class E, class... A&gt;
+    using mp_eval_if_c = typename mp_eval_if_c_impl&lt;C, T, E, A...&gt;::type;
+
+template&lt;class C, class T, template&lt;class...&gt; class E, class... A&gt;
+    using mp_eval_if = typename mp_eval_if_c_impl&lt;C::value != 0, T, E, A...&gt;::type;
+
+// mp_map_find
+
+template&lt;class M, class K&gt; struct mp_map_find_impl;
+
+template&lt;class M, class K&gt; using mp_map_find = typename mp_map_find_impl&lt;M, K&gt;::type;
+
+template&lt;template&lt;class...&gt; class M, class K&gt; struct mp_map_find_impl&lt;M&lt;&gt;, K&gt;
+{
+    using type = void;
+};
+
+template&lt;template&lt;class...&gt; class M, class T1, class... T, class K&gt;
+    struct mp_map_find_impl&lt;M&lt;T1, T...&gt;, K&gt;
+{
+    using type = mp_eval_if&lt;std::is_same&lt;mp_front&lt;T1&gt;, K&gt;, T1, mp_map_find, M&lt;T...&gt;, K&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There you go:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>I told you there was no point.</p>
+</div>
+<div class="paragraph">
+<p>Point or no, to establish that the recursive implementation is inefficient is
+not the same as to come up with an efficient one. There are two things that
+make the <code>mp_contains</code> techniques inapplicable to our present case: first,
+<code>mp_contains</code> only had to return true or false, whereas <code>mp_map_find</code> returns a
+type, and second, in <code>mp_contains</code> we knew the exact type of the element for
+which we were looking, whereas here, we only know its <code>mp_front</code>.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately, there does exist a language feature that can solve both: C&#43;&#43; can
+deduce the template parameters of base classes when passed a derived class. In
+this example,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">struct K1 {};
+struct V1 {};
+
+struct X: std::pair&lt;K1, V1&gt; {};
+
+template&lt;class A, class B&gt; void f(std::pair&lt;A, B&gt; const &amp; p);
+
+int main()
+{
+    f(X());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>the call to <code>f(X())</code> deduces <code>A</code> as <code>K1</code> and <code>B</code> as <code>V1</code>. If we have more than
+one <code>std::pair</code> base class, we can fix <code>A</code> to be <code>K1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">struct K1 {};
+struct V1 {};
+
+struct K2 {};
+struct V2 {};
+
+struct X: std::pair&lt;K1, V1&gt;, std::pair&lt;K2, V2&gt; {};
+
+template&lt;class B&gt; void f(std::pair&lt;K1, B&gt; const &amp; p);
+
+int main()
+{
+    f(X());
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and <code>B</code> will be deduced as <code>V1</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can retrieve the results of the deduction by returning the type we want:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class B&gt; std::pair&lt;K1, B&gt; f(std::pair&lt;K1, B&gt; const &amp; p);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then using <code>decltype(f(X()))</code> to obtain this return type.</p>
+</div>
+<div class="paragraph">
+<p>What if <code>X</code> doesn&#8217;t have a base of type <code>std::pair&lt;K1, B&gt;</code>? The deduction will
+fail and we&#8217;ll get an error that <code>f(X())</code> cannot be called. To avoid it, we can
+add an overload of <code>f</code> that takes anything and returns <code>void</code>. But in this
+case, what will happen if <code>X</code> has two bases of the form that match the first
+<code>f</code> overload, such as for example <code>std::pair&lt;K1, Y&gt;</code> and <code>std::pair&lt;K1, Z&gt;</code>?</p>
+</div>
+<div class="paragraph">
+<p>The deduction will fail, the second overload will again be chosen and we&#8217;ll get
+<code>void</code>. This is why we require maps to have unique keys.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an implementation of <code>mp_map_find</code> based on this technique:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class M, class K&gt; struct mp_map_find_impl;
+
+template&lt;class M, class K&gt;
+    using mp_map_find = typename mp_map_find_impl&lt;M, K&gt;::type;
+
+template&lt;template&lt;class...&gt; class M, class... T, class K&gt;
+    struct mp_map_find_impl&lt;M&lt;T...&gt;, K&gt;
+{
+    struct U: mp_identity&lt;T&gt;... {};
+
+    template&lt;template&lt;class...&gt; class L, class... U&gt;
+        static mp_identity&lt;L&lt;K, U...&gt;&gt;
+        f( mp_identity&lt;L&lt;K, U...&gt;&gt;* );
+
+    static mp_identity&lt;void&gt; f( ... );
+
+    using V = decltype( f((U*)0) );
+
+    using type = typename V::type;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and its corresponding compile times:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, deduction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, deduction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, deduction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This looks ready to ship.</p>
+</div>
+<div class="paragraph">
+<p>The implementation contains one inefficiency though. If we evaluate
+<code>mp_map_find&lt;M, K1&gt;</code>, then <code>mp_map_find&lt;M, K2&gt;</code>, the two nested <code>U</code> types are
+the same as they only depend on <code>M</code>, but the compiler doesn&#8217;t know that and
+will instantiate each one separately. We should move this type outside
+<code>mp_map_find_impl</code> so that it can be reused:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... T&gt; struct <strong>mp_inherit</strong>: T... {};
+
+template&lt;class M, class K&gt; struct mp_map_find_impl;
+
+template&lt;class M, class K&gt;
+    using mp_map_find = typename mp_map_find_impl&lt;M, K&gt;::type;
+
+template&lt;template&lt;class...&gt; class M, class... T, class K&gt;
+    struct mp_map_find_impl&lt;M&lt;T...&gt;, K&gt;
+{
+    <strong>using U = mp_inherit&lt;mp_identity&lt;T&gt;...&gt;;</strong>
+
+    template&lt;template&lt;class...&gt; class L, class... U&gt;
+        static mp_identity&lt;L&lt;K, U...&gt;&gt;
+        f( mp_identity&lt;L&lt;K, U...&gt;&gt;* );
+
+    static mp_identity&lt;void&gt; f( ... );
+
+    using V = decltype( f((U*)0) );
+
+    using type = typename V::type;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(This same optimization, by the way, applies to our <code>is_base_of</code> implementation
+of <code>mp_contains</code>.)</p>
+</div>
+<div class="paragraph">
+<p>The improvement in compile times on our benchmark is measurable:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, deduction+mp_inherit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, deduction+mp_inherit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, deduction+mp_inherit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_at"><a class="anchor" href="#mp_at"></a>mp_at</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With sets and maps covered, it&#8217;s time to tackle vectors. Vectors for us are
+just lists, to which we&#8217;ll need to add the ability to efficiently access an
+element based on its index. The customary name for this accessor is
+<code>mp_at&lt;L, I&gt;</code>, where <code>L</code> is a list and <code>I</code> is an <code>integral_constant</code> that
+represents the index. We&#8217;ll also follow the Boost.MPL convention and add
+<code>mp_at_c&lt;L, I&gt;</code>, where <code>I</code> is the index of type <code>size_t</code>.</p>
+</div>
+<div class="paragraph">
+<p>The recursive implementation of <code>mp_at</code> is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, std::size_t I&gt; struct mp_at_c_impl;
+
+template&lt;class L, std::size_t I&gt; using mp_at_c = typename mp_at_c_impl&lt;L, I&gt;::type;
+
+template&lt;class L, class I&gt; using mp_at = typename mp_at_c_impl&lt;L, I::value&gt;::type;
+
+template&lt;template&lt;class...&gt; class L, class T1, class... T&gt;
+    struct mp_at_c_impl&lt;L&lt;T1, T...&gt;, 0&gt;
+{
+    using type = T1;
+};
+
+template&lt;template&lt;class...&gt; class L, class T1, class... T, std::size_t I&gt;
+    struct mp_at_c_impl&lt;L&lt;T1, T...&gt;, I&gt;
+{
+    using type = mp_at_c&lt;L&lt;T...&gt;, I-1&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and the compile times for making <code>N</code> calls to <code>mp_at</code> with a list of size <code>N</code>
+as the first argument are:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>To improve upon this appalling result, we&#8217;ll again exploit pack expansion into a
+function call, but in a novel way. Let&#8217;s suppose that we need to access the
+fourth element (<code>I = 3</code>). We&#8217;ll generate the function signature</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class W&gt; W f( void*, void*, void*, W*, ... );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then, given a list <code>L&lt;T1, T2, T3, T4, T5, T6, T7&gt;</code>, we&#8217;ll evaluate the
+expression</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">decltype( f( (T1*)0, (T2*)0, (T3*)0, (T4*)0, (T5*)0, (T6*)0, (T7*)0 ) )</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The three <code>void*</code> parameters will eat the first three elements, <code>W</code> will be
+deduced as the fourth, and the ellipsis will take care of the rest.</p>
+</div>
+<div class="paragraph">
+<p>A working implementation based on this technique is shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">// mp_repeat_c
+
+template&lt;std::size_t N, class... T&gt; struct mp_repeat_c_impl
+{
+    using _l1 = typename mp_repeat_c_impl&lt;N/2, T...&gt;::type;
+    using _l2 = typename mp_repeat_c_impl&lt;N%2, T...&gt;::type;
+
+    using type = mp_append&lt;_l1, _l1, _l2&gt;;
+};
+
+template&lt;class... T&gt; struct mp_repeat_c_impl&lt;0, T...&gt;
+{
+    using type = mp_list&lt;&gt;;
+};
+
+template&lt;class... T&gt; struct mp_repeat_c_impl&lt;1, T...&gt;
+{
+    using type = mp_list&lt;T...&gt;;
+};
+
+template&lt;std::size_t N, class... T&gt; using mp_repeat_c =
+    typename mp_repeat_c_impl&lt;N, T...&gt;::type;
+
+// mp_at
+
+template&lt;class L, class L2&gt; struct mp_at_c_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T,
+    template&lt;class...&gt; class L2, class... U&gt;
+    struct mp_at_c_impl&lt;L&lt;T...&gt;, L2&lt;U...&gt;&gt;
+{
+    template&lt;class W&gt; static W f( U*..., W*, ... );
+
+    using R = decltype( f( (mp_identity&lt;T&gt;*)0 ... ) );
+
+    using type = typename R::type;
+};
+
+template&lt;class L, std::size_t I&gt; using mp_at_c =
+    typename mp_at_c_impl&lt;L, mp_repeat_c&lt;I, void&gt;&gt;::type;
+
+template&lt;class L, class I&gt; using mp_at = mp_at_c&lt;L, I::value&gt;;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and the compile times in the following table show it to be good enough for most
+practical purposes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, void*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, void*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, void*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Are we done with <code>mp_at</code>, then?</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s try something else&#8201;&#8212;&#8201;transform the input list <code>[T1, T2, T3]</code> into a map
+<code>[[0, T1], [1, T2], [2, T3]]</code>, then use <code>mp_map_find</code> for the lookup:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">// mp_map_from_list
+
+template&lt;class L, class S&gt; struct mp_map_from_list_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T, std::size_t... J&gt;
+    struct mp_map_from_list_impl&lt;L&lt;T...&gt;, <a href="http://en.cppreference.com/w/cpp/utility/integer_sequence">integer_sequence</a>&lt;std::size_t, J...&gt;&gt;
+{
+    using type = mp_list&lt;mp_list&lt;mp_size_t&lt;J&gt;, T&gt;...&gt;;
+};
+
+template&lt;class L&gt; using mp_map_from_list = typename mp_map_from_list_impl&lt;L,
+    <a href="http://en.cppreference.com/w/cpp/utility/integer_sequence">make_index_sequence</a>&lt;mp_size&lt;L&gt;::value&gt;&gt;::type;
+
+// mp_at
+
+template&lt;class L, std::size_t I&gt; struct mp_at_c_impl
+{
+    using map = mp_map_from_list&lt;L&gt;;
+    using type = mp_second&lt;mp_map_find&lt;map, mp_size_t&lt;I&gt;&gt;&gt;;
+};
+
+template&lt;class L, std::size_t I&gt; using mp_at_c = typename mp_at_c_impl&lt;L, I&gt;::type;
+
+template&lt;class L, class I&gt; using mp_at = typename mp_at_c_impl&lt;L, I::value&gt;::type;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>At first sight, this looks ridiculous, but metaprogramming has its own rules.
+Let&#8217;s measure:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Surprise, this is the best implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_drop"><a class="anchor" href="#mp_drop"></a>mp_drop</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It turned out that we didn&#8217;t need the <code>void*</code> trick for <code>mp_at</code>, but I&#8217;ll show
+an example where we do: <code>mp_drop</code>. <code>mp_drop&lt;L, N&gt;</code> returns the list <code>L</code> without
+its first <code>N</code> elements; or, in other words, it drops the first <code>N</code> elements
+(presumably on the cutting room floor) and returns what&#8217;s left.</p>
+</div>
+<div class="paragraph">
+<p>To implement <code>mp_drop</code>, we just need to change</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class W&gt; W f( void*, void*, void*, W*, ... );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>from above to return the rest of the elements, rather than just one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class... W&gt; mp_list&lt;W&gt; f( void*, void*, void*, W*... );</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Adding the necessary <code>mp_identity</code> seasoning produces the following working
+implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, class L2&gt; struct mp_drop_c_impl;
+
+template&lt;template&lt;class...&gt; class L, class... T,
+    template&lt;class...&gt; class L2, class... U&gt;
+    struct mp_drop_c_impl&lt;L&lt;T...&gt;, L2&lt;U...&gt;&gt;
+{
+    template&lt;class... W&gt; static mp_identity&lt;L&lt;W...&gt;&gt; f( U*..., mp_identity&lt;W&gt;*... );
+
+    using R = decltype( f( (mp_identity&lt;T&gt;*)0 ... ) );
+
+    using type = typename R::type;
+};
+
+template&lt;class L, std::size_t N&gt; using mp_drop_c =
+    typename mp_drop_c_impl&lt;L, mp_repeat_c&lt;N, void&gt;&gt;::type;
+
+template&lt;class L, class N&gt; using mp_drop = mp_drop_c&lt;L, N::value&gt;;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll skip the recursive implementation and the performance comparison for this
+one. We can pretty much tell who&#8217;s going to win, and by how much.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mp_find_index"><a class="anchor" href="#mp_find_index"></a>mp_find_index</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The final algorithm that I&#8217;ll bring to your attention is <code>mp_find_index</code>.
+<code>mp_find_index&lt;L, V&gt;</code> returns an integral constant of type <code>size_t</code> with a
+value that is the index of the first occurrence of <code>V</code> in <code>L</code>. If <code>V</code> is not in
+<code>L</code>, the return value is the size of <code>L</code>.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll start with the recursive implementation, as usual:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, class V&gt; struct mp_find_index_impl;
+
+template&lt;class L, class V&gt; using mp_find_index = typename mp_find_index_impl&lt;L, V&gt;::type;
+
+template&lt;template&lt;class...&gt; class L, class V&gt; struct mp_find_index_impl&lt;L&lt;&gt;, V&gt;
+{
+    using type = mp_size_t&lt;0&gt;;
+};
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_find_index_impl&lt;L&lt;V, T...&gt;, V&gt;
+{
+    using type = mp_size_t&lt;0&gt;;
+};
+
+template&lt;template&lt;class...&gt; class L, class T1, class... T, class V&gt;
+    struct mp_find_index_impl&lt;L&lt;T1, T...&gt;, V&gt;
+{
+    using type = mp_size_t&lt;1 + mp_find_index&lt;L&lt;T...&gt;, V&gt;::value&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and will continue with the compile times for <code>N</code> calls to <code>mp_find_index</code> on a
+list with <code>N</code> elements, as usual:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, recursive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>What can we do here?</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s go back to <code>mp_contains</code> and look at the "mp_count/cx_plus2"
+implementation which we rejected in favor of the inheritance-based one. It
+built a <code>constexpr</code> array of booleans and summed them in a <code>constexpr</code>
+function. We can do the same here, except instead of summing the array, we can
+find the index of the first true value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, class V&gt; struct mp_find_index_impl;
+
+template&lt;class L, class V&gt; using mp_find_index = typename mp_find_index_impl&lt;L, V&gt;::type;
+
+template&lt;template&lt;class...&gt; class L, class V&gt; struct mp_find_index_impl&lt;L&lt;&gt;, V&gt;
+{
+    using type = mp_size_t&lt;0&gt;;
+};
+
+constexpr std::size_t cx_find_index( bool const * first, bool const * last )
+{
+    return first == last || *first? 0: 1 + cx_find_index( first + 1, last );
+}
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_find_index_impl&lt;L&lt;T...&gt;, V&gt;
+{
+    static constexpr bool _v[] = { std::is_same&lt;T, V&gt;::value... };
+
+    using type = mp_size_t&lt; cx_find_index( _v, _v + sizeof...(T) ) &gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The performance of this version is:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, constexpr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, constexpr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>which, while not ideal, is significantly better than our recursive punching
+bag. But if our compiler of choice is VC++ 2013, we can&#8217;t use <code>constexpr</code>.</p>
+</div>
+<div class="paragraph">
+<p>We may attempt an implementation along the same lines, but with the <code>constexpr</code>
+function replaced with ordinary metaprogramming:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template&lt;class L, class V&gt; struct mp_find_index_impl;
+
+template&lt;class L, class V&gt; using mp_find_index = typename mp_find_index_impl&lt;L, V&gt;::type;
+
+template&lt;template&lt;class...&gt; class L, class V&gt; struct mp_find_index_impl&lt;L&lt;&gt;, V&gt;
+{
+    using type = mp_size_t&lt;0&gt;;
+};
+
+template&lt;bool...&gt; struct find_index_impl_;
+
+template&lt;&gt; struct find_index_impl_&lt;&gt;
+{
+    static const std::size_t value = 0;
+};
+
+template&lt;bool B1, bool... R&gt; struct find_index_impl_&lt;B1, R...&gt;
+{
+    static const std::size_t value = B1? 0: 1 + find_index_impl_&lt;R...&gt;::value;
+};
+
+template&lt;bool B1, bool B2, bool B3, bool B4, bool B5,
+    bool B6, bool B7, bool B8, bool B9, bool B10, bool... R&gt;
+    struct find_index_impl_&lt;B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, R...&gt;
+{
+    static const std::size_t value = B1? 0: B2? 1: B3? 2: B4? 3: B5? 4:
+        B6? 5: B7? 6: B8? 7: B9? 8: B10? 9: 10 + find_index_impl_&lt;R...&gt;::value;
+};
+
+template&lt;template&lt;class...&gt; class L, class... T, class V&gt;
+    struct mp_find_index_impl&lt;L&lt;T...&gt;, V&gt;
+{
+    using type = mp_size_t&lt;find_index_impl_&lt;std::is_same&lt;T, V&gt;::value...&gt;::value&gt;;
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is still recursive, so we don&#8217;t expect miracles, but it wouldn&#8217;t hurt to
+measure:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">N=100</th>
+<th class="tableblock halign-left valign-top">N=200</th>
+<th class="tableblock halign-left valign-top">N=300</th>
+<th class="tableblock halign-left valign-top">N=400</th>
+<th class="tableblock halign-left valign-top">N=500</th>
+<th class="tableblock halign-left valign-top">N=600</th>
+<th class="tableblock halign-left valign-top">N=700</th>
+<th class="tableblock halign-left valign-top">N=800</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VC++ 2013, bool&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">94.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">488.3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XFA</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clang++ 3.5.1, bool&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21.7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g++ 4.9.2, bool&#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNF</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(where XFA stands for "experimenter fell asleep".)</p>
+</div>
+<div class="paragraph">
+<p>This is an interesting tradeoff for VC++ 2013 and Clang. On the one hand,
+this implementation is slower; on the other, it doesn&#8217;t crash the compiler as
+easily. Which to prefer is a matter of taste and of stern evaluation of one&#8217;s
+needs to manipulate type lists of length 300.</p>
+</div>
+<div class="paragraph">
+<p>Note that once we have <code>mp_drop</code> and <code>mp_find_index</code>, we can derive the
+<code>mp_find&lt;L, V&gt;</code> algorithm, which returns the suffix of <code>L</code> starting with the
+first occurrence of <code>V</code>, if any, and an empty list otherwise, by using
+<code>mp_drop&lt;L, mp_find_index&lt;L, V&gt;&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this article, I have shown efficient algorithms that allow us to treat type
+lists as sets, maps and vectors, demonstrating various C&#43;&#43;11 implementation
+techniques in the process.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../_/js/site.js" data-ui-root-path="../_"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

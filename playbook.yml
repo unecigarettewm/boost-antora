@@ -17,6 +17,7 @@ asciidoc:
     boost_version: develop
     boost_ui_branch: develop
     boost_dir_prefix: develop/libs
+    boost_layout: default
 
 site:
   url: https://antora.cppalliance.org/${boost_version}/libs
@@ -52,6 +53,7 @@ ui:
   bundle:
     url: https://github.com/cppalliance/antora-ui/releases/download/ui-${boost_ui_branch}/ui-bundle.zip
     snapshot: true
+  default_layout: ${boost_layout}
 
 output:
   dir: ./build/${boost_dir_prefix}

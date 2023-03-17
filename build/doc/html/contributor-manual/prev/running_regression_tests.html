@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Running Boost Regression Tests :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/contributor-manual/prev/running_regression_tests.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="contributor-manual" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Contributor Manual</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../docs.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Legacy Toolchain</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Antora Toolchain</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Enabling a Repo</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">The Playbook</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using <code>bdoc</code></span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">UI Bundles</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Doc Versioning</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Possible Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Source Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using Git</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using GitHub</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Proposing a New Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Maintaining a Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Compiler Workarounds</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Unit Tests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Documentation</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Continuous Integration</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Code Coverage</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Superproject</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Master and Develop</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Layout of a Repository</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Library Metadata</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Header-only Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Source Code Conventions</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Submitting Pull Requests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing Dependencies</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Copyright Attribution</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Using External Code</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Handling Old Compilers</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Deprecating Interfaces</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Abandoned Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Backward Compatibility</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Collective Decision-Making</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Release Process</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Release Notes</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Packaging Boost</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Legacy Content</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Boost Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="website_updating.html">Boost C++ Libraries - Updating Website</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Contributor Manual</a></li>
+    <li>Legacy Content</li>
+    <li><a href="running_regression_tests.html">Running Boost Regression Tests</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Running Boost Regression Tests</h1>
+<div class="sect1">
+<h2 id="running-regression-tests-locally"><a class="anchor" href="#running-regression-tests-locally"></a>Running Regression Tests Locally</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong><strong>It&#8217;s easy to run regression tests on your Boost
+ clone.</strong></strong></p>
+</div>
+<div class="paragraph">
+<p>To run a library&#8217;s regression tests, run Boost&#8217;s
+ [b2](/build/) utility from the
+ <strong>&lt;boost-root&gt;</strong>/libs/<strong>&lt;library&gt;</strong>/test directory. To run a
+ single test, specify its name (as found in
+ <strong>&lt;boost-root&gt;</strong>/libs/<strong>&lt;library&gt;</strong>/test/Jamfile.v2) on the
+ command line.</p>
+</div>
+<div class="paragraph">
+<p>See the [Getting
+ Started guide](/doc/libs/release/more/getting_started/index.html) for help building or downloading
+ bjam for your platform, and navigating your Boost
+ distribution.</p>
+</div>
+<div class="paragraph">
+<p>To run every library&#8217;s regression tests, run b2
+ from <strong>&lt;boost-root&gt;</strong>/status directory.</p>
+</div>
+<div class="paragraph">
+<p>To run Boost.Build&#8217;s regression tests, run "python
+ test\_all.py" from <strong>&lt;boost-root&gt;</strong>/tools/build/v2/test
+ directory. (Python 2.3 ≤ version &lt; 3.0 required.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-boosts-automated-regression-and-reporting"><a class="anchor" href="#running-boosts-automated-regression-and-reporting"></a>Running Boost&#8217;s Automated Regression and Reporting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This runs all Boost regression tests and reports the results back to
+ the Boost community.</p>
+</div>
+<div class="sect2">
+<h3 id="requirements"><a class="anchor" href="#requirements"></a>Requirements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Python (2.3 ≤ version &lt; 3.0).</p>
+</li>
+<li>
+<p>Git (recent version).</p>
+</li>
+<li>
+<p>At least 5 gigabytes of disk space per compiler to be
+tested.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="step-by-step-instructions"><a class="anchor" href="#step-by-step-instructions"></a>Step by step instructions</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a new directory for the branch you want to
+test.</p>
+</li>
+<li>
+<p>Download the [run.py](<a href="https://raw.githubusercontent.com/boostorg/regression/develop/testing/src/run.py" class="bare">https://raw.githubusercontent.com/boostorg/regression/develop/testing/src/run.py</a>) script into that directory:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>&gt;
+&gt; 1. Open [run.py](<a href="https://raw.githubusercontent.com/boostorg/regression/develop/testing/src/run.py" class="bare">https://raw.githubusercontent.com/boostorg/regression/develop/testing/src/run.py</a>) script in your browser.
+&gt; 2. Click the <strong><strong>Raw</strong></strong> button.
+&gt; 3. Save as run.py in the directory you just created.
+&gt;
+&gt;
+&gt;
+3. Run &#8220;python run.py options&#8230;&#8203; [commands]&#8221;
+ <strong>with these three required options</strong>, plus any others you wish to employ:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>--runner= - Your choice of name that
+identifies your results in the reports [1](#runnerid1), [2](#runnerid2).</p>
+</li>
+<li>
+<p>--toolsets= - The toolset(s) you want to test
+with [3](#toolsets).</p>
+</li>
+<li>
+<p>--tag= - The tag (i.e. branch) you want to test.
+The only tags that currently make sense are
+develop and master.For example:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>python run.py --runner=Metacomm
+ --toolsets=gcc-4.2.1,msvc-8.0 --tag=develop</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: If you are behind a firewall/proxy
+ server, everything should still "just work". In the rare cases
+ when it doesn&#8217;t, you can explicitly specify the proxy server
+ parameters through the --proxy option, e.g.:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">python run.py ... **--proxy=http://www.someproxy.com:3128**</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="options"><a class="anchor" href="#options"></a>Options</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">commands: cleanup, collect-logs, get-source, get-tools, patch, regression,
+setup, show-revision, test, test-boost-build, test-clean, test-process, test-
+run, update-source, upload-logs
+
+Options:
+  -h, --help            show this help message and exit
+  --runner=RUNNER       runner ID (e.g. 'Metacomm')
+  --comment=COMMENT     an HTML comment file to be inserted in the reports
+  --tag=TAG             the tag for the results
+  --toolsets=TOOLSETS   comma-separated list of toolsets to test with
+  --libraries=LIBRARIES
+                        comma separated list of libraries to test
+  --incremental         do incremental run (do not remove previous binaries)
+  --timeout=TIMEOUT     specifies the timeout, in minutes, for a single test
+                        run/compilation
+  --bjam-options=BJAM\_OPTIONS
+                        options to pass to the regression test
+  --bjam-toolset=BJAM\_TOOLSET
+                        bootstrap toolset for 'bjam' executable
+  --pjl-toolset=PJL\_TOOLSET
+                        bootstrap toolset for 'process\_jam\_log' executable
+  --platform=PLATFORM
+  --user=USER           Boost SVN user ID
+  --local=LOCAL         the name of the boost tarball
+  --force-update        do an SVN update (if applicable) instead of a clean
+                        checkout, even when performing a full run
+  --have-source         do neither a tarball download nor an SVN update; used
+                        primarily for testing script changes
+  --ftp=FTP             FTP URL to upload results to.
+  --proxy=PROXY         HTTP proxy server address and port
+                        (e.g.'http://www.someproxy.com:3128')
+  --ftp-proxy=FTP\_PROXY
+                        FTP proxy server (e.g. 'ftpproxy')
+  --dart-server=DART\_SERVER
+                        the dart server to send results to
+  --debug-level=DEBUG\_LEVEL
+                        debugging level; controls the amount of debugging
+                        output printed
+  --send-bjam-log       send full bjam log of the regression run
+  --mail=MAIL           email address to send run notification to
+  --smtp-login=SMTP\_LOGIN
+                        STMP server address/login information, in the
+                        following form: &lt;user&gt;:&lt;password&gt;@&lt;host&gt;[:&lt;port&gt;]
+  --skip-tests          do not run bjam; used for testing script changes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To test develop use &#8220;--tag=develop&#8221;,
+ and to test master use
+ &#8220;--tag=master&#8221;. Or substitute any Boost
+ tree of your choice.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="details"><a class="anchor" href="#details"></a>Details</h3>
+<div class="paragraph">
+<p>The regression run procedure will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Download the most recent regression scripts.</p>
+</li>
+<li>
+<p>Download the designated testing tool sources including
+Boost.Jam, Boost.Build, and the various regression
+programs.</p>
+</li>
+<li>
+<p>Download the most recent from the [Boost Git Repository](/users/download/#repository)
+into the subdirectory boost.</p>
+</li>
+<li>
+<p>Build b2 and process\_jam\_log if
+needed. (process\_jam\_log is a utility, which
+extracts the test results from the log file produced by
+Boost.Build).</p>
+</li>
+<li>
+<p>Run regression tests, process and collect the
+results.</p>
+</li>
+<li>
+<p>Upload the results to a common FTP server.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The report merger process running continuously will merge
+ all submitted test runs and publish them at [various locations](testing.html#RegressionTesting).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="advanced-use"><a class="anchor" href="#advanced-use"></a>Advanced use</h3>
+
+</div>
+<div class="sect2">
+<h3 id="providing-detailed-information-about-your-environment"><a class="anchor" href="#providing-detailed-information-about-your-environment"></a>Providing detailed information about your environment</h3>
+<div class="paragraph">
+<p>Once you have your regression results displayed in the
+ Boost-wide reports, you may consider providing a bit more
+ information about yourself and your test environment. This
+ additional information will be presented in the reports on a
+ page associated with your runner ID.</p>
+</div>
+<div class="paragraph">
+<p>By default, the page&#8217;s content is just a single line coming
+ from the comment.html file in your run.py
+ directory, specifying the tested platform. You can put online a
+ more detailed description of your environment, such as your
+ hardware configuration, compiler builds, and test schedule, by
+ simply altering the file&#8217;s content. Also, please consider
+ providing your name and email address for cases where Boost
+ developers have questions specific to your particular set of
+ results.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="incremental-runs"><a class="anchor" href="#incremental-runs"></a>Incremental runs</h3>
+<div class="paragraph">
+<p>You can run run.py in [incremental mode](#incremental) by simply passing it an
+ identically named command-line flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">python run.py ... **--incremental**</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="patching-boost-sources"><a class="anchor" href="#patching-boost-sources"></a>Patching Boost sources</h3>
+<div class="paragraph">
+<p>You might encounter an occasional need to make local
+ modifications to the Boost codebase before running the tests,
+ without disturbing the automatic nature of the regression
+ process. To implement this under regression.py:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Codify applying the desired modifications to the sources
+located in the ./boost\_root subdirectory in a single
+executable script named patch\_boost
+(patch\_boost.bat on Windows).</p>
+</li>
+<li>
+<p>Place the script in the run.py directory.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The driver will check for the existence of the
+ patch\_boost script, and, if found, execute it after
+ obtaining the Boost sources.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback"><a class="anchor" href="#feedback"></a>Feedback</h3>
+<div class="paragraph">
+<p>Please send all comments/suggestions regarding this document
+ and the testing procedure itself to the [Boost Testing list](/community/groups.html#testing).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes"><a class="anchor" href="#notes"></a>Notes</h3>
+<div class="paragraph">
+<p>[1] If you are
+ running regressions interlacingly with a different set of
+ compilers (e.g. for Intel in the morning and GCC at the end of
+ the day), you need to provide a <strong>different</strong> runner id
+ for each of these runs, e.g. your\_name-intel, and
+ your\_name-gcc.</p>
+</div>
+<div class="paragraph">
+<p>[2] The limitations
+ of the reports' format/medium impose a direct dependency
+ between the number of compilers you are testing with and the
+ amount of space available for your runner id. If you are
+ running regressions for a single compiler, please make sure to
+ choose a short enough id that does not significantly disturb
+ the reports' layout. You can also use spaces in the runner ID
+ to allow the reports to wrap the name to fit.</p>
+</div>
+<div class="paragraph">
+<p>[3] If
+ --toolsets option is not provided, the script will try
+ to use the platform&#8217;s default toolset (gcc for most
+ Unix-based systems).</p>
+</div>
+<div class="paragraph">
+<p>[4] By default,
+ the script runs in what is known as <strong>full mode</strong>: on each
+ run.py invocation all the files that were left in
+ place by the previous run — including the binaries for
+ the successfully built tests and libraries — are deleted,
+ and everything is rebuilt once again from scratch. By contrast,
+ in <strong>incremental mode</strong> the already existing binaries are
+ left intact, and only the tests and libraries which source
+ files has changed since the previous run are re-built and
+ re-tested.</p>
+</div>
+<div class="paragraph">
+<p>The main advantage of incremental runs is a significantly
+ shorter turnaround time, but unfortunately they don&#8217;t always
+ produce reliable results. Some type of changes to the codebase
+ (changes to the b2 testing subsystem in particular) often
+ require switching to a full mode for one cycle in order to
+ produce trustworthy reports.</p>
+</div>
+<div class="paragraph">
+<p>As a general guideline, if you can afford it, testing in
+ full mode is preferable.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

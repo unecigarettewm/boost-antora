@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Review Wizard Status Report for December 2009 :: Boost Libraries Documentation</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/master/libs/contributor-manual/prev/report-dec-2009.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/master/libs">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="contributor-manual" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Contributor Manual</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../docs.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Legacy Toolchain</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Antora Toolchain</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Enabling a Repo</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">The Playbook</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using <code>bdoc</code></span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">UI Bundles</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Doc Versioning</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Possible Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Source Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using Git</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using GitHub</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Proposing a New Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Maintaining a Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Compiler Workarounds</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Unit Tests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Documentation</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Continuous Integration</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Code Coverage</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Superproject</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Master and Develop</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Layout of a Repository</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Library Metadata</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Header-only Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Source Code Conventions</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Submitting Pull Requests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing Dependencies</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Copyright Attribution</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Using External Code</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Handling Old Compilers</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Deprecating Interfaces</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Abandoned Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Backward Compatibility</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Collective Decision-Making</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Release Process</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Release Notes</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Packaging Boost</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Legacy Content</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Boost Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="website_updating.html">Boost C++ Libraries - Updating Website</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Contributor Manual</a></li>
+    <li>Legacy Content</li>
+    <li><a href="report-dec-2009.html">Review Wizard Status Report for December 2009</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Review Wizard Status Report for December 2009</h1>
+<div class="sect1">
+<h2 id="news"><a class="anchor" href="#news"></a>News</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Polygon Library Accepted
+Boost 1.40 Released
+New Libraries: None
+Revised Libraries: Accumulators, Asio, Circular Buffer, Filesystem, Foreach, Function, Fusion, Hash, Interprocess, Intrusive, MPL, Program Options, Proto, Python, Serialization, Unordered, Xpressive</p>
+</div>
+<div class="paragraph">
+<p>Geometry Library Accepted
+Boost 1.41 Released
+New Libraries: Property Tree
+Revised Libraries: DateTime, Filesystem, Iostreams, Math, Multi-index Containers, Proto, Python, Regex, Spirit, System, Thread, Unordered, Utility, Wave, Xpressive</p>
+</div>
+<div class="paragraph">
+<p>MSM Library Review Underway</p>
+</div>
+<div class="paragraph">
+<p>Constrained Value Review - Review Result still Pending</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="older-issues"><a class="anchor" href="#older-issues"></a>Older Issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Time Series Library, accepted in August 2007, has not yet been
+submitted to SVN.</p>
+</div>
+<div class="paragraph">
+<p>The Floating Point Utilities Library, has not yet been submitted to
+SVN. It is slated to be integrated with the Boost.Math library.</p>
+</div>
+<div class="paragraph">
+<p>The Switch Library, accepted provisionally in January 2008,
+has not yet been submitted for mini-review and full acceptance.</p>
+</div>
+<div class="paragraph">
+<p>The Phoenix Library, accepted provisionally in September 2008,
+has not yet been submitted for mini-review and full acceptance.</p>
+</div>
+<div class="paragraph">
+<p>For libraries that are still waiting to get into SVN, please get them
+ready and into the repository. The developers did some great work
+making the libraries, so don&#8217;t miss the chance to share that work with
+others.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="general-announcements"><a class="anchor" href="#general-announcements"></a>General Announcements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As always, we need experienced review managers. The review queue has
+been growing substantially but we have had few volunteers, so manage
+reviews if possible and if not please make sure to watch the review
+schedule and participate. Please take a look at the list of libraries
+in need of managers and check out their descriptions. In general
+review managers are active boost participants or library
+contributors. If you can serve as review manager for any of them,
+email Ron Garcia or John Phillips, "garcia at osl dot iu dot edu"
+and "phillips at mps dot ohio-state dot edu" respectively.</p>
+</div>
+<div class="paragraph">
+<p>We are also suffering from a lack of reviewers. While we all
+understand time pressures and the need to complete paying work, the
+strength of Boost is based on the detailed and informed reviews
+submitted by you. A recent effort is trying to secure at least five
+people who promise to submit reviews as a precondition to starting
+the review period. Consider volunteering for this and even taking the
+time to create the review as early as possible. No rule says you can
+only work on a review during the review period.</p>
+</div>
+<div class="paragraph">
+<p>A link to this report will be posted to www.boost.org. If you would
+like us to make any modifications or additions to this report before
+we do that, please email Ron or John.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re a library author and plan on submitting a library for review
+in the next 3-6 months, send Ron or John a short description of your
+library and we&#8217;ll add it to the Libraries Under Construction below. We
+know that there are many libraries that are near completion, but we
+have hard time keeping track all of them. Please keep us informed
+about your progress.</p>
+</div>
+<div class="paragraph">
+<p>The included review queue isn&#8217;t a classic queue. It is more an unordered list of the libraries awaiting review. As such, any library in the queue can be reviewed once the developer is ready and a review manager works with the wizards and the developer to schedule a review. It is not FIFO.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="review-queue"><a class="anchor" href="#review-queue"></a>Review Queue</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Lexer</p>
+</li>
+<li>
+<p>Shifted Pointer</p>
+</li>
+<li>
+<p>Logging</p>
+</li>
+<li>
+<p>Log</p>
+</li>
+<li>
+<p>Join</p>
+</li>
+<li>
+<p>Pimpl</p>
+</li>
+<li>
+<p>Task</p>
+</li>
+<li>
+<p>Endian</p>
+</li>
+<li>
+<p>Conversion</p>
+</li>
+<li>
+<p>Sorting</p>
+</li>
+<li>
+<p>GIL.IO</p>
+</li>
+<li>
+<p>AutoBuffer</p>
+</li>
+<li>
+<p>String Convert</p>
+</li>
+<li>
+<p>Move</p>
+</li>
+<li>
+<p>Containers</p>
+</li>
+<li>
+<p>Interval Containers</p>
+</li>
+<li>
+<p>Type Traits Extensions</p>
+</li>
+<li>
+<p>Interthreads</p>
+</li>
+<li>
+<p>Bitfield</p>
+</li>
+<li>
+<p>Lockfree</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lexer"><a class="anchor" href="#lexer"></a>Lexer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Ben Hanson |
+| Review Manager: | Eric Neibler |
+| Download: | [Boost Vault](<a href="http://boost-consulting.com/vault/index.php?action=downloadfile&amp;filename=boost.lexer.zip&amp;directory=Strings%20-%20Text%20Processing" class="bare">http://boost-consulting.com/vault/index.php?action=downloadfile&amp;filename=boost.lexer.zip&amp;directory=Strings%20-%20Text%20Processing</a>) |
+| Description: | A programmable lexical analyser generator inspired by 'flex'.
+Like flex, it is programmed by the use of regular expressions
+and outputs a state machine as a number of DFAs utilising
+equivalence classes for compression. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="shifted-pointer"><a class="anchor" href="#shifted-pointer"></a>Shifted Pointer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Phil Bouchard |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://www.boost-consulting.com/vault/index.php?&amp;direction=0&amp;order=&amp;directory=Memory" class="bare">http://www.boost-consulting.com/vault/index.php?&amp;direction=0&amp;order=&amp;directory=Memory</a>) |
+| Description: | Smart pointers are in general optimized for a specific resource
+(memory usage, CPU cycles, user friendliness, &#8230;&#8203;) depending on
+what the user need to make the most of. The purpose of this smart
+pointer is mainly to allocate the reference counter (or owner) and
+the object itself at the same time so that dynamic memory management
+is simplified thus accelerated and cheaper on the memory map. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logging"><a class="anchor" href="#logging"></a>Logging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | John Torjo |
+| Review Manager: | Gennadiy Rozental |
+| Download: | <a href="http://torjo.com/log2/" class="bare">http://torjo.com/log2/</a> |
+| Description: | Used properly, logging is a very powerful tool. Besides aiding
+debugging/testing, it can also show you how your application is
+used. The Boost Logging Library allows just for that, supporting
+a lot of scenarios, ranging from very simple (dumping all to one
+destination), to very complex (multiple logs, some enabled/some
+not, levels, etc). It features a very simple and flexible
+interface, efficient filtering of messages, thread-safety,
+formatters and destinations, easy manipulation of logs, finding
+the best logger/filter classes based on your application&#8217;s
+needs, you can define your own macros and much more! |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="log"><a class="anchor" href="#log"></a>Log</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Andrey Semashev |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://tinyurl.com/cm9lum" class="bare">http://tinyurl.com/cm9lum</a>) |
+| Description: | The library is aimed to help adding logging features to
+applications. It provides out-of-box support for many widely used
+capabilities, such as formatting and filtering based on attributes,
+sending logs to a syslog server or to Windows Event Log, or simply
+storing logs into files. It also provides basic support for the
+library initialization from a settings file. The library can also be
+used for a wider range of tasks and implement gathering and processing
+statistical information or notifying user about application events. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="join"><a class="anchor" href="#join"></a>Join</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Yigong Liu |
+| Review Manager: | Needed |
+| Download: | <a href="http://channel.sourceforge.net/" class="bare">http://channel.sourceforge.net/</a> |
+| Description: | Join is an asynchronous, message based C++ concurrency
+library based on join calculus. It is applicable both to
+multi-threaded applications and to the orchestration of asynchronous,
+event-based applications. It follows Comega&#8217;s design and
+implementation and builds with Boost facilities. It provides a high
+level concurrency API with asynchronous methods, synchronous methods,
+and chords which are "join-patterns" defining the synchronization,
+asynchrony, and concurrency. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pimpl"><a class="anchor" href="#pimpl"></a>Pimpl</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Vladimir Batov |
+| Review Manager: | Needed |
+| Download: |
+[Boost Vault](<a href="http://www.boost-consulting.com/vault/index.php?action=downloadfile&amp;filename=Pimpl.zip&amp;directory=&amp;" class="bare">http://www.boost-consulting.com/vault/index.php?action=downloadfile&amp;filename=Pimpl.zip&amp;directory=&amp;</a>)
+<a href="http://www.ddj.com/cpp/205918714" class="bare">http://www.ddj.com/cpp/205918714</a> (documentation)
+ |
+| Description: | The Pimpl idiom is a simple yet robust technique to
+minimize coupling via the separation of interface and implementation
+and then implementation hiding. This library provides a convenient
+yet flexible and generic deployment technique for the Pimpl idiom.
+It&#8217;s seemingly complete and broadly applicable, yet minimal, simple
+and pleasant to use. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="task"><a class="anchor" href="#task"></a>Task</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Oliver Kowalke |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost-threadpool.2.tar.gz&amp;directory=Concurrent%20Programming" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost-threadpool.2.tar.gz&amp;directory=Concurrent%20Programming</a>) |
+| Description: | Formerly called Thread Pool
+The library provides:
+\* thread creation policies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>determines the management of worker threads:</p>
+</li>
+<li>
+<p>fixed set of threads in pool</p>
+</li>
+<li>
+<p>create workerthreads on demand (depending on context)</p>
+</li>
+<li>
+<p>let worker threads ime out after certain idle time</p>
+</li>
+<li>
+<p>channel policies: manages access to queued tasks:</p>
+<div class="literalblock">
+<div class="content">
+<pre>	+ bounded channel with high and low watermark for queuing tasks
+	+ unbounded channel with unlimited number of queued tasks
+	+ rendezvous syncron hand-over between producer and consumer threads
+* queueing policy: determines how tasks will be removed from channel:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>	+ FIFO
+	+ LIFO
+	+ priority queue (attribute assigned to task)
+	+ smart insertions and extractions (for instance remove oldest task with
+	certain attribute by newest one)
+* tasks can be chained and lazy submit of taks is also supported (thanks to
+Braddocks future library).
+* returns a task object from the submit function. The task it self can
+be interrupted if its is cooperative (means it has some interruption points
+in its code -&gt; this\_thread::interruption\_point() ).
+ |</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="endian"><a class="anchor" href="#endian"></a>Endian</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Beman Dawes |
+| Review Manager: | Needed |
+| Download: | <a href="http://mysite.verizon.net/beman/endian-0.10.zip" class="bare">http://mysite.verizon.net/beman/endian-0.10.zip</a> |
+| Description: |  |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conversion"><a class="anchor" href="#conversion"></a>Conversion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Vicente Botet |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=conversion.zip&amp;directory=Utilities&amp;" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=conversion.zip&amp;directory=Utilities&amp;</a>) |
+| Description: | Generic explicit conversion between unrelated types.</p>
+</div>
+<div class="paragraph">
+<p>Boost.Conversion provides:
+* a generic convert\_to function which can be specialized by the user to
+make explicit conversion between unrelated types.
+* a generic assign\_to function which can be specialized by the user to
+make explicit assignation between unrelated types.
+* conversion between std::complex of explicitly convertible types.
+* conversion between std::pair of explicitly convertible types.
+* conversion between boost::optional of explicitly convertible types.
+* conversion between boost::rational of explicitly convertible types.
+* conversion between boost::interval of explicitly convertible types.
+* conversion between boost::chrono::time\_point and boost::ptime.
+* conversion between boost::chrono::duration and boost::time\_duration.
+ |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sorting"><a class="anchor" href="#sorting"></a>Sorting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Steven Ross |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=algorithm_sorting.zip" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=algorithm_sorting.zip</a>) |
+| Description: | A grouping of 3 templated hybrid radix/comparison-based sorting
+algorithms that provide superior worst-case and average-case
+performance to std::sort: integer\_sort, which sorts fixed-size data
+types that support a rightshift (default of &gt;&gt;) and a comparison
+(default of &lt;) operator. float\_sort, which sorts standard
+floating-point numbers by safely casting them to integers.
+string\_sort, which sorts variable-length data types, and is optimized
+for 8-bit character strings.
+All 3 algorithms have O(n(k/s + s)) runtime where k is the number of
+bits in the data type and s is a constant, and limited memory overhead
+(in the kB for realistic inputs). In testing, integer\_sort varies
+from 35% faster to 8X as fast as std::sort, depending on processor,
+compiler optimizations, and data distribution. float\_sort is roughly
+7X as fast as std::sort on x86 processors. string\_sort is roughly 2X
+as fast as std::sort. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gil-io"><a class="anchor" href="#gil-io"></a>GIL.IO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Christian Henning |
+| Review Manager: | Needed |
+| Download: | [GIL Google Code Vault](<a href="http://gil-contributions.googlecode.com/files/rc2.zip" class="bare">http://gil-contributions.googlecode.com/files/rc2.zip</a>) |
+| Description: | I/O extension for boost::gil which allows reading and
+writing of/in various image formats ( tiff, jpeg, png, etc ). This
+review will also include the Toolbox extension which adds some common
+functionality to gil, such as new color spaces, algorithms, etc. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="autobuffer"><a class="anchor" href="#autobuffer"></a>AutoBuffer</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Thorsten Ottosen |
+| Review Manager: | Needed |
+| Download: | [Here](<a href="http://www.cs.aau.dk/~nesotto/boost/auto_buffer.zip" class="bare">http://www.cs.aau.dk/~nesotto/boost/auto_buffer.zip</a>) |
+| Description: | Boost.AutoBuffer provides a container for efficient dynamic, local buffers.
+Furthermore, the container may be used as an alternative to std::vector,
+offering greater flexibility and sometimes better performance. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="string-convert"><a class="anchor" href="#string-convert"></a>String Convert</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Vladimir Batov |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost-string-convert.zip" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost-string-convert.zip</a>) |
+| Description: | The library takes the approach of boost::lexical\_cast in the area of
+string-to-type and type-to-string conversions, builds on the past
+boost::lexical\_cast experience and advances that conversion
+functionality further to additionally provide:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>throwing and non-throwing conversion-failure behavior;</p>
+</li>
+<li>
+<p>support for the default value to be returned when conversion fails;</p>
+</li>
+<li>
+<p>two types of the conversion-failure check&#8201;&#8212;&#8201;basic and better/safe;</p>
+</li>
+<li>
+<p>formatting support based on the standard I/O Streams and the standard
+(or user-defined) I/O Stream-based manipulators
+(like std::hex, std::scientific, etc.);</p>
+</li>
+<li>
+<p>locale support;</p>
+</li>
+<li>
+<p>support for boost::range-compliant char and wchar\_t-based string containers;</p>
+</li>
+<li>
+<p>no DefaultConstructibility requirement for the Target type;</p>
+</li>
+<li>
+<p>consistent framework to uniformly incorporate any type-to-type conversions.
+It is an essential tool with applications making extensive use of
+configuration files or having to process/prepare considerable amounts
+of data in, say, XML, etc. |</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="move"><a class="anchor" href="#move"></a>Move</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Ion Gaztanaga |
+| Review Manager: | Needed |
+| Download: | <a href="http://svn.boost.org/svn/boost/sandbox/move/" class="bare">http://svn.boost.org/svn/boost/sandbox/move/</a> and online documentation at <a href="http://svn.boost.org/svn/boost/sandbox/move/libs/move/doc/html/index.html" class="bare">http://svn.boost.org/svn/boost/sandbox/move/libs/move/doc/html/index.html</a> |
+| Description: | In C0x, move semantics are implemented with the introduction of
+rvalue references. They allow us to implement move() without verbosity
+or runtime overhead. Boost.Move is a library that offers tools to
+implement those move semantics not only in compilers with rvalue
+references but also in compilers conforming to C03. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="containers"><a class="anchor" href="#containers"></a>Containers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Ion Gaztanaga |
+| Review Manager: | Needed |
+| Download: | &lt;<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost.move.container&gt;.zip&amp;directory=Containers&amp" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost.move.container&gt;.zip&amp;directory=Containers&amp</a>; |
+| Documentation: | <a href="http://svn.boost.org/svn/boost/sandbox/move/libs/container/doc/html/index.html" class="bare">http://svn.boost.org/svn/boost/sandbox/move/libs/container/doc/html/index.html</a> |
+| Description: | Boost.Container library implements several well-known containers,
+including STL containers. The aim of the library is to offers advanced
+features not present in standard containers or to offer the latest
+standard draft features for compilers that comply with C++03. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="interval-containers-library"><a class="anchor" href="#interval-containers-library"></a>Interval Containers Library</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Joachim Faulhaber |
+| Download: | <a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=itl_3_2_0.zip&amp;directory=Containers" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=itl_3_2_0.zip&amp;directory=Containers</a> |
+| Documentation: | <a href="http://herold-faulhaber.de/boost_itl/doc/libs/itl/doc/html/index.html" class="bare">http://herold-faulhaber.de/boost_itl/doc/libs/itl/doc/html/index.html</a> |
+| Review Manager: | Needed |
+| Description: | The Interval Template Library (Itl) provides intervals
+and two kinds of interval containers: Interval\_sets and
+interval\_maps. Interval\_sets and maps can be used just
+as sets or maps of elements. Yet they are much more
+space and time efficient when the elements occur in
+contiguous chunks: intervals. This is obviously the case
+in many problem domains, particularly in fields that deal
+with problems related to date and time.
+Interval containers allow for intersection with interval\_sets
+to work with segmentation. For instance you might want
+to intersect an interval container with a grid of months
+and then iterate over those months.
+Finally interval\_maps provide aggregation on
+associated values, if added intervals overlap with
+intervals that are stored in the interval\_map. This
+feature is called aggregate on overlap. It is shown by
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">typedef set&lt;string&gt; guests;
+interval\_map&lt;time, guests&gt; party;
+guests mary; mary.insert("Mary");
+guests harry; harry.insert("Harry");
+party += make\_pair(interval&lt;time&gt;::rightopen(20:00, 22:00),mary);
+party += make\_pair(interval&lt;time&gt;::rightopen\_(21:00, 23:00),harry);
+// party now contains
+[20:00, 21:00)-&gt;{"Mary"}
+[21:00, 22:00)-&gt;{"Harry","Mary"} //guest sets aggregated on overlap
+[22:00, 23:00)-&gt;{"Harry"}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As can be seen from the example an interval\_map has both
+a decompositional behavior (on the time dimension) as well as
+a accumulative one (on the associated values). |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="type-traits-extensions"><a class="anchor" href="#type-traits-extensions"></a>Type Traits Extensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Frederic Bron |
+| Review Manager: | Needed |
+| Download: | <a href="http://svn.boost.org/trac/boost/browser/sandbox/type_traits" class="bare">http://svn.boost.org/trac/boost/browser/sandbox/type_traits</a> |
+| Description: | The purpose of the addition is to add type traits to detect if types T and U
+are comparable in the sense of &lt;, &#8656;, &gt;, &gt;=, == or != operators, i.e. if
+t&lt;u has a sens when t is of type T and u of type U (same for &#8656;, &gt;, &gt;=, ==,
+!=).
+The following traits are added:
+is\_equal\_to\_comparable&lt;T,U&gt;
+is\_greater\_comparable&lt;T,U&gt;
+is\_greater\_equal\_comparable&lt;T,U&gt;
+is\_less\_comparable&lt;T,U&gt;
+is\_less\_equal\_comparable&lt;T,U&gt;
+is\_not\_equal\_to\_comparable&lt;T,U&gt;
+The names are based on the corresponding names of the standard
+template library (&lt;functional&gt; header, section 20.3.3 of the
+standard).
+The code has the following properties:
+\* returns true if t&lt;u is meaningful and returns a value convertible to bool
+\* returns false if t&lt;u is meaningless.
+\* fails with compile time error if t&lt;u is meaningful and returns void
+(a possibility to avoid compile time error would be to return true
+with an operator, trick but this has little sens as returning false
+would be better) |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="interthreads"><a class="anchor" href="#interthreads"></a>InterThreads</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Vicente J. Botet Escriba |
+| Review Manager: | Needed |
+| Download: | [Boost Vault](<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=interthreads.zip&amp;directory=Concurrent%20Programming&amp;" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=interthreads.zip&amp;directory=Concurrent%20Programming&amp;</a>) |
+| Description: |
+Boost.InterThreads extends Boost.Threads adding some features:
+* thread decorator: thread\_decorator allows to define
+setup/cleanup functions which will be called only once by
+thread: setup before the thread function and cleanup at thread
+exit.
+* thread specific shared pointer: this is an extension of the
+thread\_specific\_ptr providing access to this thread specific
+context from other threads. As it is shared the stored pointer
+is a shared\_ptr instead of a raw one.
+* thread keep alive mechanism: this mechanism allows to detect
+threads that do not prove that they are alive by calling to the
+keep\_alive\_point regularly. When a thread is declared dead a
+user provided function is called, which by default will abort
+the program.
+* thread tuple: defines a thread groupe where the number of
+threads is know statically and the threads are created at
+construction time.
+* set\_once: a synchonizer that allows to set a variable only once,
+notifying to the variable value to whatever is waiting for that.
+* thread\_tuple\_once: an extension of the boost::thread\_tuple which
+allows to join the thread finishing the first, using for that
+the set\_once synchronizer.
+* thread\_group\_once: an extension of the boost::thread\_group which
+allows to join the thread finishing the first, using for that
+the set\_once synchronizer.</p>
+</div>
+<div class="paragraph">
+<p>(thread\_decorator and thread\_specific\_shared\_ptr) are based on the
+original implementation of threadalert written by Roland Schwarz.
+Boost.InterThreads extends Boost.Threads adding thread setup/cleanup
+decorator, thread specific shared pointer, thread keep alive
+mechanism and thread tuples. |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bitfield"><a class="anchor" href="#bitfield"></a>Bitfield</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Vicente J. Botet Escriba |
+| Review Manager: | Needed |
+| Download: | <a href="http://svn.boost.org/svn/boost/sandbox/bitfield" class="bare">http://svn.boost.org/svn/boost/sandbox/bitfield</a> with documentation available at <a href="http://svn.boost.org/svn/boost/sandbox/bitfield/libs/integer/doc/index.html" class="bare">http://svn.boost.org/svn/boost/sandbox/bitfield/libs/integer/doc/index.html</a> |
+| Description: |
+Portable bitfields traits. Boost.Bitfield consists of:
+* a generic bitfield traits class providing generic getter and setter methods.
+* a BOOST\_BITFIELD\_DCL macro making easier the definition of the bitfield traits and the bitfield getter and setter functions.
+ |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lockfree"><a class="anchor" href="#lockfree"></a>Lockfree</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Tim Blechmann |
+| Review Manager: | Needed |
+| Download: | &lt;<a href="http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost_lockfree-241109.zip&amp;directory=Concurrent%20Programming&amp;amp&gt;" class="bare">http://www.boostpro.com/vault/index.php?action=downloadfile&amp;filename=boost_lockfree-241109.zip&amp;directory=Concurrent%20Programming&amp;amp&gt;</a>; |
+| Documentation: | <a href="http://tim.klingt.org/boost_lockfree/" class="bare">http://tim.klingt.org/boost_lockfree/</a> |
+| Description: | boost.lockfree provides implementations of lock-free data structures.
+lock-free data structures can be accessed by multiple threads without
+the necessity of blocking synchronization primitives such as guards.
+lock-free data structures can be used in real-time systems, where
+blocking algorithms may lead to high worst-case execution times, to
+avoid priority inversion, or to increase the scalability for
+multi-processor machines.</p>
+</div>
+<div class="paragraph">
+<p>boost.lockfree provides:
+* boost::lockfree::fifo, a lock-free fifo queue
+* boost::lockfree::stack, a lock-free stack
+the code is available from from my personal git repository:
+* git://tim.klingt.org/boost\_lockfree.git
+* <a href="http://tim.klingt.org/git?p=boost_lockfree.git" class="bare">http://tim.klingt.org/git?p=boost_lockfree.git</a>
+ |</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="libraries-under-development"><a class="anchor" href="#libraries-under-development"></a>Libraries under development</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="persistent"><a class="anchor" href="#persistent"></a>Persistent</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>| Author: | Tim Blechmann |
+| Description: | A library, based on Boost.Serialization, that provides access to persistent
+objects with an interface as close as possible to accessing regular objects
+in memory.* object ownership concepts equivalent to the ones used by Boost.SmartPtr:
+shared, weak, scoped (and raw)
+* ACID transactions, including recovery after a crash and "Serializable"
+isolation level
+* concurrent transactions, nested transactions, distributed transactions
+* concurrent access containers: STL containers whose nodes are implemented as
+persistent objects and can be accessed without moving the container to
+memory. Concurrent transactions modifying the container are only repeated in
+the rare cases the same container node is changed simultanisouly by 2
+threads.
+* extensible by other transactional resources, e.g. an object relational
+mapper based on the upcoming Boost.Rdb library. Multiple resources can be
+combined to one database, with distributed transactions among them.</p>
+</div>
+<div class="paragraph">
+<p>Please let us know of any libraries you are currently
+developing that you intend to submit for review. |</p>
+</div>
+<div class="paragraph">
+<p>See <a href="http://svn.boost.org/trac/boost/wiki/LibrariesUnderConstruction" class="bare">http://svn.boost.org/trac/boost/wiki/LibrariesUnderConstruction</a>
+for a current listing of libraries under development.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

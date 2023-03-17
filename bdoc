@@ -44,6 +44,7 @@ do
             --attribute boost_version=master \
             --attribute boost_ui_branch=master \
             --attribute boost_dir_prefix=doc/html \
+            --attribute boost_layout=release \
             --attribute boost_url= \
             playbook.yml
 
