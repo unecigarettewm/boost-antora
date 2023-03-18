@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Boost Library Submission Process :: Guides</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/develop/doc/contributor-manual/prev/submissions.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/develop/doc">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="contributor-manual" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Contributor Manual</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../docs.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Legacy Toolchain</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Antora Toolchain</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Enabling a Repo</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">The Playbook</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using <code>bdoc</code></span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">UI Bundles</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Doc Versioning</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Possible Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Source Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using Git</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using GitHub</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Proposing a New Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Maintaining a Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Compiler Workarounds</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Unit Tests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Documentation</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Continuous Integration</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Code Coverage</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Superproject</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Master and Develop</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Layout of a Repository</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Library Metadata</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Header-only Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Source Code Conventions</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Submitting Pull Requests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing Dependencies</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Copyright Attribution</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Using External Code</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Handling Old Compilers</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Deprecating Interfaces</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Abandoned Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Backward Compatibility</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Collective Decision-Making</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Release Process</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Release Notes</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Packaging Boost</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Legacy Content</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Boost Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="website_updating.html">Boost C++ Libraries - Updating Website</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Contributor Manual</a></li>
+    <li>Legacy Content</li>
+    <li><a href="submissions.html">Boost Library Submission Process</a></li>
+  </ul>
+</nav>
+    <div class="edit-this-page"><a href="https://github.com/cppalliance/contributor-manual/edit/develop/antora/modules/ROOT/pages/prev/submissions.adoc">Edit this Page</a></div>
+    </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Boost Library Submission Process</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page describes the process a library developer goes
+ through to get a library accepted by Boost.</p>
+</div>
+<div class="paragraph">
+<p>See the [Boost Library
+ Requirements and Guidelines](requirements.html) page for issues of content.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="steps-for-getting-a-library-accepted-by-boost"><a class="anchor" href="#steps-for-getting-a-library-accepted-by-boost"></a>Steps for getting a library accepted by Boost:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>[1. Learn about Boost](#Learn)</p>
+</li>
+<li>
+<p>[2. Determine interest](#interest)</p>
+</li>
+<li>
+<p>[3. Start Development](#Development)</p>
+</li>
+<li>
+<p>[4. Refinement](#Refinement)</p>
+</li>
+<li>
+<p>[5. Getting seconded for review](#Seconded)</p>
+</li>
+<li>
+<p>[6. Seek a Review Manager](#Seeking)</p>
+</li>
+<li>
+<p>[7. Formal Review](#Review)</p>
+</li>
+<li>
+<p>[8. Web site posting](#SitePosting)</p>
+</li>
+<li>
+<p>[9. People page](#People)</p>
+</li>
+<li>
+<p>[10. Lifecycle](#Lifecycle)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="learn-about-boost"><a class="anchor" href="#learn-about-boost"></a>Learn about Boost</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Follow posts on the [main
+ developers mailing list](/community/groups.html#main) for a while, or look through the
+ [archives](/community/groups.html#archive). Explore
+ the [web site](/). Learn the [Requirements](requirements.html). Read the rest of this
+ page to learn about the process. Search the web to get an idea
+ of the commitment required to get a library into Boost.</p>
+</div>
+<div class="paragraph">
+<p>There is a culture associated with Boost, aimed at
+ encouraging high quality libraries by a process of discussion
+ and refinement. Some libraries get past community review
+ in less than two years from first concept, but most take longer,
+ sometimes a lot longer. Five to ten years to get a library past
+ review and into Boost is not unheard of, and you should prepare
+ yourself for the personal investment required.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="determine-interest"><a class="anchor" href="#determine-interest"></a>Determine interest</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While participation in reviews for other submissions is not a
+ prerequisite for submitting a library to Boost, it is highly
+ recommended; it will acquaint you with the process and the
+ emotional demands of a formal review. There&#8217;s nothing that quite
+ deflates the ego like having brilliant members of the C++
+ community critiquing your work, but, alas, it&#8217;s worth it!</p>
+</div>
+<div class="paragraph">
+<p>Potential library submitters should be careful to
+ research the prior art before beginning to design a
+ new library. Unfortunately, now and then folks arrive at Boost
+ with a new library into which they have invested many hours, only
+ to find that Boost already has that functionality, and sometimes
+ has had it for years. Candidates should also research libraries being
+ developed by others intended for Boost - if you have an itch
+ to scratch, often so have had others and collaboration
+ developing their library is usually considerably more efficient
+ than going at it alone.</p>
+</div>
+<div class="paragraph">
+<p>Potential library submitters should also be careful to
+ publicise, canvas for, and gauge interest in their library,
+ ideally before beginning it, but certainly before submitting it
+ for review. Even a superbly designed library can fail review if
+ there isn&#8217;t enough interest in the subject matter; We can only
+ review libraries with enough appeal to form a viable peer
+ review. Ensuring that enough people are interested in your
+ potential library goes a long way to ensure that.</p>
+</div>
+<div class="paragraph">
+<p>There are many places to publicise and canvas for a library.
+ The Boost developers [mailing
+ list](/community/groups.html) ought to be your first stop in gauging interest
+ in a possible new C++ library. Be prepared to pivot your design
+ and focus until your proposed library finds traction. Other
+ places useful for gauging interest in a library might be [Reddit/r/cpp](<a href="https://www.reddit.com/r/cpp/" class="bare">https://www.reddit.com/r/cpp/</a>).</p>
+</div>
+<div class="paragraph">
+<p>A message to the Boost developers mailing list
+ might be as simple as "Is there any interest in a
+ library which solves Travelling Salesperson problems in linear
+ time?"</p>
+</div>
+<div class="paragraph">
+<p>A bit of further description or snippet of code may be
+ helpful. By the way, the preferred format for messages on the
+ mailing list is plain text; not rich text, HTML, etc.</p>
+</div>
+<div class="paragraph">
+<p>Avoid posting lengthy descriptions, documentation,
+ or code to the mailing list, and, please, no attachments.
+ The best place to provide lengthy material is via. a web link.
+ Project hosting services such as sourceforge, github, google
+ code, and bitbucket serve well for this purpose.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="start-development"><a class="anchor" href="#start-development"></a>Start Development</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If response to an initial query indicates interest, then
+ by all means make your library publicly available if you haven&#8217;t
+ already done so.</p>
+</div>
+<div class="paragraph">
+<p>Please commit your code to a version control system such as
+ Git, and make your documentation available in HTML format on
+ a public website such as Github. An issue tracker such as the one
+ provided by Github is also highly recommended.</p>
+</div>
+<div class="paragraph">
+<p>Your library should contain material as if it were on the
+ boost.org web site. The closer your library reflects the
+ final directory structure and format of the web site, the
+ better. This makes it possible for reviewers to simply copy
+ your code into the Boost distribution for testing.</p>
+</div>
+<div class="paragraph">
+<p>Please verify that your library compiles and runs under
+ at least two compilers. This flushes out obvious portability
+ problems.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that you release your code under the Boost
+ Software License; see the [Requirements](requirements.html) page for more
+ information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="refinement"><a class="anchor" href="#refinement"></a>Refinement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Discuss, refine, rewrite. Repeat until satisfied.</p>
+</div>
+<div class="paragraph">
+<p>The exact details of this process varies a lot. Usually it
+ is public, on the mailing list, but frequently discussion
+ happens in private emails. For some libraries the process is
+ over quickly, but for others it goes on for months. It&#8217;s
+ often challenging, and sometimes veers into completely
+ unexpected directions.</p>
+</div>
+<div class="paragraph">
+<p>The [archive](/community/groups.html#archive) of
+ past messages is one way to see how this process worked for
+ other Boost libraries.</p>
+</div>
+<div class="paragraph">
+<p>To get an idea of best practices with some samples of script
+ and code in existing Boost libraries, see the
+ [Best Practices Handbook](<a href="https://svn.boost.org/trac/boost/wiki/BestPracticeHandbook" class="bare">https://svn.boost.org/trac/boost/wiki/BestPracticeHandbook</a>) on the Boost wiki.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-seconded-for-review"><a class="anchor" href="#getting-seconded-for-review"></a>Getting seconded for review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you feel that your library is ready for entry into Boost,
+ you need to find at least one member (but preferably several) of
+ the Boost community who is willing to publicly endorse your
+ library for entry into Boost. A simple method of achieving this
+ is to post to [the Boost
+ developers mailing list](/community/groups.html) a short description of your
+ library, links to its github and documentation, and a request for
+ endorsements.</p>
+</div>
+<div class="paragraph">
+<p>It is expected that those who endorse a library for review
+ will have performed at least a cursory check of the library&#8217;s
+ suitability for Boost in terms of documentation, fit with
+ the rest of Boost and usefulness. A public endorsement of a
+ library for review means that from an initial glance, they
+ believe that the library has a reasonable chance to be accepted
+ during a formal review. The expectation is that these endorsers
+ will themselves review of the library during formal review
+ period, though this is not binding.</p>
+</div>
+<div class="paragraph">
+<p>Once you have a list of people who have publicly endorsed
+ your library for review, email [the Review Wizards](/community/reviews.html#Wizard)
+ to request that your library be added to [the review queue](/community/review_schedule.html)
+ where the following information will be shown:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Submission</p>
+</li>
+<li>
+<p>Submitter</p>
+</li>
+<li>
+<p>Links to Source (GitHub), Documentation (HTML website)
+and any Incubator entry</p>
+</li>
+<li>
+<p>Names of members who endorse this submission for review</p>
+</li>
+<li>
+<p>Review Manager</p>
+</li>
+<li>
+<p>Review Dates</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="seek-a-review-manager"><a class="anchor" href="#seek-a-review-manager"></a>Seek a Review Manager</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to schedule a formal review, the author must find a
+ capable volunteer to manage the review. This should be someone
+ with knowledge of the library domain, and experience with the
+ review process. See [Formal
+ Review Process](/community/reviews.html) for the responsibilities of the review
+ manager.</p>
+</div>
+<div class="paragraph">
+<p>Authors can find community members interested in managing
+ reviews through discussion of the library on the developer
+ list. If no one steps forward to volunteer to manage the
+ review, it is appropriate to contact an experienced Boost
+ member who showed interest in the library. Be considerate that
+ managing a review is a serious commitment; for this reason,
+ it&#8217;s better to contact the member off-list.</p>
+</div>
+<div class="paragraph">
+<p>If you cannot find a review manager after 3 weeks using the
+ means above, and your submission is targeting eventual
+ standardization, there is a list of Boost regulars who are also
+ WG21 committee members who have volunteered to act as review
+ managers in such cases. Please try them in the order listed.
+ They are: Zach Laine, Micheal Caisse, Matt Calabrese, Edward
+ Diener, Louis Dionne, Vinnie Falco, Glen Fernandes, and David
+ Sankel.</p>
+</div>
+<div class="paragraph">
+<p>Once a potential review manager has been identified, [contact the
+ review wizards](/community/reviews.html#Wizard) for approval. The wizards approve review
+ managers based on their level of participation in the Boost
+ community.</p>
+</div>
+<div class="paragraph">
+<p>The review wizards will coordinate with both the author and
+ review manager to schedule a date convenient for both.</p>
+</div>
+<div class="paragraph">
+<p>See [Formal Review
+ Process](/community/reviews.html) for details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="formal-review"><a class="anchor" href="#formal-review"></a>Formal Review</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before your formal review begins, double-, triple-, and
+ quadruple-check your library. Verify that every code example
+ works, that all unit tests pass on at least two compilers on at
+ least two major operating systems, and run your documentation
+ through a spelling and grammar checker.</p>
+</div>
+<div class="paragraph">
+<p>Please do not modify your library on its master branch
+ during a review. Instead, modify a separate develop branch in
+ response to feedback and reviews. For bigger ticket items of
+ work, open issues on your issue tracker so interested people can
+ track the fixing of specific issues raised.</p>
+</div>
+<div class="paragraph">
+<p>The review manager will consider all the reviews made by
+ members of the community and arrive at a decision on
+ whether your library is rejected, conditionally accepted or
+ unconditionally accepted. They will post a report summarising
+ the decision publicly. If conditions are attached to
+ acceptance, you will need to implement those conditions or
+ else undergo an additional formal review.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="boost-web-site-posting"><a class="anchor" href="#boost-web-site-posting"></a>Boost web site posting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once an accepted library is ready for inclusion on the Boost
+ web site, the submitter is typically given Boost repository
+ write access, and expected to check-in and maintain the library
+ there. Contact the moderators if you need write access or
+ direct use of the repository isn&#8217;t possible for you.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="people-page"><a class="anchor" href="#people-page"></a>People page</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If the boost.org web site doesn&#8217;t already have your capsule
+ biography and picture (optional, with not-too-serious pictures
+ preferred!), please send them to the Boost webmaster. It is up
+ to you as to whether or not the biography includes your email
+ address or other contact information. The preferred picture
+ format is .jpg, but other common formats are acceptable. The
+ preferred image size is 500x375 but the webmaster has photo
+ editing software and can do the image preparation if
+ necessary.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lifecycle"><a class="anchor" href="#lifecycle"></a>Lifecycle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Libraries are software; they lose their value over time if
+ not maintained. Postings on the Boost developers or users
+ mailing lists can alert you to potential maintenance needs;
+ please plan to maintain your library over time. If you no
+ longer can or wish to maintain your library, please post a
+ message on the Boost developers mailing list asking for a new
+ maintainer to volunteer and then spend the time to help them
+ take over.</p>
+</div>
+<div class="paragraph">
+<p>Orphaned libraries will be put in the care of the [Community
+ Maintenance Team](<a href="https://svn.boost.org/trac/boost/wiki/CommunityMaintenance" class="bare">https://svn.boost.org/trac/boost/wiki/CommunityMaintenance</a>).</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

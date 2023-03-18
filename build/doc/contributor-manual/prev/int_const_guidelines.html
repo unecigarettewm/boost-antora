@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Coding Guidelines for Integral Constant Expressions :: Guides</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/doc/contributor-manual/prev/int_const_guidelines.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/doc">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="contributor-manual" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Contributor Manual</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../docs.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Legacy Toolchain</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Antora Toolchain</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Enabling a Repo</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">The Playbook</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using <code>bdoc</code></span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">UI Bundles</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Doc Versioning</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Possible Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Source Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using Git</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using GitHub</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Proposing a New Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Maintaining a Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Compiler Workarounds</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Unit Tests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Documentation</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Continuous Integration</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Code Coverage</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Superproject</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Master and Develop</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Layout of a Repository</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Library Metadata</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Header-only Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Source Code Conventions</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Submitting Pull Requests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing Dependencies</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Copyright Attribution</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Using External Code</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Handling Old Compilers</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Deprecating Interfaces</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Abandoned Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Backward Compatibility</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Collective Decision-Making</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Release Process</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Release Notes</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Packaging Boost</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Legacy Content</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Boost Development</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="website_updating.html">Boost C++ Libraries - Updating Website</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Contributor Manual</a></li>
+    <li>Legacy Content</li>
+    <li><a href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a></li>
+  </ul>
+</nav>
+    <div class="edit-this-page"><a href="https://github.com/cppalliance/contributor-manual/edit/master/antora/modules/ROOT/pages/prev/int_const_guidelines.adoc">Edit this Page</a></div>
+    </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Coding Guidelines for Integral Constant Expressions</h1>
+<div class="sect1">
+<h2 id="what-is-an-integral-constant-expression"><a class="anchor" href="#what-is-an-integral-constant-expression"></a>What is an Integral Constant Expression?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Integral Constant Expressions are used in many places in
+ C++; as array bounds, as bit-field lengths, as enumerator
+ initialisers, and as arguments to non-type template parameters.
+ However many compilers have problems handling integral constant
+ expressions; as a result of this, programming using non-type
+ template parameters in particular can be fraught with
+ difficulty, often leading to the incorrect assumption that
+ non-type template parameters are unsupported by a particular
+ compiler. This short article is designed to provide a set of
+ guidelines and workarounds that, if followed, will allow
+ integral constant expressions to be used in a manner portable
+ to all the compilers currently supported by boost. Although
+ this article is mainly targeted at boost library authors, it
+ may also be useful for users who want to understand why boost
+ code is written in a particular way, or who want to write
+ portable code themselves.</p>
+</div>
+<div class="paragraph">
+<p>Integral constant expressions are described in section 5.19
+ of the standard, and are sometimes referred to as "compile time
+ constants". An integral constant expression can be one of the
+ following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A literal integral value, for example <code>0u</code> or
+<code>3L</code>.</p>
+</li>
+<li>
+<p>An enumerator value.</p>
+</li>
+<li>
+<p>Global integral constants, for example:
+<code>`
+const int my\_INTEGRAL\_CONSTANT = 3;
+</code>`</p>
+</li>
+<li>
+<p>Static member constants, for example:
+<code>`
+struct myclass
+{ static const int value = 0; };
+</code>`</p>
+</li>
+<li>
+<p>Member enumerator values, for example:
+<code>`
+struct myclass
+{ enum{ value = 0 }; };
+</code>`</p>
+</li>
+<li>
+<p>Non-type template parameters of integral or enumerator
+type.</p>
+</li>
+<li>
+<p>The result of a <code>sizeof</code> expression, for
+example:
+    <code>`
+    sizeof(foo(a, b, c))
+    </code>`</p>
+</li>
+<li>
+<p>The result of a <code>static_cast</code>, where the
+target type is an integral or enumerator type, and the
+argument is either another integral constant expression, or a
+floating-point literal.</p>
+</li>
+<li>
+<p>The result of applying a binary operator to two integral
+constant expressions:
+    <code>`
+    INTEGRAL\_CONSTANT1 op INTEGRAL\_CONSTANT2
+    </code>`
+provided that the operator is not an assignment operator, or comma
+operator.</p>
+</li>
+<li>
+<p>The result of applying a unary operator to an integral
+ constant expression:
+    <code>`
+    op INTEGRAL\_CONSTANT1
+    </code>`
+provided that the operator is not the increment or decrement operator.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="coding-guidelines"><a class="anchor" href="#coding-guidelines"></a>Coding Guidelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following guidelines are declared in no particular order
+ (in other words you need to obey all of them - sorry!), and may
+ also be incomplete, more guidelines may be added as compilers
+ change and/or more problems are encountered.</p>
+</div>
+<div class="sect2">
+<h3 id="when-declaring-constants-that-are-class-members-always-use"><a class="anchor" href="#when-declaring-constants-that-are-class-members-always-use"></a>When declaring constants that are class members always use</h3>
+<div class="literalblock">
+<div class="content">
+<pre>the macro `BOOST_STATIC_CONSTANT.`</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct myclass
+{
+   BOOST\_STATIC\_CONSTANT(int, value = sizeof(T));
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: not all compilers support inline initialisation
+ of member constants, others treat member enumerators in strange
+ ways (they&#8217;re not always treated as integral constant
+ expressions). The BOOST\_STATIC\_CONSTANT macro uses the most
+ appropriate method for the compiler in question.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-declare-integral-constant-expressions-whose-type-is"><a class="anchor" href="#dont-declare-integral-constant-expressions-whose-type-is"></a>Don&#8217;t declare integral constant expressions whose type is</h3>
+<div class="literalblock">
+<div class="content">
+<pre>wider than int.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: while in theory all integral types are usable in
+ integral constant expressions, in practice many compilers limit
+ integral constant expressions to types no wider than
+ <code>int</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-use-logical-operators-in-integral-constant"><a class="anchor" href="#dont-use-logical-operators-in-integral-constant"></a>Don&#8217;t use logical operators in integral constant</h3>
+<div class="literalblock">
+<div class="content">
+<pre>expressions; use template meta-programming instead.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The header <code>&lt;boost/type_traits/ice.hpp&gt;</code>
+ contains a number of workaround templates, that fulfil the role
+ of logical operators, for example instead of:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">INTEGRAL\_CONSTANT1 || INTEGRAL\_CONSTANT2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">::boost::type\_traits::ice\_or&lt;INTEGRAL\_CONSTANT1,INTEGRAL\_CONSTANT2&gt;::value</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: A number of compilers (particularly the Borland
+ and Microsoft compilers), tend to not to recognise integral
+ constant expressions involving logical operators as genuine
+ integral constant expressions. The problem generally only shows
+ up when the integral constant expression is nested deep inside
+ template code, and is hard to reproduce and diagnose.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-use-any-operators-in-an-integral-constant-expression"><a class="anchor" href="#dont-use-any-operators-in-an-integral-constant-expression"></a>Don&#8217;t use any operators in an integral constant expression</h3>
+<div class="literalblock">
+<div class="content">
+<pre>used as a non-type template parameter</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rather than:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">typedef myclass&lt;INTEGRAL\_CONSTANT1 ==
+              INTEGRAL\_CONSTANT2&gt; mytypedef;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">typedef myclass&lt; some\_symbol&gt;
+              mytypedef;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where <code>some_symbol</code> is the symbolic name of a an
+ integral constant expression whose value is
+ <code>(INTEGRAL_CONSTANT1 == INTEGRAL_CONSTANT2).</code></p>
+</div>
+<div class="paragraph">
+<p>Rationale: the older EDG based compilers (some of which are
+ used in the most recent version of that platform&#8217;s compiler),
+ don&#8217;t recognise expressions containing operators as non-type
+ template parameters, even though such expressions can be used
+ as integral constant expressions elsewhere.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="always-use-a-fully-qualified-name-to-refer-to-an-integral"><a class="anchor" href="#always-use-a-fully-qualified-name-to-refer-to-an-integral"></a>Always use a fully qualified name to refer to an integral</h3>
+<div class="literalblock">
+<div class="content">
+<pre>constant expression.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">typedef myclass&lt; ::boost::is\_integral&lt;some\_type&gt;::value&gt; mytypedef;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: at least one compiler (Borland&#8217;s), doesn&#8217;t
+ recognise the name of a constant as an integral constant
+ expression unless the name is fully qualified (which is to say
+ it starts with <code>::</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="always-leave-a-space-after-a-and-before"><a class="anchor" href="#always-leave-a-space-after-a-and-before"></a>Always leave a space after a &#8216;&lt;&#8217; and before</h3>
+<div class="literalblock">
+<div class="content">
+<pre>'`::`'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">typedef myclass&lt; ::boost::is\_integral&lt;some\_type&gt;::value&gt; mytypedef;
+                ^
+                ensure there is space here!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: <code>&lt;:</code> is a legal digraph in it&#8217;s own
+ right, so <code>&lt;::</code> is interpreted as the same as
+ <code>[:</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-use-local-names-as-integral-constant-expressions"><a class="anchor" href="#dont-use-local-names-as-integral-constant-expressions"></a>Don&#8217;t use local names as integral constant expressions</h3>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct foobar
+{
+   BOOST\_STATIC\_CONSTANT(int, temp = computed\_value);
+   typedef myclass&lt;temp&gt; mytypedef;  // error
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: At least one compiler (Borland&#8217;s) doesn&#8217;t accept
+ this.</p>
+</div>
+<div class="paragraph">
+<p>Although it is possible to fix this by using:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct foobar
+{
+   BOOST\_STATIC\_CONSTANT(int, temp = computed\_value);
+   typedef foobar self\_type;
+   typedef myclass&lt;(self\_type::temp)&gt; mytypedef;  // OK
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This breaks at least one other compiler (VC6), it is better
+ to move the integral constant expression computation out into a
+ separate traits class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct foobar\_helper
+{
+   BOOST\_STATIC\_CONSTANT(int, value = computed\_value);
+};
+
+template &lt;class T&gt;
+struct foobar
+{
+   typedef myclass&lt; ::foobar\_helper&lt;T&gt;::value&gt; mytypedef;  // OK
+};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-use-dependent-default-parameters-for-non-type"><a class="anchor" href="#dont-use-dependent-default-parameters-for-non-type"></a>Don&#8217;t use dependent default parameters for non-type</h3>
+<div class="literalblock">
+<div class="content">
+<pre>template parameters.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T, int I = ::boost::is\_integral&lt;T&gt;::value&gt;  // Error can't deduce value of I in some cases.
+struct foobar;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rationale: this kind of usage fails for Borland C++. Note
+ that this is only an issue where the default value is dependent
+ upon a previous template parameter, for example the following
+ is fine:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T, int I = 3&gt;  // OK, default value is not dependent
+struct foobar;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unresolved-issues"><a class="anchor" href="#unresolved-issues"></a>Unresolved Issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following issues are either unresolved or have fixes
+ that are compiler specific, and/or break one or more of the
+ coding guidelines.</p>
+</div>
+<div class="sect2">
+<h3 id="be-careful-of-numeric_limits"><a class="anchor" href="#be-careful-of-numeric_limits"></a>Be careful of numeric\_limits</h3>
+<div class="paragraph">
+<p>There are three issues here:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The header &lt;limits&gt; may be absent - it is
+recommended that you never include &lt;limits&gt; directly
+but use &lt;boost/pending/limits.hpp&gt; instead. This header
+includes the "real" &lt;limits&gt; header if it is available,
+otherwise it supplies it&#8217;s own std::numeric\_limits
+definition. Boost also defines the macro BOOST\_NO\_LIMITS if
+&lt;limits&gt; is absent.</p>
+</li>
+<li>
+<p>The implementation of std::numeric\_limits may be defined
+in such a way that its static-const members may not be usable
+as integral constant expressions. This contradicts the
+standard but seems to be a bug that affects at least two
+standard library vendors; boost defines
+BOOST\_NO\_LIMITS\_COMPILE\_TIME\_CONSTANTS in
+&lt;boost/config.hpp&gt; when this is the case.</p>
+</li>
+<li>
+<p>There is a strange bug in VC6, where the members of
+std::numeric\_limits can be "prematurely evaluated" in
+template code, for example:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct limits\_test
+{
+   BOOST\_STATIC\_ASSERT(::std::numeric\_limits&lt;T&gt;::is\_specialized);
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This code fails to compile with VC6 even though no instances
+ of the template are ever created; for some bizarre reason
+ <code>::std::numeric_limits&lt;T&gt;::is_specialized</code>
+ always evaluates to false, irrespective of what the template
+ parameter T is. The problem seems to be confined to expressions
+ which depend on std::numeric\_limts: for example if you replace
+ <code>::std::numeric_limits&lt;T&gt;::is_specialized</code>
+ with <code>::boost::is_arithmetic&lt;T&gt;::value</code>, then
+ everything is fine. The following workaround also works but
+ conflicts with the coding guidelines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct limits\_test
+{
+   BOOST\_STATIC\_CONSTANT(bool, check = ::std::numeric\_limits&lt;T&gt;::is\_specialized);
+   BOOST\_STATIC\_ASSERT(check);
+};</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So it is probably best to resort to something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">template &lt;class T&gt;
+struct limits\_test
+{
+#ifdef BOOST\_MSVC
+   BOOST\_STATIC\_CONSTANT(bool, check = ::std::numeric\_limits&lt;T&gt;::is\_specialized);
+   BOOST\_STATIC\_ASSERT(check);
+#else
+   BOOST\_STATIC\_ASSERT(::std::numeric\_limits&lt;T&gt;::is\_specialized);
+#endif
+};</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="be-careful-how-you-use-the-sizeof-operator"><a class="anchor" href="#be-careful-how-you-use-the-sizeof-operator"></a>Be careful how you use the sizeof operator</h3>
+<div class="paragraph">
+<p>As far as I can tell, all compilers treat sizeof expressions
+ correctly when the argument is the name of a type (or a
+ template-id), however problems can occur if:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The argument is the name of a member-variable, or a local
+variable (code may not compile with VC6).</p>
+</li>
+<li>
+<p>The argument is an expression which involves the creation
+of a temporary (code will not compile with Borland C++).</p>
+</li>
+<li>
+<p>The argument is an expression involving an overloaded
+function call (code compiles but the result is a garbage
+value with Metroworks C++).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dont-use-boostis_convertible-unless-you-have-to"><a class="anchor" href="#dont-use-boostis_convertible-unless-you-have-to"></a>Don&#8217;t use boost::is\_convertible unless you have to</h3>
+<div class="paragraph">
+<p>Since is\_convertible is implemented in terms of the sizeof
+ operator, it consistently gives the wrong value when used with
+ the Metroworks compiler, and may not compile with the Borland&#8217;s
+ compiler (depending upon the template arguments used).</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -28,22 +28,20 @@ do
             --attribute boost_version=$1 \
             --attribute boost_ui_branch=$1 \
             --attribute boost_dir_prefix=$1/libs \
-            --attribute boost_url=https://antora.cppalliance.org/$1/libs \
             libs.playbook.yml
 
     elif [ "$1" = "release" ]; then
         npx antora --fetch \
             --attribute boost_version=master \
             --attribute boost_ui_branch=master \
-            --attribute boost_dir_prefix=doc/html \
             --attribute boost_layout=release \
-            --attribute boost_url= \
+            --attribute boost_dir_prefix=doc/html \
             libs.playbook.yml
 
     elif [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
         npx antora --fetch \
             --attribute boost_version=$1 \
-            --attribute boost_url=https://antora.cppalliance.org/$1/libs \
+            --attribute boost_ui_branch=master \
             --attribute boost_dir_prefix=$1/libs \
             libs.playbook.yml
 

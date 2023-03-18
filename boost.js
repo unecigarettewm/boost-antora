@@ -32,40 +32,42 @@ class Ext {
         if (Array.isArray(elem)) {
             for(var i = 0; i < elem.length; i++)
                 if (typeof elem[i] != "string")
-                    this.doReplace1(elem[i], pat, sub);
+                    this.doReplace1(elem[i], pat, sub)
                 else
-                    elem[i] = elem[i].replaceAll(pat, sub);
+                    elem[i] = elem[i].replaceAll(pat, sub)
         } else if (typeof elem == 'object') {
             for (let key in elem)
                 if (typeof elem[key] != "string")
-                    this.doReplace1(elem[key], pat, sub);
+                    this.doReplace1(elem[key], pat, sub)
                 else
-                    elem[key] = elem[key].replaceAll(pat, sub);
+                    elem[key] = elem[key].replaceAll(pat, sub)
         }
     }
 
     doReplace(playbook) {
         for (const [key, value] of Object.entries(playbook.asciidoc.attributes)) {
-            var pat = "${" + key + "}";
-            this.doReplace1(playbook.site, pat, value);
-            this.doReplace1(playbook.content, pat, value);
-            this.doReplace1(playbook.output, pat, value);
-            this.doReplace1(playbook.ui, pat, value);
+            var pat = "${" + key + "}"
+            this.doReplace1(playbook.site, pat, value)
+            this.doReplace1(playbook.urls, pat, value)
+            this.doReplace1(playbook.content, pat, value)
+            this.doReplace1(playbook.output, pat, value)
+            this.doReplace1(playbook.ui, pat, value)
         }
     }
 
     contextStarted({playbook}) {
-        var version = playbook.asciidoc.attributes.boost_version;
+        var version = playbook.asciidoc.attributes.boost_version
 
         if(! version )
             throw new Error("Missing required attribute: asciidoc.attributes.boost_version");
 
         if( version == "master" || version == "develop") {
-            playbook.content.tags = "";
-            playbook.content.branches = version;
+            playbook.content.tags = ""
+            playbook.content.branches = version
         } else {
-            playbook.content.tags = "boost-" + version;
-            playbook.content.branches = "~" // disable branches
+            playbook.content.tags = "boost-" + version
+            playbook.content.branches = null // disable branches
+            playbook.urls.latestVersionSegment = "" // disable tag in URL
         } /* else {
             playbook.content.branches = "HEAD"
             console.log( "branches: ", playbook.content.branches)

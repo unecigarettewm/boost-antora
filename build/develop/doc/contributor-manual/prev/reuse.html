@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Boost Library Reuse :: Guides</title>
+    <link rel="canonical" href="https://antora.cppalliance.org/develop/doc/contributor-manual/prev/reuse.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script>var uiRootPath = '../../_'</script>
+<script>
+
+function updateTheme() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    document.getElementById("theme-button").checked = true;
+  } else {
+    document.documentElement.classList.remove('dark')
+    document.getElementById("theme-button").checked = false;
+  }
+};
+
+function onThemeButton() {
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    localStorage.theme = 'light';
+  } else {
+    localStorage.theme = 'dark';
+  }
+  updateTheme();
+}
+
+window.addEventListener('load', function() {
+    updateTheme();
+}, false);
+
+</script>
+  </head>
+  <body class="article">
+<header>
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <button class="site-logo"></button>
+      <a class="site-name" href="https://antora.cppalliance.org/develop/doc">Boost</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-tabs">
+        <a class="navbar-item" href="#">News</a>
+        <a class="navbar-item" href="#">Learn</a>
+        <a class="navbar-item" href="#">Community</a>
+        <a class="navbar-item" href="#">Libraries</a>
+        <a class="navbar-item" href="#">Releases</a>
+        <div id="theme">
+          <input type="checkbox" id="theme-button" onclick="onThemeButton()"/>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="contributor-manual" data-version="">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" title="Toggle expand/collapse all"></button>
+    <h3 class="title"><a href="../index.html">Contributor Manual</a></h3>
+    <ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../docs.html">Documentation</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Legacy Toolchain</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Antora Toolchain</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Enabling a Repo</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">The Playbook</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using <code>bdoc</code></span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">UI Bundles</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Doc Versioning</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Possible Topics</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Source Control</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using Git</span>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <span class="nav-text">Using GitHub</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Proposing a New Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing a Review</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Maintaining a Library</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Compiler Workarounds</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Unit Tests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Writing Documentation</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Continuous Integration</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Code Coverage</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Superproject</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Master and Develop</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Layout of a Repository</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Library Metadata</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Header-only Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Source Code Conventions</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Submitting Pull Requests</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Managing Dependencies</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Copyright Attribution</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Using External Code</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Handling Old Compilers</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Deprecating Interfaces</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Abandoned Libraries</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Backward Compatibility</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Collective Decision-Making</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">The Release Process</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Release Notes</span>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <span class="nav-text">Packaging Boost</span>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Legacy Content</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="borland_cpp.html">Borland C++</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="bugs.html">Bugs</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="design_faq.html">Boost Website Design FAQ</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="exemplar.html">Website Exemplars</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="header.html">Boost Header policy</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Boost Development</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="int_const_guidelines.html">Coding Guidelines for Integral Constant Expressions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="library_metadata.html">Library Metadata</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-apr-2006.html">Review Wizard Status Report for April 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-dec-2009.html">Review Wizard Status Report for December 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jan-2006.html">Review Wizard Status Report for January 2006</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-jun-2009.html">Review Wizard Status Report for June 2009</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-may-2008.html">Review Wizard Status Report for May 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2007.html">Review Wizard Status Report for November 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-nov-2008.html">Review Wizard Status Report for November 2008</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="report-sep-2007.html">Review Wizard Status Report for September 2007</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="requirements.html">Boost Library Requirements and Guidelines</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="reuse.html">Boost Library Reuse</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="running_regression_tests.html">Running Boost Regression Tests</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="separate_compilation.html">Guidelines for Authors of Boost Libraries Containing Separate Source</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="submissions.html">Boost Library Submission Process</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="test.html">Boost Test Policies and Protocols</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="website_updating.html">Boost C++ Libraries - Updating Website</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+   
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Contributor Manual</a></li>
+    <li>Legacy Content</li>
+    <li><a href="reuse.html">Boost Library Reuse</a></li>
+  </ul>
+</nav>
+    <div class="edit-this-page"><a href="https://github.com/cppalliance/contributor-manual/edit/develop/antora/modules/ROOT/pages/prev/reuse.adoc">Edit this Page</a></div>
+    </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Boost Library Reuse</h1>
+<div class="paragraph">
+<p>A Boost library <strong>should not</strong> use libraries
+ other than Boost or the C++ Standard Library.</p>
+</div>
+<div class="paragraph">
+<p>A Boost library <strong>should</strong> use other Boost
+ Libraries or the C++ Standard Library, but only when the
+ benefits outweigh the costs.</p>
+</div>
+<div class="paragraph">
+<p>The benefits of using components from other libraries may
+ include clearer, more understandable code, reduced development
+ and maintenance costs, and the assurance which comes from
+ reusing well-known and trusted building blocks.</p>
+</div>
+<div class="paragraph">
+<p>The costs may include undesirable coupling between
+ components, and added compilation and runtime costs. If the
+ interface to the additional component is complex, using it may
+ make code less readable, and thus actually increase development
+ and maintenance costs.</p>
+</div>
+<div class="paragraph">
+<p>Negative effects of coupling become obvious when one library
+ uses a second library which uses a third, and so on. The worst
+ form of coupling requires the user understand each of the
+ coupled libraries. Coupling may also reduce the portability of
+ a library - even in case when all used libraries are
+ self-sufficient (see example of questionable usage of
+ &lt;iostream&gt; library below).</p>
+</div>
+<div class="paragraph">
+<p><strong>Example where another boost component should
+ certainly be used:</strong> boost::noncopyable (in [boost/utility.hpp](/doc/libs/release/boost/utility.hpp))
+ has considerable benefits; it simplifies code, improves
+ readability, and signals intent. Costs are low as coupling is
+ limited; noncopyable itself uses no other classes and its
+ header includes only the lightweight headers
+ &lt;boost/config.hpp&gt; and &lt;cstddef&gt;. There are no
+ runtime costs at all. With costs so low and benefits so high,
+ other boost libraries should use boost::noncopyable when the
+ need arises except in exceptional circumstances.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example where a standard library component might
+ possibly be used:</strong> Providing diagnostic output as a
+ debugging aid can be a nice feature for a library. Yet using
+ Standard Library &lt;iostream&gt; can involve a lot of
+ additional cost, particularly if &lt;iostream&gt; is unlikely
+ to be used elsewhere in the application. In certain GUI or
+ embedded applications, coupling to &lt;iostream&gt; would be a
+ disqualification. Consider redesign of the boost library in
+ question so that the user supplies the diagnostic output
+ mechanism.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example where another boost component should not be
+ used:</strong> The boost dir\_it library has considerable
+ coupling and runtime costs, not to mention portability issues
+ for unsupported operating systems. While completely appropriate
+ when directory iteration is required, it would not be
+ reasonable for another boost library to use dir\_it just to
+ check that a file is available before opening. C++ Standard
+ Library file open functionality does this at lower cost. Don&#8217;t
+ use dir\_it just for the sake of using a boost library.</p>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
