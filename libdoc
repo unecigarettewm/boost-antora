@@ -2,16 +2,8 @@
 
 # This script is used to build the Antora-based
 # documentation for Boost libraries and for the
-# unversioned site documentation such as the
-# contributors manual.
-#
-# These asciidoc attributes are used as variables
-# to control what is built and where it goes:
-#
-#   boost_doc_prefix
-#
-#   boost_lib_prefix
-#
+# versioned site documentation such as the
+# User's Guide.
 #
 
 if [ $# -eq 0 ]; then
@@ -37,7 +29,7 @@ do
             --attribute boost_ui_branch=$1 \
             --attribute boost_dir_prefix=$1/libs \
             --attribute boost_url=https://antora.cppalliance.org/$1/libs \
-            playbook.yml
+            libs.playbook.yml
 
     elif [ "$1" = "release" ]; then
         npx antora --fetch \
@@ -46,14 +38,14 @@ do
             --attribute boost_dir_prefix=doc/html \
             --attribute boost_layout=release \
             --attribute boost_url= \
-            playbook.yml
+            libs.playbook.yml
 
     elif [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
         npx antora --fetch \
             --attribute boost_version=$1 \
             --attribute boost_url=https://antora.cppalliance.org/$1/libs \
             --attribute boost_dir_prefix=$1/libs \
-            playbook.yml
+            libs.playbook.yml
 
     elif [ "$1" = "all" ]; then
         echo "build all";

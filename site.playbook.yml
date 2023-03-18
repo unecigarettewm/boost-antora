@@ -1,0 +1,48 @@
+# This configures Antora for building site docs
+#
+# website link structure:
+#
+# boost.org/doc/contributor-guide
+# boost.org/doc/boost-review-process
+#
+# boost.org/develop/doc/contributor-guide
+# boost.org/develop/doc/boost-review-process
+#
+# Only master and develop branches for site docs
+#
+# develop site docs uses develop ui kit
+#
+
+asciidoc:
+  attributes:
+    boost_version: develop
+    boost_site_prefix: develop/
+
+site:
+  url: https://antora.cppalliance.org/${boost_site_prefix}doc
+  title: Guides
+  start_page: contributor-manual::index.adoc
+
+antora:
+  extensions:
+    - require: ./boost.js
+
+content:
+  sources:
+
+  #---
+  # distributed component version
+  - url: https://github.com/cppalliance/contributor-manual
+    start_path: antora
+  - url: https://github.com/cppalliance/antora
+    start_path: antora
+  #---
+
+ui:
+  bundle:
+    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${boost_version}/ui-bundle.zip
+    snapshot: true
+
+output:
+  dir: ./build/${boost_site_prefix}doc
+

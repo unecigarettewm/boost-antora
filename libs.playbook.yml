@@ -22,7 +22,7 @@ asciidoc:
 site:
   url: https://antora.cppalliance.org/${boost_version}/libs
   title: Boost Libraries Documentation
-  start_page: contributor-manual::index.adoc
+  start_page: user-manual::index.adoc
 
 antora:
   extensions:
@@ -32,14 +32,6 @@ content:
   sources:
   - url: https://github.com/cppalliance/user-manual
     start_path: antora
-
-  #---
-  - url: https://github.com/cppalliance/contributor-manual
-    start_path: antora
-  - url: https://github.com/cppalliance/antora
-    start_path: antora
-  #---
-
   - url: https://github.com/vinniefalco/mp11
     start_path: antora
   - url: https://github.com/vinniefalco/predef
