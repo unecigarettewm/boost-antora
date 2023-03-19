@@ -21,7 +21,7 @@ asciidoc:
 site:
   url: https://antora.cppalliance.org/${boost_site_prefix}doc
   title: Guides
-  start_page: contributor-manual::index.adoc
+  start_page: contributor-guide::index.adoc
 
 antora:
   extensions:
@@ -32,7 +32,7 @@ content:
 
   #---
   # distributed component version
-  - url: https://github.com/cppalliance/contributor-manual
+  - url: https://github.com/cppalliance/contributor-guide
     start_path: antora
   - url: https://github.com/cppalliance/antora
     start_path: antora
