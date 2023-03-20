@@ -2,16 +2,13 @@
 #
 # website link structure:
 #
-# boost.org/libs/{name}                         redirect to versioned docs
-# boost.org/{version}/libs/{name}               versioned Antora lib docs
-# boost.org/{version}/libs/user-guide           User Guide (VFALCO move to doc?)
-# boost.org/doc/libs/{old-version}/libs/{name}  redirect to versioned legacy lib docs
-#
 # /libs/{name}                          Redirect to /{version}/lib/{name}
 # /{version}/lib/{name}                 library docs
 # /{version}/lib/user-guide             User Guide
-# /{version}/doc/contributor-guide      Contributor Guide (master, develop only)
-# /{version}/doc/boost-formal-review    Boost Formal Review (master, develop only)
+# /doc/contributor-guide
+# /doc/boost-formal-review
+# /develop/doc/contributor-guide
+# /develop/doc/boost-formal-review
 #
 # /doc/libs/{old-version}/libs/{name}   redirect to versioned legacy lib docs
 #

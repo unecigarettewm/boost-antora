@@ -2,15 +2,19 @@
 #
 # website link structure:
 #
-# boost.org/doc/contributor-guide
-# boost.org/doc/boost-review-process
+# /libs/{name}                          Redirect to /{version}/lib/{name}
+# /{version}/lib/{name}                 library docs
+# /{version}/lib/user-guide             User Guide
+# /doc/contributor-guide
+# /doc/boost-formal-review
+# /develop/doc/contributor-guide
+# /develop/doc/boost-formal-review
 #
-# boost.org/develop/doc/contributor-guide
-# boost.org/develop/doc/boost-review-process
+# /doc/libs/{old-version}/libs/{name}   redirect to versioned legacy lib docs
 #
-# Only master and develop branches for site docs
-#
-# develop site docs uses develop ui kit
+# name:         library-name
+# version:      "master" | "develop" | {semantic-version}
+# old-version:  DIGIT+ '_' DIGIT+ '_' DIGIT+
 #
 
 asciidoc:
