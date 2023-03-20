@@ -43,7 +43,7 @@ class Ext {
                     elem[key] = elem[key].replaceAll(pat, sub)
         }
     }
-
+ 
     doReplace(playbook) {
         for (const [key, value] of Object.entries(playbook.asciidoc.attributes)) {
             var pat = "${" + key + "}"
@@ -68,11 +68,7 @@ class Ext {
             playbook.content.tags = "boost-" + version
             playbook.content.branches = null // disable branches
             playbook.urls.latestVersionSegment = "" // disable tag in URL
-        } /* else {
-            playbook.content.branches = "HEAD"
-            console.log( "branches: ", playbook.content.branches)
         }
-        */
 
         this.doReplace(playbook);
     }

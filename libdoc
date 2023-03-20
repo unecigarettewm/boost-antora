@@ -27,7 +27,7 @@ do
         npx antora --fetch \
             --attribute boost_version=$1 \
             --attribute boost_ui_branch=$1 \
-            --attribute boost_dir_prefix=$1/libs \
+            --attribute boost_dir_prefix=$1/lib \
             libs.playbook.yml
 
     elif [ "$1" = "release" ]; then
@@ -42,7 +42,7 @@ do
         npx antora --fetch \
             --attribute boost_version=$1 \
             --attribute boost_ui_branch=master \
-            --attribute boost_dir_prefix=$1/libs \
+            --attribute boost_dir_prefix=$1/lib \
             libs.playbook.yml
 
     elif [ "$1" = "all" ]; then

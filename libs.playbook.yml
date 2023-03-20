@@ -7,21 +7,31 @@
 # boost.org/{version}/libs/user-guide           User Guide (VFALCO move to doc?)
 # boost.org/doc/libs/{old-version}/libs/{name}  redirect to versioned legacy lib docs
 #
-# {version} uses dots: 1.82.0
-# {old-version} uses underscores: 1_82_0
+# /libs/{name}                          Redirect to /{version}/lib/{name}
+# /{version}/lib/{name}                 library docs
+# /{version}/lib/user-guide             User Guide
+# /{version}/doc/contributor-guide      Contributor Guide (master, develop only)
+# /{version}/doc/boost-formal-review    Boost Formal Review (master, develop only)
+#
+# /doc/libs/{old-version}/libs/{name}   redirect to versioned legacy lib docs
+#
+# name:         library-name
+# version:      "master" | "develop" | {semantic-version}
+# old-version:  DIGIT+ '_' DIGIT+ '_' DIGIT+
 #
 
 asciidoc:
   attributes:
     boost_version: develop
     boost_ui_branch: develop
-    boost_dir_prefix: develop/libs
+    boost_dir_prefix: develop/lib
     boost_layout: default
 
 site:
   url: https://antora.cppalliance.org/${boost_version}/libs
   title: Boost Libraries Documentation
   start_page: user-guide::index.adoc
+  robots: allow
 
 antora:
   extensions:
@@ -29,9 +39,8 @@ antora:
 
 content:
   sources:
-  - url: https://github.com/cppalliance/user-guide
+  - url: https://github.com/vinniefalco/user-guide
     start_path: antora
-
   - url: https://github.com/vinniefalco/mp11
     start_path: antora
   - url: https://github.com/vinniefalco/predef
