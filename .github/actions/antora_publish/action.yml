@@ -20,11 +20,15 @@ inputs:
   publish_pages:
     description: 'Publish to GitHub Pages'
     required: false
-    default: false
+    default: 'false'
   github_token:
     description: 'The GitHub token for GitHub Pages'
     required: false
     default: ''
+  setup_only:
+    description: 'If true, we only setup antora but do not run it'
+    required: false
+    default: 'false'
 
 runs:
   using: "composite"
@@ -33,6 +37,13 @@ runs:
       uses: actions/setup-node@v2
       with:
         node-version: '16'
+
+    - name: Install package.json
+      shell: bash
+      run: |
+        if test -f "package.json"; then
+            npm install
+        fi
 
     - name: Install Antora
       shell: bash
@@ -49,18 +60,19 @@ runs:
         done
 
     - name: Generate Site
+      if: inputs.setup_only != 'true'
       shell: bash
       run: npx antora ${{ inputs.options }} ${{ inputs.playbook }}
 
     - name: Publish as Artifact
-      if: inputs.artifact != ''
+      if: inputs.artifact != '' && inputs.setup_only != 'true'
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.artifact }}
         path: build
 
     - name: Publish to GitHub Pages
-      if: inputs.github_token != '' && inputs.publish_pages != false
+      if: inputs.github_token != '' && inputs.publish_pages != false && inputs.setup_only != 'true'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ inputs.github_token }}
