@@ -27,13 +27,13 @@ if [ -z "$node_version" ]; then
   echo "Node.js is not installed"
   exit 1
 fi
-major_version=$(echo $node_version | egrep -o "v([0-9]+)\." | cut -c 2- | rev | cut -c 2- | rev)
-if [ "$major_version" -lt "16" ]; then
-  echo "Node.js version $node_version is not supported. Please upgrade to version 16 or higher."
-  node_path=$(which node)
-  echo "node_path=${node_path}"
-  exit 1
-fi
+#major_version=$(echo $node_version | egrep -o "v([0-9]+)\." | cut -c 2- | rev | cut -c 2- | rev)
+#if [ "$major_version" -lt "16" ]; then
+#  echo "Node.js version $node_version is not supported. Please upgrade to version 16 or higher."
+#  node_path=$(which node)
+#  echo "node_path=${node_path}"
+#  exit 1
+#fi
 npx_version=$(npx --version 2>/dev/null)
 if [ -z "$npx_version" ]; then
   echo "npx is not installed"
@@ -44,24 +44,25 @@ fi
 while test $# -gt 0; do
   if [ "$1" = "develop" ] || [ "$1" = "master" ]; then
     npx antora --fetch \
-      --attribute boost_version=$1 \
-      --attribute boost_ui_branch=$1 \
-      --attribute boost_dir_prefix=$1/libs \
+      --attribute page-boost-branch=$1 \
+      --attribute page-boost-ui-branch=$1 \
       libs.playbook.yml
 
   elif [ "$1" = "release" ]; then
     npx antora --fetch \
-      --attribute boost_version=master \
-      --attribute boost_ui_branch=master \
-      --attribute boost_layout=release \
-      --attribute boost_dir_prefix=doc/html \
+      --attribute page-boost-branch=master \
+      --attribute page-boost-ui-branch=master \
+      --attribute page-boost-is-release=true \
       libs.playbook.yml
 
   elif echo "$1" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+$'; then
     f="./history/libs.$1.playbook.yml"
     if [ -f "$f" ]; then
       echo "Building playbook $f"
-      npx antora --fetch "$f"
+      npx antora --fetch \
+      --attribute page-boost-branch=$1 \
+      --attribute page-boost-ui-branch=master \
+        "$f"
     else
       echo "Playbook \"$f\" does not exist"
     fi
@@ -69,11 +70,17 @@ while test $# -gt 0; do
   elif [ "$1" = "all" ]; then
     for f in ./history/*.yml; do
       echo "Building playbook $f"
-      npx antora --fetch "$f"
+      npx antora --fetch \
+        --attribute page-boost-branch=$branch \
+        --attribute page-boost-ui-branch=$branch \
+        "$f"
     done
     for branch in master develop; do
       echo "Building playbook libs.playbook.yml for $branch branch"
-      npx antora --fetch --attribute boost_version=$branch --attribute boost_ui_branch=$branch --attribute boost_dir_prefix=$branch/libs libs.playbook.yml
+      npx antora --fetch \
+        --attribute page-boost-branch=$branch \
+        --attribute page-boost-ui-branch=$branch \
+        libs.playbook.yml
     done
   else
     echo "invalid argument: '$1'"

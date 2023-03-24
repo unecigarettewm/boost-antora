@@ -1,33 +1,39 @@
 # This configures Antora for building library docs
 #
-# website link structure:
+# 
+# Stable, indexed
 #
-# /libs/{name}                          Redirect to /{version}/lib/{name}
-# /{version}/lib/{name}                 library docs
-# /{version}/lib/user-guide             User Guide
-# /doc/contributor-guide
-# /doc/boost-formal-review
-# /develop/doc/contributor-guide
-# /develop/doc/boost-formal-review
+#   /doc/                                         # aliased to /master/doc/
+#   /lib/doc/                                     # aliased to /current/doc/
 #
-# /doc/libs/{old-version}/libs/{name}   redirect to versioned legacy lib docs
+# Unversioned
 #
-# name:         library-name
-# version:      "master" | "develop" | {semantic-version}
-# old-version:  DIGIT+ '_' DIGIT+ '_' DIGIT+
+#   /master/doc/boost-review-process
+#   /master/doc/contributor-guide
+#   /master/doc/release-process
+#   /develop/doc/boost-review-process
+#   /develop/doc/contributor-guide
+#   /develop/doc/release-process
+#
+# Stable, versioned
+#
+#   /${version}/lib/index.html                    # List of libraries (release)
+#   /${version}/lib/${name}.html                  # Library info (release)
+#   /${version}/lib/doc/${name}/                  # Library docs
+#   /${version}/lib/doc/user-guide/               # User's Guide
+#
+# version:    "master" | "develop" | {semantic-version}
 #
 
 asciidoc:
   attributes:
-    boost_version: develop
-    boost_ui_branch: develop
-    boost_dir_prefix: develop/lib
-    boost_layout: default
+    page-boost-branch: develop
+    page-boost-ui-branch: develop
+    page-boost-is-release: ''
 
 site:
-  url: https://antora.cppalliance.org/${boost_version}/libs
+  url: https://antora.cppalliance.org/${page-boost-branch}/lib/doc
   title: Boost Libraries Documentation
-  start_page: user-guide::index.adoc
   robots: allow
 
 antora:
@@ -49,9 +55,8 @@ content:
 
 ui:
   bundle:
-    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${boost_ui_branch}/ui-bundle.zip
+    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${page-boost-ui-branch}/ui-bundle.zip
     snapshot: true
-  default_layout: ${boost_layout}
 
 output:
-  dir: ./build/${boost_dir_prefix}
+  dir: ./build/${page-boost-branch}/lib/doc

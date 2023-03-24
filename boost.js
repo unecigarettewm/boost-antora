@@ -56,16 +56,16 @@ class Ext {
     }
 
     contextStarted({playbook}) {
-        var version = playbook.asciidoc.attributes.boost_version
+        var branch = playbook.asciidoc.attributes['page-boost-branch']
 
-        if(! version )
-            throw new Error("Missing required attribute: asciidoc.attributes.boost_version");
+        if(! branch )
+            throw new Error("Missing required attribute: asciidoc.attributes.page-boost-branch");
 
-        if( version === "master" || version === "develop") {
+        if( branch === "master" || branch === "develop") {
             playbook.content.tags = ""
-            playbook.content.branches = version
+            playbook.content.branches = branch
         } else {
-            playbook.content.tags = "boost-" + version
+            playbook.content.tags = "boost-" + branch
             playbook.content.branches = null // disable branches
             playbook.urls.latestVersionSegment = "" // disable tag in URL
         }

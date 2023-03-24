@@ -20,13 +20,13 @@ if [ -z "$node_version" ]; then
   echo "Node.js is not installed"
   exit 1
 fi
-major_version=$(echo $node_version | egrep -o "v([0-9]+)\." | cut -c 2- | rev | cut -c 2- | rev)
-if [ "$major_version" -lt "16" ]; then
-  echo "Node.js version $node_version is not supported. Please upgrade to version 16 or higher."
-  node_path=$(which node)
-  echo "node_path=${node_path}"
-  exit 1
-fi
+#major_version=$(echo $node_version | egrep -o "v([0-9]+)\." | cut -c 2- | rev | cut -c 2- | rev)
+#if [ "$major_version" -lt "16" ]; then
+#  echo "Node.js version $node_version is not supported. Please upgrade to version 16 or higher."
+#  node_path=$(which node)
+#  echo "node_path=${node_path}"
+#  exit 1
+#fi
 npx_version=$(npx --version 2>/dev/null)
 if [ -z "$npx_version" ]; then
   echo "npx is not installed"
@@ -36,13 +36,11 @@ fi
 while test $# -gt 0; do
   if [ "$1" = "develop" ]; then
     npx antora --fetch \
-      --attribute boost_version=$1 \
-      --attribute boost_site_prefix=develop/ \
+      --attribute page-boost-branch=$1 \
       site.playbook.yml
   elif [ "$1" = "master" ]; then
     npx antora --fetch \
-      --attribute boost_version=$1 \
-      --attribute boost_site_prefix= \
+      --attribute page-boost-branch=$1 \
       site.playbook.yml
   else
     echo "invalid argument: '$1'"

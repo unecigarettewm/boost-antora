@@ -19,11 +19,10 @@
 
 asciidoc:
   attributes:
-    boost_version: develop
-    boost_site_prefix: develop/
+    page-boost-branch: develop
 
 site:
-  url: https://antora.cppalliance.org/${boost_site_prefix}doc
+  url: https://antora.cppalliance.org/${page-boost-branch}/doc
   title: Guides
   start_page: contributor-guide::index.adoc
 
@@ -44,9 +43,8 @@ content:
 
 ui:
   bundle:
-    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${boost_version}/ui-bundle.zip
+    url: https://github.com/cppalliance/antora-ui/releases/download/ui-${page-boost-branch}/ui-bundle.zip
     snapshot: true
 
 output:
-  dir: ./build/${boost_site_prefix}doc
-
+  dir: ./build/${page-boost-branch}/doc
