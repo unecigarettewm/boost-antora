@@ -32,11 +32,17 @@ antora:
 
 content:
   sources:
-
+  - url: https://github.com/cppalliance/site-docs
+    start_path: user-guide
+  - url: https://github.com/cppalliance/site-docs
+    start_path: formal-reviews
+  - url: https://github.com/cppalliance/site-docs
+    start_path: release-process
+    
   #---
   # distributed component version
-  - url: https://github.com/cppalliance/contributor-guide
-    start_path: antora
+  - url: https://github.com/cppalliance/site-docs
+    start_path: contributor-guide
   - url: https://github.com/cppalliance/antora
     start_path: antora
   #---
